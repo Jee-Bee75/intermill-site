@@ -1600,6 +1600,28 @@
     .hero-content,.about-hero-grid,.services-header,.case-grid,.magnet-grid,.demo-grid{
       grid-template-columns:1fr;
     }
+    /* Story-step: stack num boven content */
+    .story-step{grid-template-columns:1fr;gap:16px;padding:32px 0}
+    .story-num{font-size:48px;width:72px;height:72px}
+    .story-step h3{font-size:26px;line-height:1.15}
+    .story-step p{font-size:16px}
+    /* Hero overall: smaller padding + smaller h1 caps */
+    .about-hero, .process-hero, .page-hero{padding:60px 0 50px}
+    .about-hero h1, .process-hero h1, .page-hero h1{margin-bottom:24px}
+    /* Mission quote smaller */
+    .mission-quote{font-size:clamp(26px,5vw,42px) !important}
+    /* Final-CTA */
+    .final-cta{padding:60px 0}
+    .final-cta h2.display{font-size:clamp(32px,7vw,56px) !important}
+    /* Why-grid 2-col → 1-col on smal */
+    .why-grid{grid-template-columns:1fr}
+    /* Stat grid 4-col → 2-col */
+    .stats-grid{grid-template-columns:repeat(2,1fr) !important}
+    /* Container minder horizontal padding */
+    .container{padding:0 22px}
+    .about-hero-grid{padding:0 22px}
+    /* Article-cards padding kleiner */
+    .article-card{padding:24px 20px}
     .stats-grid,.services-grid,.testimonial-grid,.mat-grid,.values-grid{
       grid-template-columns:repeat(2,1fr);
     }
