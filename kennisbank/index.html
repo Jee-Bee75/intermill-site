@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kennisbank verspaning · InterMill</title>
+<meta name="description" content="Diepe artikelen over verspaning, gereedschapskeuze en procesoptimalisatie, geschreven door Johny Govers op basis van 240+ procesanalyses in NL/BE.">
+<meta name="theme-color" content="#FFDD00">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://inter-mill.com/kennisbank/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:site_name" content="InterMill">
+<meta property="og:title" content="Kennisbank · InterMill">
+<meta property="og:description" content="Diepe artikelen over verspaning, gereedschapskeuze en procesoptimalisatie. Door Johny Govers, op basis van 240+ procesanalyses.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --yellow:#FFDD00; --yellow-bg:#FFFCE5;
+    --white:#FFFFFF; --off-white:#FAFAFA;
+    --gray-200:#D4D4D4; --gray-400:#8A8A8A; --gray-500:#525252; --gray-700:#2A2A2A;
+    --ink:#0F0F0F; --line:#E5E5E5;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Manrope',sans-serif;background:var(--white);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  picture{display:contents}
+  ::selection{background:var(--yellow);color:var(--ink)}
+  a{color:inherit}
+  .display{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;line-height:1.02;letter-spacing:-0.03em;overflow-wrap:break-word}
+
+  /* Top bar */
+  .topbar{background:var(--ink);color:var(--white);border-bottom:1px solid var(--gray-700)}
+  .topbar-inner{max-width:1100px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .brand{display:inline-flex;align-items:center;color:var(--white);text-decoration:none;line-height:0}
+  .brand img{height:30px;width:auto;display:block}
+  .topbar-cta{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--yellow);text-decoration:none}
+  .topbar-cta:hover{color:var(--white)}
+
+  /* Hero */
+  .container{max-width:1100px;margin:0 auto;padding:0 32px}
+  .hero{padding:80px 0 60px;border-bottom:1px solid var(--line)}
+  .breadcrumb{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gray-400);margin-bottom:24px}
+  .breadcrumb a{color:var(--gray-400);text-decoration:none}
+  .breadcrumb a:hover{color:var(--ink)}
+  .breadcrumb .sep{margin:0 8px;opacity:0.5}
+  .hero h1{font-size:clamp(38px,5.5vw,72px);max-width:18ch;margin-bottom:20px}
+  .hero p.lede{font-size:18px;color:var(--gray-500);max-width:60ch;line-height:1.55}
+
+  /* Article cards */
+  .articles{padding:60px 0 100px}
+  .articles-title{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gray-500);margin-bottom:24px}
+  .article-grid{display:grid;grid-template-columns:1fr;gap:20px}
+  .article-card{display:block;background:var(--white);border:1px solid var(--ink);padding:36px 40px;text-decoration:none;color:var(--ink);transition:background .15s;position:relative}
+  .article-card:hover{background:var(--yellow-bg)}
+  .article-card .meta{display:flex;gap:0;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gray-500);margin-bottom:18px}
+  .article-card .meta span{padding-right:18px;margin-right:18px;border-right:1px solid var(--line)}
+  .article-card .meta span:last-child{border-right:none}
+  .article-card .meta b{color:var(--ink);font-weight:500}
+  .article-card h2{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(24px,3vw,32px);font-weight:700;letter-spacing:-0.02em;line-height:1.15;margin-bottom:14px;max-width:24ch}
+  .article-card p{font-size:15.5px;color:var(--gray-500);line-height:1.6;max-width:62ch;margin-bottom:18px}
+  .article-card .arrow{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14px;color:var(--ink);display:inline-flex;align-items:center;gap:8px}
+  .article-card .arrow::after{content:'→';transition:transform .15s}
+  .article-card:hover .arrow::after{transform:translateX(4px)}
+
+  /* Coming soon block */
+  .soon{margin-top:60px;padding:32px;background:var(--off-white);border:1px dashed var(--gray-400)}
+  .soon h3{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gray-500);margin-bottom:14px}
+  .soon ul{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px 24px}
+  .soon li{font-size:14px;color:var(--gray-500);padding-left:18px;position:relative}
+  .soon li::before{content:'·';position:absolute;left:0;color:var(--yellow);font-weight:700;font-size:18px;line-height:1;top:1px}
+
+  /* Footer */
+  footer{background:var(--ink);color:var(--white);padding:36px 0;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase}
+  footer .container{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;align-items:center}
+  footer a{color:var(--gray-400);text-decoration:none}
+  footer a:hover{color:var(--yellow)}
+
+  @media (max-width:700px){
+    .container{padding:0 22px}
+    .article-card{padding:28px 24px}
+    .soon ul{grid-template-columns:1fr}
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "InterMill Kennisbank",
+  "url": "https://inter-mill.com/kennisbank/",
+  "description": "Diepe artikelen over verspaning, gereedschapskeuze en procesoptimalisatie. Door Johny Govers, op basis van 240+ procesanalyses.",
+  "inLanguage": "nl-NL",
+  "isPartOf": { "@id": "https://inter-mill.com/#website" },
+  "publisher": { "@id": "https://inter-mill.com/#organization" },
+  "hasPart": [
+    {
+      "@type": "Article",
+      "headline": "PKD vs hardmetaal: wanneer kies je wat? (met TCO-rekenvoorbeeld)",
+      "url": "https://inter-mill.com/kennisbank/pkd-vs-hardmetaal/",
+      "datePublished": "2026-05-20"
+    },
+    {
+      "@type": "Article",
+      "headline": "Trillingen bij precisiefrezen: de drie bronnen (en hoe je ze diagnosticeert)",
+      "url": "https://inter-mill.com/kennisbank/trillingen-precisiefrezen/",
+      "datePublished": "2026-05-20"
+    }
+  ]
+}
+</script>
+<meta property="og:image" content="https://inter-mill.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://inter-mill.com/og-image.png">
+<link rel="stylesheet" href="/styles.css">
+<style>body{padding-top:67px}.topbar{display:none}</style>
+</head>
+<body>
+
+<nav class="page-nav">
+  <div class="page-nav-inner">
+    <a class="brand" href="/" aria-label="InterMill, naar home">
+      <picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="InterMill" width="888" height="324"></picture>
+    </a>
+    <div class="nav-tabs">
+      <a href="/">Home</a>
+      <a href="/over-ons/">Over ons</a>
+      <a href="/werkwijze/">Werkwijze</a>
+      <div class="nav-dropdown">
+        <button class="nav-trigger" type="button" aria-haspopup="true">Assortiment <span class="caret" aria-hidden="true">▾</span></button>
+        <div class="nav-menu" role="menu">
+          <a href="/assortiment/" role="menuitem">Snijgereedschap</a>
+          <a href="/assortiment/kotteren/" role="menuitem">Kotteren &amp; Specials</a>
+          <a href="/assortiment/meetgereedschap/" role="menuitem">Meetgereedschap</a>
+          <a href="/assortiment/trillingsdemping/" role="menuitem">Trillingsdemping</a>
+        </div>
+      </div>
+      <a href="/kennisbank/" class="active" aria-current="page">Kennisbank</a>
+      <a href="/contact/">Contact</a>
+    </div>
+    <a class="nav-cta" href="/plannen/">Plan sparringsessie <span style="font-size:18px">→</span></a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Kruimelpad">
+      <a href="../index.html">InterMill</a>
+      <span class="sep">/</span>
+      <span>Kennisbank</span>
+    </nav>
+    <h1 class="display">Werkvloerkennis,<br><span class="yellow-bg">leesbaar</span> opgeschreven.</h1>
+    <p class="lede">Diepe artikelen over gereedschapskeuze, TCO-rekenwerk en procesoptimalisatie. Geen marketing, werkvloer-ervaring uit 240+ procesanalyses in Nederlandse en Belgische verspaningsbedrijven, geschreven door Johny Govers.</p>
+  </div>
+</section>
+
+<section class="articles">
+  <div class="container">
+    <div class="articles-title">★ Artikelen</div>
+    <div class="article-grid">
+
+      <a class="article-card" href="pkd-vs-hardmetaal/">
+        <div class="meta">
+          <span>Categorie <b>Gereedschapskeuze</b></span>
+          <span>Leestijd <b>~9 min</b></span>
+          <span>Gepubliceerd <b>Mei 2026</b></span>
+        </div>
+        <h2>PKD vs hardmetaal: wanneer kies je wat? (met TCO-rekenvoorbeeld)</h2>
+        <p>Per materiaalgroep, met standtijd-multipliers uit 240+ procesanalyses, de TCO-formule, een concreet rekenvoorbeeld (€ 28,40 vs € 19,15 per werkstuk) en een 5-stap beslis-checklist. Antwoord op de vraag die wekelijks langskomt: ferro of non-ferro, gietijzer of staal, hoeveel serie, welke opname, wat wint?</p>
+        <span class="arrow">Lees het artikel</span>
+      </a>
+
+      <a class="article-card" href="trillingen-precisiefrezen/">
+        <div class="meta">
+          <span>Categorie <b>Procesoptimalisatie</b></span>
+          <span>Leestijd <b>~8 min</b></span>
+          <span>Gepubliceerd <b>Mei 2026</b></span>
+        </div>
+        <h2>Trillingen bij precisiefrezen: de drie bronnen (en hoe je ze diagnosticeert)</h2>
+        <p>80% van trillingsproblemen komt uit drie bronnen: uitsteeklengte, opname/run-out en snijgeometrie. Met diagnose-tabel (symptoom → bron), opname-vergelijking (krimp, hydroplastisch, BiG-Plus, ER) en 5-stap checklist die je in 15 minuten op je machine kunt doorlopen.</p>
+        <span class="arrow">Lees het artikel</span>
+      </a>
+
+    </div>
+
+    <div class="soon">
+      <h3>★ Binnenkort in deze kennisbank</h3>
+      <ul>
+        <li>BiG-Plus vs HSK vs ISO: welke opname voor jouw machine?</li>
+        <li>Standtijd-benchmark 2026: HM vs PKD per materiaalgroep</li>
+        <li>De TCO-berekening voor verspaningsgereedschap (met sjabloon)</li>
+        <li>Wanneer is een special écht goedkoper dan standaardgereedschap?</li>
+        <li>Snijparameters voor CFRP: wat werkt en wat breekt</li>
+        <li>Standtijd-monitoring: van onderbuik naar data</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>InterMill · VerspaningsAdvies &amp; -Gereedschap · Maarheeze, NL</div>
+    <div><a href="tel:+31610906759">+31 (0)6 10 90 67 59</a> · <a href="mailto:info@inter-mill.com">info@inter-mill.com</a></div>
+  </div>
+</footer>
+
+<script src="../consent.js" defer></script>
+</body>
+</html>

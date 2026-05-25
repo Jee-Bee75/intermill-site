@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacyverklaring · InterMill</title>
+<meta name="description" content="Privacyverklaring van InterMill, welke persoonsgegevens we verwerken, waarom, hoe lang we ze bewaren, en jouw rechten als bezoeker of klant.">
+<meta name="theme-color" content="#FFDD00">
+<meta name="robots" content="index,follow">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://inter-mill.com/privacy.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --yellow:#FFDD00; --yellow-bg:#FFFCE5;
+    --white:#FFFFFF; --off-white:#FAFAFA;
+    --gray-100:#EAEAEA; --gray-200:#D4D4D4; --gray-400:#8A8A8A; --gray-500:#525252; --gray-700:#2A2A2A;
+    --ink:#0F0F0F; --line:#E5E5E5;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Manrope',sans-serif;background:var(--white);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+  ::selection{background:var(--yellow);color:var(--ink)}
+  a{color:inherit}
+  img{display:block;max-width:100%}
+  picture{display:contents}
+  .display{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;line-height:1.05;letter-spacing:-0.03em}
+
+  .topbar{background:var(--ink);color:var(--white);border-bottom:1px solid var(--gray-700)}
+  .topbar-inner{max-width:860px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .brand{display:inline-flex;align-items:center;text-decoration:none;color:var(--white);line-height:0}
+  .brand img{height:30px;width:auto;display:block}
+  .topbar-back{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--yellow);text-decoration:none}
+  .topbar-back:hover{color:var(--white)}
+
+  .container{max-width:860px;margin:0 auto;padding:0 32px}
+  .hero{padding:64px 0 40px;border-bottom:1px solid var(--line)}
+  .breadcrumb{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gray-400);margin-bottom:24px}
+  .breadcrumb a{color:var(--gray-400);text-decoration:none}
+  .breadcrumb a:hover{color:var(--ink)}
+  .breadcrumb .sep{margin:0 8px;opacity:0.5}
+  h1.title{font-size:clamp(34px,5vw,52px);max-width:22ch;margin-bottom:18px}
+  .meta{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gray-500)}
+  .meta b{color:var(--ink);font-weight:500}
+
+  article{padding:40px 0 80px;font-size:16px;line-height:1.7;color:var(--gray-700)}
+  article > * + *{margin-top:18px}
+  article h2{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,28px);font-weight:700;letter-spacing:-0.02em;line-height:1.2;color:var(--ink);margin-top:44px;display:flex;align-items:baseline;gap:14px}
+  article h2 .num{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--gray-400);font-weight:500;letter-spacing:0.1em;min-width:32px}
+  article h3{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:700;letter-spacing:-0.01em;color:var(--ink);margin-top:24px}
+  article p, article li{font-size:15.5px}
+  article p strong, article li strong{color:var(--ink);font-weight:700}
+  article ul, article ol{padding-left:22px}
+  article li{margin-bottom:6px}
+  article a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--yellow);text-decoration-thickness:2px;text-underline-offset:2px}
+  article a:hover{background:var(--yellow)}
+
+  table{width:100%;border-collapse:collapse;margin-top:16px;font-size:14px;border:1px solid var(--ink)}
+  th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);border-right:1px solid var(--line);vertical-align:top}
+  th:last-child,td:last-child{border-right:none}
+  thead th{background:var(--ink);color:var(--white);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;font-weight:500}
+  tbody tr:nth-child(even){background:var(--off-white)}
+
+  .note{background:var(--yellow-bg);border-left:4px solid var(--yellow);padding:20px 24px;margin-top:20px}
+  .note .lbl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gray-500);margin-bottom:8px}
+  .note p{font-size:14.5px;color:var(--ink);line-height:1.55}
+
+  footer{background:var(--ink);color:var(--white);padding:32px 0;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase}
+  footer .container{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;align-items:center}
+  footer a{color:var(--gray-400);text-decoration:none}
+  footer a:hover{color:var(--yellow)}
+
+  @media (max-width:600px){
+    .container,.topbar-inner{padding-left:22px;padding-right:22px}
+    article h2{flex-direction:column;gap:4px}
+  }
+</style>
+<meta property="og:image" content="https://inter-mill.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://inter-mill.com/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "Organization", "@id": "https://inter-mill.com/#organization", "name": "InterMill", "url": "https://inter-mill.com/" },
+    {
+      "@type": "WebPage",
+      "@id": "https://inter-mill.com/privacy.html#webpage",
+      "url": "https://inter-mill.com/privacy.html",
+      "name": "Privacyverklaring InterMill",
+      "isPartOf": { "@id": "https://inter-mill.com/#website" },
+      "about": { "@id": "https://inter-mill.com/#organization" },
+      "inLanguage": "nl-NL"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html" aria-label="InterMill, naar hoofdsite">
+      <picture><source srcset="logo-light.webp" type="image/webp"><img src="logo-light.png" alt="InterMill" width="888" height="324"></picture>
+    </a>
+    <a class="topbar-back" href="index.html">← Naar de hoofdsite</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Kruimelpad">
+      <a href="index.html">InterMill</a>
+      <span class="sep">/</span>
+      <span>Privacyverklaring</span>
+    </nav>
+    <h1 class="display title">Privacyverklaring</h1>
+    <div class="meta">Laatst bijgewerkt <b>20 mei 2026</b> · Versie <b>1.0</b></div>
+  </div>
+</section>
+
+<article class="container">
+
+  <p>Bij InterMill nemen we de privacy van bezoekers en klanten serieus. In deze verklaring leggen we uit welke persoonsgegevens we verwerken, waarom, hoe lang we ze bewaren, met wie we ze (eventueel) delen, en welke rechten je hebt. Geen juridische tongbreker, gewoon helder uitgelegd.</p>
+
+  <h2><span class="num">01</span> Wie is verantwoordelijk?</h2>
+  <p>Verwerkingsverantwoordelijke voor de persoonsgegevens die via deze website worden verwerkt is:</p>
+  <ul>
+    <li><strong>InterMill VerspaningsAdvies &amp; -Gereedschap</strong></li>
+    <li>Eigenaar: Johny Govers</li>
+    <li>Maarheeze, Nederland</li>
+    <li>E-mail: <a href="mailto:info@inter-mill.com">info@inter-mill.com</a></li>
+    <li>Telefoon: <a href="tel:+31610906759">+31 (0)6 10 90 67 59</a></li>
+  </ul>
+
+  <h2><span class="num">02</span> Welke gegevens verwerken we?</h2>
+  <p>Afhankelijk van wat je doet op de site of in contact met ons:</p>
+  <table>
+    <thead>
+      <tr><th>Type gegeven</th><th>Wanneer verzameld</th><th>Voorbeeld</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Contactgegevens</td><td>Bij invullen formulier, mailen, bellen, WhatsApp</td><td>Naam, bedrijf, e-mail, telefoon</td></tr>
+      <tr><td>Werkstuk/technische info</td><td>Bij sparringsessie-aanvraag of procesanalyse</td><td>Materiaal, machine, gereedschap, parameters</td></tr>
+      <tr><td>Correspondentie</td><td>E-mail, WhatsApp-berichten, gespreksnotities</td><td>Inhoud van uitgewisselde berichten</td></tr>
+      <tr><td>Klant-administratie</td><td>Bij daadwerkelijke opdracht</td><td>Factuurgegevens, KVK-nummer, BTW-nr</td></tr>
+      <tr><td>Bezoekersstatistieken</td><td>Bij elk websitebezoek (indien analytics actief)</td><td>Geanonimiseerd IP, browser, paginabezoeken, zie <a href="cookies.html">cookieverklaring</a></td></tr>
+    </tbody>
+  </table>
+
+  <h2><span class="num">03</span> Waarom verwerken we deze gegevens?</h2>
+  <p>Voor de volgende doelen, telkens op een geldige juridische grondslag (AVG art. 6):</p>
+  <ul>
+    <li><strong>Beantwoorden van je vraag of aanvraag</strong> (sparringsessie, procesanalyse, offerte). Grondslag: uitvoering overeenkomst of voorbereidende stappen op jouw verzoek.</li>
+    <li><strong>Uitvoeren van een opdracht of levering</strong>. Grondslag: uitvoering overeenkomst.</li>
+    <li><strong>Wettelijke administratie</strong> (boekhouding, BTW). Grondslag: wettelijke verplichting.</li>
+    <li><strong>Verbeteren van de website en dienstverlening</strong>, op geaggregeerd niveau via geanonimiseerde statistieken. Grondslag: gerechtvaardigd belang, na toestemming voor analytische cookies.</li>
+  </ul>
+  <p>We verwerken <strong>geen</strong> persoonsgegevens voor marketing-profilering, advertenties of doorverkoop. Punt.</p>
+
+  <h2><span class="num">04</span> Hoe lang bewaren we ze?</h2>
+  <table>
+    <thead>
+      <tr><th>Type gegeven</th><th>Bewaartermijn</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Contact- en correspondentiegegevens zonder opdracht</td><td>Maximaal 12 maanden na laatste contact</td></tr>
+      <tr><td>Klant-administratie (factuur, boekhouding)</td><td>7 jaar (wettelijke fiscale bewaarplicht)</td></tr>
+      <tr><td>Werkstuk/technische info uit procesanalyse</td><td>Zolang de zakelijke relatie loopt, daarna geanonimiseerd voor onze interne benchmark</td></tr>
+      <tr><td>Analytics-data (Google Analytics 4)</td><td>14 maanden (GA4-standaard), daarna automatisch verwijderd</td></tr>
+    </tbody>
+  </table>
+
+  <h2><span class="num">05</span> Met wie delen we gegevens?</h2>
+  <p>Alleen met partijen die strikt nodig zijn voor het uitvoeren van onze diensten:</p>
+  <ul>
+    <li><strong>Hosting-provider</strong> van deze website (statische bestanden, geen actieve verwerking van persoonsgegevens behalve standaard server-logs).</li>
+    <li><strong>Boekhouder/accountant</strong> voor het verwerken van facturen.</li>
+    <li><strong>Gereedschapsleveranciers</strong> (Brütsch-Rüegger, MEHI, DTS en anderen), uitsluitend wanneer noodzakelijk om een door jou bestelde levering uit te voeren, en alleen de strikt benodigde gegevens.</li>
+    <li><strong>Google Analytics 4</strong> indien je daarvoor toestemming gaf (zie <a href="cookies.html">cookieverklaring</a>). Wij hebben een verwerkersovereenkomst met Google en hebben IP-anonimisering en Google-Signals-uitschakeling actief.</li>
+  </ul>
+  <p>Wij <strong>verkopen of verhuren je gegevens nooit</strong> aan derden.</p>
+
+  <h2><span class="num">06</span> Doorgifte buiten de EU</h2>
+  <p>Google Analytics is een dienst van Google LLC (Verenigde Staten). Google stelt de EU-US Data Privacy Framework te volgen voor doorgifte van EU-data. We hebben in onze GA4-configuratie IP-anonimisering en datalocatie EU ingesteld waar mogelijk.</p>
+  <p>Andere persoonsgegevens (contact, klant-administratie) blijven binnen de EU.</p>
+
+  <h2><span class="num">07</span> Beveiliging</h2>
+  <p>We nemen passende maatregelen om jouw gegevens te beveiligen:</p>
+  <ul>
+    <li>HTTPS-versleuteling op de website (TLS 1.3).</li>
+    <li>Wachtwoordbeveiliging en two-factor authenticatie op alle accounts die toegang hebben tot klantgegevens.</li>
+    <li>Beperkte toegang, alleen Johny en (indien van toepassing) onze boekhouder hebben toegang tot persoonsgegevens.</li>
+    <li>Periodieke back-ups van klant-administratie.</li>
+  </ul>
+
+  <h2><span class="num">08</span> Jouw rechten</h2>
+  <p>Volgens de AVG heb je het recht om:</p>
+  <ul>
+    <li><strong>Inzage</strong> in welke persoonsgegevens we van je verwerken.</li>
+    <li><strong>Correctie</strong> van onjuiste gegevens.</li>
+    <li><strong>Verwijdering</strong> van je gegevens (binnen de wettelijke bewaartermijnen).</li>
+    <li><strong>Beperking</strong> van de verwerking.</li>
+    <li><strong>Bezwaar</strong> tegen verwerking op basis van gerechtvaardigd belang.</li>
+    <li><strong>Dataportabiliteit</strong>, gegevens overdragen in een gangbaar formaat.</li>
+    <li><strong>Toestemming intrekken</strong> wanneer verwerking op toestemming berust (zoals analytics).</li>
+  </ul>
+  <p>Stuur een mail naar <a href="mailto:info@inter-mill.com">info@inter-mill.com</a> met je verzoek. We reageren binnen 30 dagen.</p>
+
+  <h2><span class="num">09</span> Klacht indienen</h2>
+  <p>Als je vindt dat we onzorgvuldig met je gegevens omgaan, neem dan eerst contact met ons op zodat we het kunnen oplossen. Lukt dat niet, dan kun je een klacht indienen bij de Autoriteit Persoonsgegevens via <a href="https://autoriteitpersoonsgegevens.nl/" target="_blank" rel="noopener">autoriteitpersoonsgegevens.nl</a>.</p>
+
+  <h2><span class="num">10</span> Wijzigingen</h2>
+  <p>We mogen deze privacyverklaring aanpassen wanneer wet- of regelgeving wijzigt of wanneer we onze werkwijze veranderen. De datum bovenaan deze pagina toont wanneer de laatste wijziging plaatsvond. Belangrijke wijzigingen kondigen we actief aan, bijvoorbeeld via een melding op de homepage.</p>
+
+  <div class="note">
+    <div class="lbl">★ Vragen?</div>
+    <p>Niet duidelijk? Mail of bel Johny, geen juridische formulieren nodig. <a href="mailto:info@inter-mill.com">info@inter-mill.com</a> of <a href="tel:+31610906759">+31 (0)6 10 90 67 59</a>.</p>
+  </div>
+
+</article>
+
+<footer>
+  <div class="container">
+    <div>InterMill · Maarheeze, NL · <a href="cookies.html">Cookies</a> · <a href="privacy.html">Privacy</a></div>
+    <div><a href="index.html">← Naar de hoofdsite</a></div>
+  </div>
+</footer>
+
+<script src="consent.js" defer></script>
+</body>
+</html>

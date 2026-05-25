@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /_internal/
+Disallow: /_unused/
+
+Sitemap: https://www.inter-mill.com/sitemap.xml

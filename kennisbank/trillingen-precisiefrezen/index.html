@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trillingen bij precisiefrezen: 3 bronnen | InterMill</title>
+<meta name="description" content="80% van trillingen in verspaning komt uit drie bronnen: uitsteeklengte, opname/run-out en snijgeometrie. Diagnose-tabel, fixes en checklist. Door InterMill (240+ analyses).">
+<meta name="theme-color" content="#FFDD00">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://inter-mill.com/kennisbank/trillingen-precisiefrezen/">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:site_name" content="InterMill">
+<meta property="og:title" content="Trillingen bij precisiefrezen: de drie bronnen (en hoe je ze diagnosticeert)">
+<meta property="og:description" content="80% van trillingen komt uit drie bronnen: uitsteeklengte, opname/run-out en snijgeometrie. Met diagnose-tabel, fixes en 5-stap checklist.">
+<meta property="og:image" content="https://inter-mill.com/uploads/images/services/1556709463-large-foto-snijgereedschap.JPG">
+<meta property="article:author" content="Johny Govers">
+<meta property="article:published_time" content="2026-05-20">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --yellow:#FFDD00; --yellow-2:#F5D000; --yellow-soft:#FFF4A3; --yellow-bg:#FFFCE5;
+    --white:#FFFFFF; --off-white:#FAFAFA;
+    --gray-100:#EAEAEA; --gray-200:#D4D4D4; --gray-400:#8A8A8A; --gray-500:#525252; --gray-700:#2A2A2A;
+    --ink:#0F0F0F; --line:#E5E5E5;
+    --red:#B42318; --green:#067647; --orange:#B54708;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Manrope',sans-serif;background:var(--white);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+  ::selection{background:var(--yellow);color:var(--ink)}
+  a{color:inherit}
+  img{display:block;max-width:100%}
+  picture{display:contents}
+  .display{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;line-height:1.02;letter-spacing:-0.03em;overflow-wrap:break-word}
+  .mono{font-family:'JetBrains Mono',monospace;letter-spacing:0.16em;text-transform:uppercase}
+
+  .topbar{background:var(--ink);color:var(--white);border-bottom:1px solid var(--gray-700)}
+  .topbar-inner{max-width:920px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .brand{display:inline-flex;align-items:center;color:var(--white);text-decoration:none;line-height:0}
+  .brand img{height:30px;width:auto;display:block}
+  .topbar-cta{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--yellow);text-decoration:none}
+  .topbar-cta:hover{color:var(--white)}
+
+  .container{max-width:920px;margin:0 auto;padding:0 32px}
+  .article-hero{padding:60px 0 40px;border-bottom:1px solid var(--line)}
+  .breadcrumb{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gray-400);margin-bottom:24px}
+  .breadcrumb a{color:var(--gray-400);text-decoration:none}
+  .breadcrumb a:hover{color:var(--ink)}
+  .breadcrumb .sep{margin:0 8px;opacity:0.5}
+  h1.title{font-size:clamp(34px,5vw,58px);max-width:22ch;margin-bottom:24px}
+  .article-meta{display:flex;flex-wrap:wrap;gap:0;align-items:center;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gray-500);margin-top:24px}
+  .article-meta>span{padding-right:18px;margin-right:18px;border-right:1px solid var(--line)}
+  .article-meta>span:last-child{border-right:none}
+  .article-meta b{color:var(--ink);font-weight:500}
+
+  .tldr{background:var(--yellow);color:var(--ink);padding:28px 32px;margin:40px 0;border-left:6px solid var(--ink)}
+  .tldr .tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:12px;font-weight:500}
+  .tldr p{font-size:17px;line-height:1.55;font-weight:500;max-width:64ch}
+  .tldr p strong{font-weight:700;background:var(--ink);color:var(--yellow);padding:1px 5px}
+
+  article.body{padding:40px 0 80px;font-size:17px;line-height:1.7;color:var(--gray-700)}
+  article.body > * + *{margin-top:24px}
+  article.body h2{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(26px,3.5vw,38px);font-weight:700;letter-spacing:-0.02em;line-height:1.15;color:var(--ink);margin-top:64px;max-width:24ch}
+  article.body h2:first-child{margin-top:0}
+  article.body h3{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700;letter-spacing:-0.01em;line-height:1.2;color:var(--ink);margin-top:40px}
+  article.body p{max-width:68ch}
+  article.body p strong, article.body li strong{color:var(--ink);font-weight:700}
+  article.body ul, article.body ol{padding-left:24px;max-width:68ch}
+  article.body li{margin-bottom:8px}
+  article.body a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--yellow);text-decoration-thickness:3px;text-underline-offset:2px}
+  article.body a:hover{background:var(--yellow);text-decoration-color:var(--ink)}
+  article.body code{font-family:'JetBrains Mono',monospace;font-size:14px;background:var(--off-white);padding:2px 6px;border:1px solid var(--line)}
+
+  /* Source cards: 3 bronnen */
+  .source{margin-top:24px;background:var(--white);border:1px solid var(--ink);padding:28px 32px;position:relative}
+  .source.b1{border-left:6px solid var(--red)}
+  .source.b2{border-left:6px solid var(--orange)}
+  .source.b3{border-left:6px solid var(--green)}
+  .source .num{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;font-weight:500;margin-bottom:12px;display:inline-block;padding:4px 10px}
+  .source.b1 .num{color:var(--red);background:#FEE4E2}
+  .source.b2 .num{color:var(--orange);background:#FEF0C7}
+  .source.b3 .num{color:var(--green);background:#D1FADF}
+  .source h3{font-family:'Bricolage Grotesque',sans-serif;font-size:24px;font-weight:700;letter-spacing:-0.02em;line-height:1.15;margin-bottom:14px;margin-top:0!important}
+  .source p{font-size:15.5px;line-height:1.65;color:var(--gray-700);max-width:none}
+  .source .clue{margin-top:14px;font-size:14px;color:var(--gray-500);padding:14px 16px;background:var(--off-white);border-left:3px solid var(--yellow)}
+  .source .clue b{color:var(--ink);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;display:block;margin-bottom:6px;font-weight:500}
+
+  /* Diagnose-tabel */
+  .diagnose-table{width:100%;border-collapse:collapse;margin-top:24px;font-size:14.5px;border:1px solid var(--ink)}
+  .diagnose-table th,.diagnose-table td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line);border-right:1px solid var(--line);vertical-align:top}
+  .diagnose-table th:last-child,.diagnose-table td:last-child{border-right:none}
+  .diagnose-table thead th{background:var(--ink);color:var(--white);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;font-weight:500}
+  .diagnose-table tbody tr:last-child td{border-bottom:none}
+  .diagnose-table tbody tr:nth-child(even){background:var(--off-white)}
+  .diagnose-table .pill{display:inline-block;padding:2px 8px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;font-weight:500}
+  .diagnose-table .pill.b1{background:#FEE4E2;color:var(--red)}
+  .diagnose-table .pill.b2{background:#FEF0C7;color:var(--orange)}
+  .diagnose-table .pill.b3{background:#D1FADF;color:var(--green)}
+  .diagnose-table .pill.mix{background:var(--ink);color:var(--white)}
+
+  /* Opname-vergelijking */
+  .opname-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--ink);margin-top:24px}
+  .opname-cell{background:var(--white);padding:22px 24px}
+  .opname-cell h4{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:700;letter-spacing:-0.01em;color:var(--ink);margin-bottom:6px}
+  .opname-cell .runout{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--green);margin-bottom:10px;font-weight:500}
+  .opname-cell .runout.warn{color:var(--orange)}
+  .opname-cell .runout.bad{color:var(--red)}
+  .opname-cell p{font-size:14px;line-height:1.55;color:var(--gray-500);max-width:none}
+
+  /* Checklist */
+  .checklist{background:var(--yellow-bg);border:2px solid var(--ink);padding:28px 32px;margin:32px 0;counter-reset:cl}
+  .checklist h3{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700;letter-spacing:-0.01em;margin-bottom:16px;margin-top:0!important}
+  .checklist ol{list-style:none;padding:0;max-width:none}
+  .checklist li{counter-increment:cl;padding:14px 0 14px 48px;border-bottom:1px solid rgba(0,0,0,0.1);position:relative;font-size:15.5px;line-height:1.55;color:var(--ink)}
+  .checklist li:last-child{border-bottom:none}
+  .checklist li::before{content:counter(cl,decimal-leading-zero);position:absolute;left:0;top:14px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.1em;background:var(--ink);color:var(--yellow);padding:5px 8px}
+
+  /* CTA */
+  .cta-inline{background:var(--ink);color:var(--white);padding:32px;margin:48px 0;display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+  .cta-inline .left{flex:1;min-width:240px}
+  .cta-inline h3{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700;letter-spacing:-0.01em;margin-bottom:8px;color:var(--white);margin-top:0!important}
+  .cta-inline p{font-size:15px;color:var(--gray-200);max-width:none;margin:0}
+  .cta-inline a{background:var(--yellow);color:var(--ink);padding:14px 22px;font-weight:700;font-size:14px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;flex-shrink:0}
+  .cta-inline a:hover{background:var(--white)}
+
+  /* FAQ */
+  .faq-mini{margin:48px 0;border:1px solid var(--ink)}
+  .faq-mini-title{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink);padding:18px 24px;border-bottom:1px solid var(--ink);background:var(--off-white)}
+  .faq-mini-item{border-bottom:1px solid var(--line)}
+  .faq-mini-item:last-child{border-bottom:none}
+  .faq-mini-item summary{list-style:none;cursor:pointer;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;gap:20px;font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:700;color:var(--ink)}
+  .faq-mini-item summary::-webkit-details-marker{display:none}
+  .faq-mini-item summary::after{content:'+';font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:22px;width:24px;height:24px;display:grid;place-items:center;background:var(--yellow);flex-shrink:0;color:var(--ink)}
+  .faq-mini-item[open] summary::after{content:'−'}
+  .faq-mini-item[open] summary{background:var(--yellow-bg)}
+  .faq-mini-answer{padding:0 24px 18px 24px;font-size:15px;line-height:1.6;color:var(--gray-500);max-width:none}
+
+  /* Related */
+  .related{padding:48px 0 80px;border-top:1px solid var(--line);background:var(--off-white)}
+  .related-title{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gray-500);margin-bottom:20px}
+  .related-cards{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .related-card{display:block;background:var(--white);border:1px solid var(--ink);padding:24px;text-decoration:none;color:var(--ink);transition:background .15s}
+  .related-card:hover{background:var(--yellow-bg)}
+  .related-card .kicker{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gray-400);margin-bottom:8px}
+  .related-card h4{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:700;letter-spacing:-0.01em;margin-bottom:8px;line-height:1.2}
+  .related-card p{font-size:14px;color:var(--gray-500);line-height:1.5}
+
+  footer{background:var(--ink);color:var(--white);padding:36px 0;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase}
+  footer .container{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;align-items:center}
+  footer a{color:var(--gray-400);text-decoration:none}
+  footer a:hover{color:var(--yellow)}
+
+  @media (max-width:700px){
+    .container{padding:0 22px}
+    .opname-grid{grid-template-columns:1fr}
+    .related-cards{grid-template-columns:1fr}
+    .diagnose-table{font-size:13px}
+    .diagnose-table th,.diagnose-table td{padding:10px 12px}
+    article.body{font-size:16px}
+    .cta-inline{flex-direction:column;align-items:flex-start}
+    .source{padding:22px 24px}
+  }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "author": {
+        "@type": "Person",
+        "@id": "https://inter-mill.com/over-ons/#johny-govers",
+        "name": "Johny Govers",
+        "url": "https://inter-mill.com/over-ons/johny-govers/"
+      },
+      "publisher": { "@id": "https://inter-mill.com/#organization" },
+      "headline": "Trillingen bij precisiefrezen: de drie bronnen (en hoe je ze diagnosticeert)",
+  "description": "80% van trillingen in verspaning komt uit drie bronnen: uitsteeklengte, opname/run-out en snijgeometrie. Diagnose-tabel, fixes en checklist. Door InterMill, 240+ procesanalyses.",
+  "image": "https://inter-mill.com/uploads/images/services/1556709463-large-foto-snijgereedschap.JPG",
+  "datePublished": "2026-05-20",
+  "dateModified": "2026-05-20",
+  "inLanguage": "nl-NL",
+  "author": {
+    "@type": "Person",
+    "name": "Johny Govers",
+    "jobTitle": "Oprichter InterMill",
+    "worksFor": { "@id": "https://inter-mill.com/#organization" }
+  },
+  "publisher": { "@id": "https://inter-mill.com/#organization" },
+  "mainEntityOfPage": "https://inter-mill.com/kennisbank/trillingen-precisiefrezen/",
+  "about": [
+    { "@type": "Thing", "name": "Verspaning" },
+    { "@type": "Thing", "name": "Trillingen (chatter)" },
+    { "@type": "Thing", "name": "Precisiefrezen" },
+    { "@type": "Thing", "name": "Gereedschapsopname" },
+    { "@type": "Thing", "name": "Run-out" }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wat is de belangrijkste oorzaak van trillingen (chatter) bij frezen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In onze ervaring bij 240+ procesanalyses komt 80% van trillingsproblemen uit drie bronnen: te lange uitsteeklengte van het gereedschap (l/d > 4), een opname met te veel run-out of speling (> 10 µm), of een snijgeometrie die niet past bij materiaal en stand. Een vierde bron is er zelden. Door deze drie systematisch te checken los je vier van de vijf trillingsproblemen op zonder verdere analyse."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wat is een goede l/d ratio (uitsteeklengte / diameter) voor frezen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Vuistregel: streef naar l/d < 4 voor precisiewerk en l/d < 6 voor ruwbewerking. Boven l/d = 6 worden trillingen exponentieel een probleem omdat de stijfheid van de frees kubisch afneemt met de uitsteeklengte. Bij echte diepe bewerkingen waar je niet onder de 6 komt: kies een trillingsgedempte stang of pas snijparameters aan (lagere ap/ae, hogere vc). Halveer je uitsteeklengte = 8× zo stijf. Dat is altijd de eerste fix."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hoeveel run-out is acceptabel voor precisiefrezen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Voor precisiewerk: < 5 µm gemeten met meetklok op de snijdiameter. Voor algemene verspaning < 10 µm. Boven 15 µm krijg je ongelijke tandbelasting, één tand neemt meer hap dan de rest, en trillingen plus snelle slijtage zijn vrijwel onvermijdelijk. ER-spantangen halen typisch 10-20 µm; krimphouders en hydroplastische houders typisch < 3 µm. Voor PKD/CBN is goede run-out een randvoorwaarde, niet optioneel."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wat is het verschil tussen krimphouder, hydroplastisch en BiG-Plus?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Krimphouder: hitte-krimp om de freesschacht (zeer hoge stijfheid, run-out < 3 µm, vereist krimp-apparaat). Hydroplastisch: hydraulisch geklemd via olie-membraan (vergelijkbare stijfheid, sneller te wisselen, dempt licht). BiG-Plus: opname met twee-vlaks contact (zowel conus als spilkop), voor zware ruwbewerking en diep kotteren waar maximale rigiditeit telt. Voor precisiefrezen kies je doorgaans krimp of hydroplastisch; voor zware bewerking BiG-Plus."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wanneer is mijn snijgeometrie de oorzaak van trillingen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Drie hints dat de geometrie het probleem is, niet de opname of uitsteeklengte: (1) het gereedschap trilt vooral op één specifiek toerental (resonantie-effect, vaak op te lossen met andere helix-hoek of tand-aantal); (2) het probleem doet zich alleen voor op specifiek materiaal terwijl andere materialen rustig verspaand worden (verkeerde spaanhoek voor dit materiaal); (3) de geometrie komt uit een algemene catalogus zonder materiaal-specifieke optimalisatie. Voor materiaalspecifieke geometrieën (gietijzer, CFRP, titanium) loont het om materiaal-specifieke series te kiezen of een special te overwegen."
+      }
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="/styles.css">
+<style>body{padding-top:67px}.topbar{display:none}</style>
+</head>
+<body>
+
+<nav class="page-nav">
+  <div class="page-nav-inner">
+    <a class="brand" href="/" aria-label="InterMill, naar home">
+      <picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="InterMill" width="888" height="324"></picture>
+    </a>
+    <div class="nav-tabs">
+      <a href="/">Home</a>
+      <a href="/over-ons/">Over ons</a>
+      <a href="/werkwijze/">Werkwijze</a>
+      <div class="nav-dropdown">
+        <button class="nav-trigger" type="button" aria-haspopup="true">Assortiment <span class="caret" aria-hidden="true">▾</span></button>
+        <div class="nav-menu" role="menu">
+          <a href="/assortiment/" role="menuitem">Snijgereedschap</a>
+          <a href="/assortiment/kotteren/" role="menuitem">Kotteren &amp; Specials</a>
+          <a href="/assortiment/meetgereedschap/" role="menuitem">Meetgereedschap</a>
+          <a href="/assortiment/trillingsdemping/" role="menuitem">Trillingsdemping</a>
+        </div>
+      </div>
+      <a href="/kennisbank/" class="active" aria-current="page">Kennisbank</a>
+      <a href="/contact/">Contact</a>
+    </div>
+    <a class="nav-cta" href="/plannen/">Plan sparringsessie <span style="font-size:18px">→</span></a>
+  </div>
+</nav>
+
+<section class="article-hero">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Kruimelpad">
+      <a href="/index.html">InterMill</a>
+      <span class="sep">/</span>
+      <a href="./">Kennisbank</a>
+      <span class="sep">/</span> <a href="/kennisbank/procesoptimalisatie/" style="color:var(--gray-400);text-decoration:none">Procesoptimalisatie</a> <span class="sep">/</span>
+      <span>Trillingen bij precisiefrezen</span>
+    </nav>
+    <h1 class="display title">Trillingen bij precisiefrezen: de drie bronnen <em style="font-style:italic;color:var(--gray-500);font-weight:500">(en hoe je ze diagnosticeert)</em></h1>
+    <div class="article-meta">
+      <span>Auteur <b>Johny Govers</b></span>
+      <span>Functie <b>Oprichter InterMill</b></span>
+      <span>Leestijd <b>~8 min</b></span>
+      <span>Update <b>Mei 2026</b></span>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <aside class="tldr" aria-label="Samenvatting">
+    <div class="tag">★ Korte samenvatting</div>
+    <p><strong>80% van trillingsproblemen</strong> komt uit drie bronnen: <strong>(1) te lange uitsteeklengte</strong> (l/d &gt; 4), <strong>(2) een opname met te veel run-out of speling</strong> (&gt; 10 µm), <strong>(3) snijgeometrie die niet past bij materiaal of stand</strong>. Geen vierde. Door deze drie systematisch te checken los je vier van de vijf trillingsproblemen op. Onderaan dit artikel: een symptoom-naar-bron diagnose-tabel plus een 5-stap checklist die je in 15 minuten op je machine kunt doorlopen.</p>
+  </aside>
+</section>
+
+<article class="container body">
+
+<h2>Waarom dit artikel bestaat</h2>
+<p>"Mijn frees ratelt, wat doe ik fout?" is de meldingen-categorie die wekelijks bij InterMill langskomt. Bij 240+ procesanalyses zien we hetzelfde patroon: <strong>verspaners proberen vrijwel altijd eerst de snijparameters aan te passen</strong> (snijsnelheid omlaag, voeding verhogen, koeling aan) terwijl de oorzaak negen van de tien keer ergens anders zit. Resultaat: trager verspanen, slechter resultaat, en het probleem blijft.</p>
+<p>Dit artikel doorloopt het diagnostisch proces dat een vakgenoot in 15 minuten op de machine zou doen. Eerst de drie hoofdbronnen identificeren, dan symptoom-gericht doorprikken, en pas als laatste aan parameters tornen.</p>
+
+<h2>Wat trillingen in verspaning eigenlijk zijn</h2>
+<p>Vibratie in verspaning komt in drie hoofdvormen:</p>
+<ul>
+  <li><strong>Geforceerde trilling</strong>, externe storing (machine-onbalans, koelvloeistof-pomp, naburige machine). Constant frequent. Vaak hoorbaar zonder dat de frees raakt.</li>
+  <li><strong>Vrije trilling</strong>, eenmalige impact die wegdempt. Zoals een aanrijding of een onderbroken snede die het systeem aanstoot.</li>
+  <li><strong>Regenerative chatter</strong>, de belangrijkste in precisiefrezen. Een tand snijdt over het golvende oppervlak dat de vorige tand achterliet, versterkt die golf, raakt in resonantie. Het herkenbare hoge piepgeluid, slechte oppervlakteruwheid, snelle inzet-uitval.</li>
+</ul>
+<p>In 80% van de gevallen praten we over regenerative chatter, en die heeft één van drie eerste-orde oorzaken die we hieronder behandelen. Pas als die alle drie uitgesloten zijn ga je zoeken naar zeldzamere oorzaken (spil-lagering, machine-fundatie, koelvloeistof-resonantie).</p>
+
+<h2>De drie bronnen, op volgorde van waarschijnlijkheid</h2>
+
+<div class="source b1">
+  <div class="num">Bron 1 · ± 50% van de gevallen</div>
+  <h3>Te lange uitsteeklengte (l/d ratio te hoog)</h3>
+  <p>De stijfheid van een freesgereedschap neemt <strong>kubisch</strong> af met de uitsteeklengte. Verdubbel je l/d (bijvoorbeeld van 3 naar 6), dan wordt de frees 8× minder stijf. Bij precisiewerk is dit veruit de meest voorkomende, en gemakkelijkst te fixen, oorzaak van trillingen.</p>
+  <p><strong>Vuistregel:</strong> l/d &lt; 4 voor precisiewerk, l/d &lt; 6 voor algemene bewerking. Boven l/d = 6 wordt trillingen exponentieel een probleem. Boven l/d = 8 moet je vrijwel altijd compenseren met trillingsgedempte opname (bv. <a href="https://www.mehi.fi/mehi-english/" target="_blank" rel="noopener">MEHI</a>-stangen) of fors lagere parameters.</p>
+  <div class="clue">
+    <b>★ Diagnose-clue</b>
+    Halveer (theoretisch of in de praktijk) de uitsteeklengte. Verdwijnt het probleem grotendeels? Dan zit hier de hoofdoorzaak. Soms is "de frees dieper in de opname zetten" letterlijk genoeg om het probleem op te lossen, verspaners onderschatten hoe vaak het zó simpel is.
+  </div>
+</div>
+
+<div class="source b2">
+  <div class="num">Bron 2 · ± 30% van de gevallen</div>
+  <h3>Opname met te veel run-out of speling</h3>
+  <p>Run-out is de afwijking van de freesschacht t.o.v. de rotatie-as, gemeten op de snijdiameter. Hoge run-out betekent dat de tanden ongelijk belast worden: één tand neemt meer hap dan de andere, dwingt een onevenwichtige snijkracht af, en dat triggert chatter. Bijkomend probleem: de tand die te veel hap neemt slijt extreem snel, dus standtijd halveert moeiteloos.</p>
+  <p><strong>Toleranties:</strong> &lt; 5 µm voor precisiewerk, &lt; 10 µm voor algemene verspaning. Boven 15 µm is trillingen vrijwel gegarandeerd, ongeacht andere factoren.</p>
+  <div class="clue">
+    <b>★ Diagnose-clue</b>
+    Klem een meetklok op de freesschacht (niet de tand) en draai de spil handmatig. Zie je &gt; 10 µm afwijking? De opname is je probleem. Belangrijke valkuil: meet op de schacht, niet op de snijkant, vuil op de tand vervalst de meting.
+  </div>
+</div>
+
+<div class="source b3">
+  <div class="num">Bron 3 · ± 20% van de gevallen</div>
+  <h3>Snijgeometrie past niet bij materiaal of stand</h3>
+  <p>Aantal tanden, helix-hoek, spaanhoek, snijkant-radius en coating: allemaal bepalen ze hoe het gereedschap met dít specifieke materiaal interacteert. Een algemene HM-frees in <em>roestvast staal 316</em> resoneert vaak op een specifiek toerental, niet door uitsteeklengte of opname, maar omdat de helix-frequentie matcht met de natuurlijke frequentie van de bewerking. Een 3-tands variant op exact dezelfde stand verspaant rustig.</p>
+  <p>Voor materiaal-specifieke uitdagingen (gietijzer met grafietinsluitsels, CFRP-vezels, titanium-warmtegeleiding, gehard staal HRC 60+) loont het altijd om materiaal-specifieke series te kiezen of een special te overwegen. Lees ook <a href="../pkd-vs-hardmetaal/">PKD vs hardmetaal</a> voor de materiaal-specifieke gereedschapskeuze.</p>
+  <div class="clue">
+    <b>★ Diagnose-clue</b>
+    Treedt het probleem alleen op bij specifiek materiaal of specifiek toerental, terwijl andere combinaties rustig zijn? Dan is het waarschijnlijk geometrie/resonantie. Twee snelle tests: (1) wijzig toerental met ± 10–20% (geeft resonantie weg); (2) wissel naar een ander tandaantal of helix-hoek.
+  </div>
+</div>
+
+<h2>Symptoom-naar-bron diagnose-tabel</h2>
+<p>Heb je het symptoom maar wil je versneld weten welke van de drie bronnen het meest waarschijnlijk is? Deze tabel verzamelt wat we in de praktijk zien.</p>
+<table class="diagnose-table">
+  <thead>
+    <tr>
+      <th>Symptoom dat je waarneemt</th>
+      <th>Meest waarschijnlijke bron</th>
+      <th>Snelle test</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Hoog gillend/piepend geluid tijdens snede</td>
+      <td><span class="pill b1">Bron 1</span> Uitsteeklengte</td>
+      <td>Verklein uitsteeklengte 30%</td>
+    </tr>
+    <tr>
+      <td>Onregelmatige slijtage, één tand veel meer dan andere</td>
+      <td><span class="pill b2">Bron 2</span> Run-out</td>
+      <td>Meet run-out op schacht (meetklok)</td>
+    </tr>
+    <tr>
+      <td>Slechte oppervlakte (Ra te hoog), regelmatig patroon zichtbaar</td>
+      <td><span class="pill b1">Bron 1</span> Uitsteeklengte</td>
+      <td>Verklein l/d, of demp opname</td>
+    </tr>
+    <tr>
+      <td>Vibratie alleen op specifiek toerental, rustig erboven/eronder</td>
+      <td><span class="pill b3">Bron 3</span> Geometrie / resonantie</td>
+      <td>Wijzig toerental ± 15%</td>
+    </tr>
+    <tr>
+      <td>Inzet breekt al binnen eerste werkstuk(ken)</td>
+      <td><span class="pill mix">Bron 1+2</span> Mix</td>
+      <td>Check beide systematisch</td>
+    </tr>
+    <tr>
+      <td>Vibratie alleen op één specifiek materiaal, andere materialen rustig</td>
+      <td><span class="pill b3">Bron 3</span> Geometrie</td>
+      <td>Wissel naar materiaal-specifieke geometrie</td>
+    </tr>
+    <tr>
+      <td>Verspilling neemt toe naarmate dieper gefreesd wordt</td>
+      <td><span class="pill b1">Bron 1</span> Uitsteeklengte</td>
+      <td>Gefaseerd verspanen, kleinere ap</td>
+    </tr>
+    <tr>
+      <td>"Schoongesneden" rand maar trillingen wel hoorbaar</td>
+      <td>Geforceerde trilling, extern</td>
+      <td>Spil-balans, koelpomp, naburige machines checken</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>De opname-keuze: krimphouder, hydroplastisch, BiG-Plus, ER</h2>
+<p>Omdat opname de op-één-na-meest-voorkomende oorzaak is, hier de praktische vergelijking. <strong>De juiste opname voor precisiefrezen is in 99% van de gevallen NIET de ER-spantang</strong>, toch zien we die wekelijks bij precisiewerk omdat hij goedkoop en herbruikbaar is. Een PKD-frees aan een ER-spantang is een Porsche-motor in een Lada-chassis.</p>
+<div class="opname-grid">
+  <div class="opname-cell">
+    <h4>ER-spantang</h4>
+    <div class="runout bad">Run-out 10–25 µm · vermijden bij precisie</div>
+    <p>Goedkoop, snel wisselbaar, universeel. Maar voor precisiewerk en harde materialen onvoldoende stijf en te veel run-out. Houd voor wegwerk-bewerking, prototypewerk, kleine gaten met HM in zacht materiaal.</p>
+  </div>
+  <div class="opname-cell">
+    <h4>Krimphouder</h4>
+    <div class="runout">Run-out &lt; 3 µm · standaard voor precisie</div>
+    <p>Schacht wordt thermisch ingekrompen. Maximale stijfheid en minimale run-out. Vereist krimp-apparaat (eenmalige investering). Standaard voor PKD/CBN, precisiefrezen en alles waar standtijd telt.</p>
+  </div>
+  <div class="opname-cell">
+    <h4>Hydroplastische houder</h4>
+    <div class="runout">Run-out &lt; 5 µm · dempt licht</div>
+    <p>Klemkracht via hydraulisch olie-membraan. Vergelijkbaar met krimp qua precisie, plus lichte trillingsdemping. Sneller te wisselen (geen apparaat nodig). Iets duurder per stuk. Geliefd voor precisie-frezen waar wissels frequent zijn.</p>
+  </div>
+  <div class="opname-cell">
+    <h4>BiG-Plus</h4>
+    <div class="runout warn">Run-out &lt; 5 µm · voor zware bewerking</div>
+    <p>Twee-vlaks contact: zowel in de conus als op de spilkop. Maximale rigiditeit voor zware ruwbewerking, diep kotteren, scheepsdieselmotor-werk. Niet de eerste keuze voor licht precisiewerk, wel onmisbaar voor zware bewerkingen waar BiG-Plus de specificatie is.</p>
+  </div>
+</div>
+
+<h2>De 5-stap diagnose-checklist</h2>
+<p>Doorloop deze in volgorde, stop zodra je het probleem hebt geïdentificeerd. Doorgaans &lt; 15 minuten werk.</p>
+<div class="checklist">
+  <h3>Voor je iets aan parameters verandert</h3>
+  <ol>
+    <li><strong>Visueel: kijk naar de inzet.</strong> Ongelijke slijtage tussen tanden? Direct naar stap 3 (run-out). Gelijkmatige slijtage maar erg snel? Stap 2.</li>
+    <li><strong>Meet l/d ratio.</strong> Is l/d &gt; 4? Verklein uitsteeklengte als mogelijk (frees dieper in de opname zetten kan al genoeg zijn). Test opnieuw. Probleem weg? Bron geïdentificeerd.</li>
+    <li><strong>Meet run-out met meetklok.</strong> Klem meetklok op de freesschacht (niet snijkant), draai spil handmatig, lees afwijking af. &gt; 10 µm? Opname is je probleem, overweeg krimp of hydroplastisch. Test opnieuw.</li>
+    <li><strong>Wijzig toerental ± 15%.</strong> Probleem verdwijnt of verschuift dramatisch? Dan zit je in resonantie, geometrie of frequentie is de oorzaak. Probeer ander tandaantal of helix-hoek.</li>
+    <li><strong>Twijfel? Vraag een second opinion.</strong> 15 min telefoon met een vakgenoot die je werkstuk niet hoeft te verkopen, ziet vaak wat een ervaren oog van binnen mist.</li>
+  </ol>
+</div>
+
+<h2>Drie veelgemaakte fouten</h2>
+<h3>1. Eerst parameters aanpassen voordat je de drie bronnen hebt gecheckt</h3>
+<p>Snijsnelheid omlaag draaien lijkt logisch maar maskeert het probleem in plaats van het op te lossen. De volgende serie krijg je dezelfde issues terug. Doorloop eerst de checklist; tweak pas dan parameters.</p>
+<h3>2. ER-spantang gebruiken voor PKD of fijne precisiefrezen</h3>
+<p>De run-out van een standaard ER (10–25 µm) is onverenigbaar met PKD-prestaties of precisiewerk &lt; Ra 0,8 µm. Investeer eenmalig in krimp of hydroplastisch, dat betaalt zichzelf terug op de eerste serie omdat je standtijd doorgaans verdubbelt.</p>
+<h3>3. Trillingen toeschrijven aan "de machine is oud"</h3>
+<p>Oudere machines (bv. 20+ jaar) hebben soms spillager-speling, maar in 90% van de gevallen is dat NIET de werkelijke oorzaak, verspaners gebruiken het als verklaring om de drie echte bronnen niet door te lopen. Test de drie eerst voordat je naar de machine wijst.</p>
+
+<div class="cta-inline">
+  <div class="left">
+    <h3>Vibratie op jouw werkstuk?</h3>
+    <p>15 min telefoon met Johny. Beschrijf het symptoom, materiaal en opname. Vaak komt er na 5 minuten al een hypothese uit. Geen verkooppraat, meestal is de fix een kleine aanpassing aan wat je al hebt.</p>
+  </div>
+  <a href="mailto:info@inter-mill.com?subject=Sparringsessie%20%7C%20trillingen&body=Hoi%20Johny%2C%0A%0AIk%20heb%20jullie%20artikel%20over%20trillingen%20gelezen%20en%20wil%20graag%2015%20min%20sparring%20over%20mijn%20werkstuk.%0A%0AMateriaal%3A%20%0AMachine%20%26%20opname%3A%20%0AUitsteeklengte%20(l%2Fd)%3A%20%0AGemeten%20run-out%3A%20%0ASymptoom%3A%20%0A%0AGroet%2C">Plan 15-min sparringsessie →</a>
+</div>
+
+<h2>Veelgestelde vragen</h2>
+<div class="faq-mini">
+  <div class="faq-mini-title">Trillingen bij precisiefrezen · top 5 vragen</div>
+  <details class="faq-mini-item">
+    <summary>Wat is de belangrijkste oorzaak van trillingen (chatter) bij frezen?</summary>
+    <div class="faq-mini-answer">In onze ervaring bij 240+ procesanalyses komt 80% van trillingsproblemen uit drie bronnen: te lange uitsteeklengte van het gereedschap (l/d &gt; 4), een opname met te veel run-out of speling (&gt; 10 µm), of een snijgeometrie die niet past bij materiaal en stand. Een vierde bron is er zelden. Door deze drie systematisch te checken los je vier van de vijf trillingsproblemen op zonder verdere analyse.</div>
+  </details>
+  <details class="faq-mini-item">
+    <summary>Wat is een goede l/d ratio (uitsteeklengte / diameter) voor frezen?</summary>
+    <div class="faq-mini-answer">Vuistregel: streef naar l/d &lt; 4 voor precisiewerk en l/d &lt; 6 voor ruwbewerking. Boven l/d = 6 worden trillingen exponentieel een probleem omdat de stijfheid van de frees kubisch afneemt met de uitsteeklengte. Bij echte diepe bewerkingen waar je niet onder de 6 komt: kies een trillingsgedempte stang of pas snijparameters aan (lagere ap/ae, hogere vc). Halveer je uitsteeklengte = 8× zo stijf. Dat is altijd de eerste fix.</div>
+  </details>
+  <details class="faq-mini-item">
+    <summary>Hoeveel run-out is acceptabel voor precisiefrezen?</summary>
+    <div class="faq-mini-answer">Voor precisiewerk: &lt; 5 µm gemeten met meetklok op de snijdiameter. Voor algemene verspaning &lt; 10 µm. Boven 15 µm krijg je ongelijke tandbelasting, één tand neemt meer hap dan de rest, en trillingen plus snelle slijtage zijn vrijwel onvermijdelijk. ER-spantangen halen typisch 10–20 µm; krimphouders en hydroplastische houders typisch &lt; 3 µm. Voor PKD/CBN is goede run-out een randvoorwaarde, niet optioneel.</div>
+  </details>
+  <details class="faq-mini-item">
+    <summary>Wat is het verschil tussen krimphouder, hydroplastisch en BiG-Plus?</summary>
+    <div class="faq-mini-answer">Krimphouder: hitte-krimp om de freesschacht (zeer hoge stijfheid, run-out &lt; 3 µm, vereist krimp-apparaat). Hydroplastisch: hydraulisch geklemd via olie-membraan (vergelijkbare stijfheid, sneller te wisselen, dempt licht). BiG-Plus: opname met twee-vlaks contact (zowel conus als spilkop), voor zware ruwbewerking en diep kotteren waar maximale rigiditeit telt. Voor precisiefrezen kies je doorgaans krimp of hydroplastisch; voor zware bewerking BiG-Plus.</div>
+  </details>
+  <details class="faq-mini-item">
+    <summary>Wanneer is mijn snijgeometrie de oorzaak van trillingen?</summary>
+    <div class="faq-mini-answer">Drie hints dat de geometrie het probleem is, niet de opname of uitsteeklengte: (1) het gereedschap trilt vooral op één specifiek toerental (resonantie-effect, vaak op te lossen met andere helix-hoek of tand-aantal); (2) het probleem doet zich alleen voor op specifiek materiaal terwijl andere materialen rustig verspaand worden (verkeerde spaanhoek voor dit materiaal); (3) de geometrie komt uit een algemene catalogus zonder materiaal-specifieke optimalisatie. Voor materiaalspecifieke geometrieën (gietijzer, CFRP, titanium) loont het om materiaal-specifieke series te kiezen of een special te overwegen.</div>
+  </details>
+</div>
+
+<h2>In één zin</h2>
+<p>Als je frees trilt: kijk in deze volgorde naar uitsteeklengte, opname/run-out, geometrie, en pas dan naar parameters. In 80% van de gevallen zit je probleem in één van die eerste drie, en is de fix kleiner dan je denkt.</p>
+
+</article>
+
+<section class="related">
+  <div class="container">
+    <div class="related-title">★ Verder lezen</div>
+    <div class="related-cards">
+      <a class="related-card" href="../pkd-vs-hardmetaal/">
+        <div class="kicker">Artikel · Kennisbank</div>
+        <h4>PKD vs hardmetaal: wanneer kies je wat?</h4>
+        <p>Per materiaalgroep, met standtijd-data uit 240+ procesanalyses, de TCO-formule en een concreet rekenvoorbeeld. De materiaalkeuze die vaak de echte upstream-oorzaak is.</p>
+      </a>
+      <a class="related-card" href="/whitepaper.html">
+        <div class="kicker">Whitepaper · 14 p</div>
+        <h4>12 dure fouten bij gereedschapskeuze</h4>
+        <p>De drie trillingsbronnen, plus 9 andere fouten die we wekelijks zien bij Nederlandse en Belgische verspaners. Inclusief hoe ze elk vermeden worden.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>InterMill · VerspaningsAdvies &amp; -Gereedschap · Maarheeze, NL</div>
+    <div><a href="tel:+31610906759">+31 (0)6 10 90 67 59</a> · <a href="mailto:info@inter-mill.com">info@inter-mill.com</a></div>
+  </div>
+</footer>
+
+<script src="/consent.js" defer></script>
+</body>
+</html>

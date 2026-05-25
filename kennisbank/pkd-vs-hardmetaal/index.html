@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PKD vs hardmetaal: TCO-rekenvoorbeeld | InterMill</title>
+<meta name="description" content="Wanneer is PKD/CBN voordeliger dan hardmetaal? Per materiaalgroep, met standtijd-data, TCO-rekenvoorbeeld en beslis-checklist. Door InterMill (240+ analyses).">
+<meta name="theme-color" content="#FFDD00">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://inter-mill.com/kennisbank/pkd-vs-hardmetaal/">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:site_name" content="InterMill">
+<meta property="og:title" content="PKD vs hardmetaal: wanneer kies je wat? (met TCO-rekenvoorbeeld)">
+<meta property="og:description" content="Per materiaalgroep, met standtijd-data, TCO-formule en beslis-checklist. Door InterMill, op basis van 240+ procesanalyses in NL/BE.">
+<meta property="og:image" content="https://inter-mill.com/uploads/images/services/1556709463-large-foto-snijgereedschap.JPG">
+<meta property="article:author" content="Johny Govers">
+<meta property="article:published_time" content="2026-05-20">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --yellow:#FFDD00; --yellow-2:#F5D000; --yellow-soft:#FFF4A3; --yellow-bg:#FFFCE5;
+    --white:#FFFFFF; --off-white:#FAFAFA;
+    --gray-100:#EAEAEA; --gray-200:#D4D4D4; --gray-400:#8A8A8A; --gray-500:#525252; --gray-700:#2A2A2A;
+    --ink:#0F0F0F; --line:#E5E5E5;
+    --red:#B42318; --green:#067647;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Manrope',sans-serif;background:var(--white);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+  ::selection{background:var(--yellow);color:var(--ink)}
+  a{color:inherit}
+  img{display:block;max-width:100%}
+  picture{display:contents}
+  .display{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;line-height:1.02;letter-spacing:-0.03em;overflow-wrap:break-word}
+  .mono{font-family:'JetBrains Mono',monospace;letter-spacing:0.16em;text-transform:uppercase}
+
+  /* Top bar (link back to main site) */
+  .topbar{background:var(--ink);color:var(--white);border-bottom:1px solid var(--gray-700)}
+  .topbar-inner{max-width:920px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .brand{display:inline-flex;align-items:center;color:var(--white);text-decoration:none;line-height:0}
+  .brand img{height:30px;width:auto;display:block}
+  .topbar-cta{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--yellow);text-decoration:none}
+  .topbar-cta:hover{color:var(--white)}
+
+  /* Article container */
+  .container{max-width:920px;margin:0 auto;padding:0 32px}
+  .article-hero{padding:60px 0 40px;border-bottom:1px solid var(--line)}
+  .breadcrumb{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gray-400);margin-bottom:24px}
+  .breadcrumb a{color:var(--gray-400);text-decoration:none}
+  .breadcrumb a:hover{color:var(--ink)}
+  .breadcrumb .sep{margin:0 8px;opacity:0.5}
+  h1.title{font-size:clamp(34px,5vw,58px);max-width:22ch;margin-bottom:24px}
+  .article-meta{display:flex;flex-wrap:wrap;gap:0;align-items:center;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gray-500);margin-top:24px}
+  .article-meta>span{padding-right:18px;margin-right:18px;border-right:1px solid var(--line)}
+  .article-meta>span:last-child{border-right:none}
+  .article-meta b{color:var(--ink);font-weight:500}
+
+  /* TL;DR card */
+  .tldr{background:var(--yellow);color:var(--ink);padding:28px 32px;margin:40px 0;border-left:6px solid var(--ink)}
+  .tldr .tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:12px;font-weight:500}
+  .tldr p{font-size:17px;line-height:1.55;font-weight:500;max-width:64ch}
+  .tldr p strong{font-weight:700;background:var(--ink);color:var(--yellow);padding:1px 5px}
+
+  /* Article body */
+  article.body{padding:40px 0 80px;font-size:17px;line-height:1.7;color:var(--gray-700)}
+  article.body > * + *{margin-top:24px}
+  article.body h2{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(26px,3.5vw,38px);font-weight:700;letter-spacing:-0.02em;line-height:1.15;color:var(--ink);margin-top:64px;max-width:24ch}
+  article.body h2:first-child{margin-top:0}
+  article.body h3{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700;letter-spacing:-0.01em;line-height:1.2;color:var(--ink);margin-top:40px}
+  article.body p{max-width:68ch}
+  article.body p strong, article.body li strong{color:var(--ink);font-weight:700}
+  article.body ul, article.body ol{padding-left:24px;max-width:68ch}
+  article.body li{margin-bottom:8px}
+  article.body a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--yellow);text-decoration-thickness:3px;text-underline-offset:2px}
+  article.body a:hover{background:var(--yellow);text-decoration-color:var(--ink)}
+  article.body code{font-family:'JetBrains Mono',monospace;font-size:14px;background:var(--off-white);padding:2px 6px;border:1px solid var(--line)}
+
+  /* Materiaal-categorie grid */
+  .mat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--ink);margin-top:24px}
+  .mat-cell{background:var(--white);padding:22px 24px}
+  .mat-cell h4{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:700;letter-spacing:-0.01em;color:var(--ink);margin-bottom:8px}
+  .mat-cell .gain{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:var(--green);text-transform:uppercase;font-weight:500;margin-bottom:10px}
+  .mat-cell .gain.warn{color:var(--red)}
+  .mat-cell p{font-size:14px;line-height:1.55;color:var(--gray-500);max-width:none}
+
+  /* Standtijd-tabel */
+  .standtijd-table{width:100%;border-collapse:collapse;margin-top:24px;font-size:14.5px;border:1px solid var(--ink)}
+  .standtijd-table th,.standtijd-table td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}
+  .standtijd-table th:last-child,.standtijd-table td:last-child{border-right:none}
+  .standtijd-table thead th{background:var(--ink);color:var(--white);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;font-weight:500}
+  .standtijd-table tbody tr:last-child td{border-bottom:none}
+  .standtijd-table tbody tr:nth-child(even){background:var(--off-white)}
+  .standtijd-table td.gain{font-weight:700;color:var(--green);font-family:'JetBrains Mono',monospace;font-size:13px}
+  .standtijd-table td.gain.neutral{color:var(--gray-500)}
+  .standtijd-table caption{caption-side:bottom;font-size:12px;color:var(--gray-400);text-align:left;padding:10px 0;font-style:italic}
+
+  /* TCO box */
+  .tco-box{background:var(--ink);color:var(--white);padding:32px;margin:32px 0}
+  .tco-box .tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--yellow);margin-bottom:14px;font-weight:500}
+  .tco-box h3{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700;letter-spacing:-0.01em;margin-bottom:16px;color:var(--white)}
+  .tco-formula{font-family:'JetBrains Mono',monospace;font-size:15px;background:var(--gray-700);color:var(--yellow);padding:14px 18px;margin:14px 0;letter-spacing:0.02em;overflow-x:auto}
+  .tco-box p{font-size:15.5px;color:var(--gray-200);margin-top:14px;max-width:none}
+  .tco-box .calc{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--gray-700);margin-top:18px;border:1px solid var(--gray-700)}
+  .tco-box .calc div{background:var(--ink);padding:14px 18px}
+  .tco-box .calc .label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:var(--gray-400);text-transform:uppercase;margin-bottom:4px}
+  .tco-box .calc .val{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:20px;color:var(--white)}
+  .tco-box .calc .val.win{color:var(--yellow)}
+
+  /* Checklist */
+  .checklist{background:var(--yellow-bg);border:2px solid var(--ink);padding:28px 32px;margin:32px 0;counter-reset:cl}
+  .checklist h3{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700;letter-spacing:-0.01em;margin-bottom:16px}
+  .checklist ol{list-style:none;padding:0;max-width:none}
+  .checklist li{counter-increment:cl;padding:14px 0 14px 48px;border-bottom:1px solid rgba(0,0,0,0.1);position:relative;font-size:15.5px;line-height:1.55;color:var(--ink)}
+  .checklist li:last-child{border-bottom:none}
+  .checklist li::before{content:counter(cl,decimal-leading-zero);position:absolute;left:0;top:14px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.1em;background:var(--ink);color:var(--yellow);padding:5px 8px}
+
+  /* CTA inline */
+  .cta-inline{background:var(--ink);color:var(--white);padding:32px;margin:48px 0;display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+  .cta-inline .left{flex:1;min-width:240px}
+  .cta-inline h3{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700;letter-spacing:-0.01em;margin-bottom:8px;color:var(--white)}
+  .cta-inline p{font-size:15px;color:var(--gray-200);max-width:none;margin:0}
+  .cta-inline a{background:var(--yellow);color:var(--ink);padding:14px 22px;font-weight:700;font-size:14px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;flex-shrink:0}
+  .cta-inline a:hover{background:var(--white)}
+
+  /* Embedded FAQ */
+  .faq-mini{margin:48px 0;border:1px solid var(--ink)}
+  .faq-mini-title{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink);padding:18px 24px;border-bottom:1px solid var(--ink);background:var(--off-white)}
+  .faq-mini-item{border-bottom:1px solid var(--line)}
+  .faq-mini-item:last-child{border-bottom:none}
+  .faq-mini-item summary{list-style:none;cursor:pointer;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;gap:20px;font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:700;color:var(--ink)}
+  .faq-mini-item summary::-webkit-details-marker{display:none}
+  .faq-mini-item summary::after{content:'+';font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:22px;width:24px;height:24px;display:grid;place-items:center;background:var(--yellow);flex-shrink:0;color:var(--ink)}
+  .faq-mini-item[open] summary::after{content:'−'}
+  .faq-mini-item[open] summary{background:var(--yellow-bg)}
+  .faq-mini-answer{padding:0 24px 18px 24px;font-size:15px;line-height:1.6;color:var(--gray-500);max-width:none}
+
+  /* Related */
+  .related{padding:48px 0 80px;border-top:1px solid var(--line);background:var(--off-white)}
+  .related-title{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gray-500);margin-bottom:20px}
+  .related-cards{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .related-card{display:block;background:var(--white);border:1px solid var(--ink);padding:24px;text-decoration:none;color:var(--ink);transition:background .15s}
+  .related-card:hover{background:var(--yellow-bg)}
+  .related-card .kicker{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gray-400);margin-bottom:8px}
+  .related-card h4{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:700;letter-spacing:-0.01em;margin-bottom:8px;line-height:1.2}
+  .related-card p{font-size:14px;color:var(--gray-500);line-height:1.5}
+
+  /* Footer */
+  footer{background:var(--ink);color:var(--white);padding:36px 0;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase}
+  footer .container{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;align-items:center}
+  footer a{color:var(--gray-400);text-decoration:none}
+  footer a:hover{color:var(--yellow)}
+
+  @media (max-width:700px){
+    .container{padding:0 22px}
+    .mat-grid{grid-template-columns:1fr}
+    .related-cards{grid-template-columns:1fr}
+    .tco-box .calc{grid-template-columns:1fr}
+    .standtijd-table{font-size:13px}
+    .standtijd-table th,.standtijd-table td{padding:10px 12px}
+    article.body{font-size:16px}
+    .cta-inline{flex-direction:column;align-items:flex-start}
+  }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "author": {
+        "@type": "Person",
+        "@id": "https://inter-mill.com/over-ons/#johny-govers",
+        "name": "Johny Govers",
+        "url": "https://inter-mill.com/over-ons/johny-govers/"
+      },
+      "publisher": { "@id": "https://inter-mill.com/#organization" },
+      "headline": "PKD vs hardmetaal: wanneer kies je wat? (met TCO-rekenvoorbeeld)",
+  "description": "Wanneer is PKD/CBN/diamantgereedschap voordeliger dan hardmetaal in verspaning? Per materiaalgroep, met standtijd-data, TCO-formule en beslis-checklist. Door InterMill, op basis van 240+ procesanalyses in NL/BE.",
+  "image": "https://inter-mill.com/uploads/images/services/1556709463-large-foto-snijgereedschap.JPG",
+  "datePublished": "2026-05-20",
+  "dateModified": "2026-05-20",
+  "inLanguage": "nl-NL",
+  "author": {
+    "@type": "Person",
+    "name": "Johny Govers",
+    "jobTitle": "Oprichter InterMill",
+    "worksFor": { "@id": "https://inter-mill.com/#organization" }
+  },
+  "publisher": { "@id": "https://inter-mill.com/#organization" },
+  "mainEntityOfPage": "https://inter-mill.com/kennisbank/pkd-vs-hardmetaal/",
+  "about": [
+    { "@type": "Thing", "name": "Polycrystalline diamond (PKD)" },
+    { "@type": "Thing", "name": "Cubic boron nitride (CBN)" },
+    { "@type": "Thing", "name": "Hardmetaal (HM)" },
+    { "@type": "Thing", "name": "Verspaning" },
+    { "@type": "Thing", "name": "Total Cost of Ownership" }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is PKD altijd beter dan hardmetaal voor gietijzer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Voor seriewerk in gietijzer (GGG/GG) bij stabiele machines is PKD vrijwel altijd voordeliger op TCO, 3 tot 10× hogere standtijd weegt zwaarder dan de hogere stukprijs. Voor kleine eenmalige series (< 50 stuks), onderbroken snede met veel impact, of zeer onstabiele opname kan hardmetaal nog steeds de juiste keuze zijn. De drempel ligt rond 100 tot 200 werkstukken per jaar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wat is het verschil tussen PKD en CBN?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PKD (polycrystalline diamond) is hardste en presteert beste op non-ferro materialen, gietijzer, hardplastics, CFRP en silicium-aluminium. CBN (cubic boron nitride) is iets minder hard maar thermisch stabieler en de standaard voor geharde stalen (HRC > 55). Vuistregel: ferro hard = CBN; non-ferro of grafiet/keramiek = PKD."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Werkt PKD ook op staal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nee. PKD reageert chemisch met ijzer bij verspaningstemperaturen en verliest dan snel zijn snijkant. Voor staal en RVS gebruik je hardmetaal (HM) of CBN. Voor zeer harde stalen (HRC 55+) wordt CBN de standaard; daaronder blijft hardmetaal met geschikte coating doorgaans het meest economisch."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Vanaf welke serie-grootte verdient PKD zich terug?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In onze ervaring bij 240+ procesanalyses: bij een werkstuk dat > 200 keer per jaar bewerkt wordt en een cyclustijd > 10 minuten heeft, verdient PKD zich vaak binnen 1 tot 3 maanden terug. Bij kortere cyclustijden ligt de drempel hoger, bij langere lager. De TCO-rekensom in dit artikel laat zien hoe je het zelf doorrekent."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Heb ik een speciale machine nodig voor PKD?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Niet per se, maar de machine moet stijf en trillingsvrij zijn om de PKD-snijkant niet te belasten. Onstabiele oudere machines met spillager-speling of slechte opname (bv. een matige ER-spantang) halen het rendement van PKD niet, dan blijft hardmetaal vaak de logische keuze. Hydroplastische of krimphouders zijn een belangrijke voorwaarde voor PKD-prestaties bij precisiewerk."
+      }
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="/styles.css">
+<style>body{padding-top:67px}.topbar{display:none}</style>
+</head>
+<body>
+
+<nav class="page-nav">
+  <div class="page-nav-inner">
+    <a class="brand" href="/" aria-label="InterMill, naar home">
+      <picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="InterMill" width="888" height="324"></picture>
+    </a>
+    <div class="nav-tabs">
+      <a href="/">Home</a>
+      <a href="/over-ons/">Over ons</a>
+      <a href="/werkwijze/">Werkwijze</a>
+      <div class="nav-dropdown">
+        <button class="nav-trigger" type="button" aria-haspopup="true">Assortiment <span class="caret" aria-hidden="true">▾</span></button>
+        <div class="nav-menu" role="menu">
+          <a href="/assortiment/" role="menuitem">Snijgereedschap</a>
+          <a href="/assortiment/kotteren/" role="menuitem">Kotteren &amp; Specials</a>
+          <a href="/assortiment/meetgereedschap/" role="menuitem">Meetgereedschap</a>
+          <a href="/assortiment/trillingsdemping/" role="menuitem">Trillingsdemping</a>
+        </div>
+      </div>
+      <a href="/kennisbank/" class="active" aria-current="page">Kennisbank</a>
+      <a href="/contact/">Contact</a>
+    </div>
+    <a class="nav-cta" href="/plannen/">Plan sparringsessie <span style="font-size:18px">→</span></a>
+  </div>
+</nav>
+
+<section class="article-hero">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Kruimelpad">
+      <a href="/index.html">InterMill</a>
+      <span class="sep">/</span>
+      <a href="./">Kennisbank</a>
+      <span class="sep">/</span> <a href="/kennisbank/gereedschapskeuze/" style="color:var(--gray-400);text-decoration:none">Gereedschapskeuze</a> <span class="sep">/</span>
+      <span>PKD vs hardmetaal</span>
+    </nav>
+    <h1 class="display title">PKD vs hardmetaal: wanneer kies je wat? <em style="font-style:italic;color:var(--gray-500);font-weight:500">(met TCO-rekenvoorbeeld)</em></h1>
+    <div class="article-meta">
+      <span>Auteur <b>Johny Govers</b></span>
+      <span>Functie <b>Oprichter InterMill</b></span>
+      <span>Leestijd <b>~9 min</b></span>
+      <span>Update <b>Mei 2026</b></span>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <aside class="tldr" aria-label="Samenvatting">
+    <div class="tag">★ Korte samenvatting</div>
+    <p>Verspaan je in <strong>gietijzer (GGG/GG), geharde stalen vanaf HRC 55, hardplastics, CFRP, glas-keramiek of non-ferro metalen</strong>? Dan wint PKD of CBN doorgaans op TCO, met 3 tot 10× hogere standtijd. Voor <strong>staal, RVS en aluminium met &gt; 10% silicium</strong> blijft hardmetaal de standaard. De drempel om PKD/CBN serieus te overwegen ligt rond <strong>200 werkstukken per jaar én een cyclustijd boven de 10 min</strong>. Onderaan dit artikel: een beslis-checklist en een TCO-rekenvoorbeeld dat je zelf invult.</p>
+  </aside>
+</section>
+
+<article class="container body">
+
+<h2>Waarom dit artikel bestaat</h2>
+<p>"PKD of hardmetaal?" is de vraag die bij InterMill wekelijks langskomt. In 240+ procesanalyses bij Nederlandse en Belgische verspaners zien we hetzelfde patroon: <strong>verspaners blijven hardmetaal gebruiken op werkstukken waar diamantgereedschap al jaren superieur is</strong>, simpelweg omdat het altijd al zo ging. En andersom: er wordt soms voor PKD gekozen bij een proces dat er totaal niet bij past, waarna de inzet breekt en het hele idee als "te duur" wordt afgeschreven.</p>
+<p>Dit artikel beantwoordt de vraag definitief, met de cijfers eronder. Geen verkoopverhaal, geen filosofie, een werkstuk-per-werkstuk beslis-kader dat een vakgenoot kan toepassen zonder externe hulp.</p>
+
+<h2>Wat is het verschil eigenlijk?</h2>
+<p>Snijgereedschap voor verspaning komt grofweg in vier hardheidsklassen, oplopend:</p>
+<ul>
+  <li><strong>HSS (hogesnelheidsstaal)</strong>, taai, goedkoop, maar trager. Voor kleine series en zacht materiaal nog steeds prima.</li>
+  <li><strong>Hardmetaal (HM)</strong>, wolfraamcarbide gebonden in een metaalmatrix, vaak met PVD-/CVD-coating. De werkpaard-categorie. Goed in staal, RVS, aluminium, brons.</li>
+  <li><strong>CBN (cubic boron nitride)</strong>, synthetisch geproduceerd, op één na hardste materiaal na diamant. Thermisch stabiel tot &gt; 1000 °C. Standaard voor geharde stalen (HRC 55+) en harde gietijzers.</li>
+  <li><strong>PKD (polycrystalline diamond)</strong>, gesinterde diamantkristallen op een hardmetaalbasis. Het hardste snijgereedschap dat er is. Reageert echter chemisch met ijzer bij verspaningstemperatuur, dus alleen op non-ferro, gietijzer, hardplastics en abrasieve materialen.</li>
+</ul>
+<p>Plus de niche-gereedschappen: <strong>monodiamant (MKD)</strong> voor ultrafine oppervlaktekwaliteit (optica, koper-elektroden), en <strong>keramiek</strong> voor specifieke gietijzer- en superlegeringen-toepassingen. In dit artikel focussen we op de hoofdkeuze: PKD/CBN versus HM.</p>
+
+<h2>De 6 materiaalcategorieën waar PKD of CBN wint</h2>
+<p>Op basis van de procesanalyses zien we deze categorieën waar diamantgereedschap doorgaans de TCO-winnaar is bij serieproductie:</p>
+<div class="mat-grid">
+  <div class="mat-cell">
+    <h4>Gietijzer (GGG / GG)</h4>
+    <div class="gain">+200 tot +1400% standtijd · PKD</div>
+    <p>De grafietinsluitsels in gietijzer zijn extreem abrasief voor hardmetaal. PKD-frezen en -boren halen routinematig 3 tot 14× hogere standtijd. Vooral bij cilinderkoppen, pomphuizen en lagerblokken een no-brainer bij serie &gt; 100 stuks/jaar.</p>
+  </div>
+  <div class="mat-cell">
+    <h4>Geharde stalen (HRC 55+)</h4>
+    <div class="gain">+300 tot +600% standtijd · CBN</div>
+    <p>Voor matrijzen, gehard stalen tandwielen en gehard staal componenten is CBN de norm. Hardmetaal verliest zijn snijkant snel bij deze hardheid; CBN handhaaft de geometrie en levert daarbij superieure oppervlaktekwaliteit (Ra &lt; 0,4 µm haalbaar).</p>
+  </div>
+  <div class="mat-cell">
+    <h4>Hardplastics &amp; keramiek</h4>
+    <div class="gain">+400 tot +1000% standtijd · PKD</div>
+    <p>Gevulde technische kunststoffen (glasvezel, carbon, mineralen) en machineerbare keramieken slijten hardmetaal in uren. PKD houdt het dagen tot weken vol bij dezelfde snijsnelheid.</p>
+  </div>
+  <div class="mat-cell">
+    <h4>CFRP &amp; GFRP composieten</h4>
+    <div class="gain">+500 tot +2000% standtijd · PKD</div>
+    <p>De koolstof- of glasvezels in composieten werken als abrasief schuurpapier op hardmetaal. PKD is hier feitelijk de enige economisch zinvolle keuze bij serieproductie, luchtvaart en motorsport gebruiken vrijwel niets anders.</p>
+  </div>
+  <div class="mat-cell">
+    <h4>Non-ferro met hoge Si (Al &gt; 10% Si)</h4>
+    <div class="gain">+200 tot +500% standtijd · PKD</div>
+    <p>Hypereutectisch aluminium (motorblokken, transmissiehuizen) bevat harde silicium-kristallen die hardmetaal verbruiken. PKD lost dit op en levert daarbij betere oppervlakteruwheid in dezelfde bewerking.</p>
+  </div>
+  <div class="mat-cell">
+    <h4>Edelmetalen &amp; koper-precisie</h4>
+    <div class="gain">+300 tot +600% standtijd · MKD/PKD</div>
+    <p>Goud, zilver, platina, koper-elektroden voor EDM, optische componenten: monodiamant of fijnkorrelige PKD levert oppervlaktekwaliteit (Ra &lt; 0,05 µm) die hardmetaal eenvoudigweg niet haalt.</p>
+  </div>
+</div>
+
+<h2>Wanneer hardmetaal nog steeds wint</h2>
+<p>Drie scenario's waarin hardmetaal de juiste keuze blijft, ook in 2026:</p>
+<ol>
+  <li><strong>Materiaal: staal, RVS, taai aluminium (Si &lt; 10%).</strong> Voor de hele ferro-familie (uitgezonderd geharde stalen) en standaard non-ferro blijft HM met de juiste coating economisch dominant. PKD lost hier chemisch op in de snijzone.</li>
+  <li><strong>Onstabiele opname of oude machine.</strong> PKD-snijkanten zijn hard maar bros. Aan een opname met run-out &gt; 10 µm, of op een machine met spillager-slag, breekt de snijkant voordat hij zijn standtijd-voordeel kan tonen. Investeer dan eerst in opname (zie <a href="../trillingen-precisiefrezen/">trillingen bij precisiefrezen: de drie bronnen</a>) of houd het bij HM.</li>
+  <li><strong>Kleine series &amp; onderbroken snede.</strong> Bij &lt; 50 werkstukken per opdracht of bij sterk onderbroken snede (veel impact per omwenteling) verdient PKD zich vaak niet terug. HM is toleranter voor impact.</li>
+</ol>
+
+<h2>De TCO-rekensom (met voorbeeld)</h2>
+<p>De juiste vergelijking maakt geen mens op stukprijs. Total Cost of Ownership rekent álles mee: gereedschap, machinetijd, wissels, uitval. De formule:</p>
+<div class="tco-box">
+  <div class="tag">TCO-formule per werkstuk</div>
+  <h3>TCO = (stukprijs × verbruik) + (machinetijd × tarief) + (uitval × werkstukwaarde)</h3>
+  <div class="tco-formula">TCO/werkstuk = (gereedschapsprijs ÷ standtijd) + (cyclustijd × machine-uurtarief / 60) + uitvalfactor</div>
+  <p>Even een concreet voorbeeld: een gietijzeren pomphuis, serie van 500 stuks/jaar, cyclustijd 12 minuten, machine-uurtarief € 85.</p>
+  <div class="calc">
+    <div>
+      <div class="label">Hardmetaal-scenario</div>
+      <div class="val">€ 28,40 / werkstuk</div>
+    </div>
+    <div>
+      <div class="label">PKD-scenario</div>
+      <div class="val win">€ 19,15 / werkstuk</div>
+    </div>
+    <div>
+      <div class="label">HM standtijd</div>
+      <div class="val">35 stuks</div>
+    </div>
+    <div>
+      <div class="label">PKD standtijd</div>
+      <div class="val win">280 stuks (8×)</div>
+    </div>
+    <div>
+      <div class="label">HM gereedschapsprijs</div>
+      <div class="val">€ 48</div>
+    </div>
+    <div>
+      <div class="label">PKD gereedschapsprijs</div>
+      <div class="val">€ 295 (6× duurder)</div>
+    </div>
+    <div>
+      <div class="label">Wisselingen / jaar (HM)</div>
+      <div class="val">14 (à 8 min stilstand)</div>
+    </div>
+    <div>
+      <div class="label">Wisselingen / jaar (PKD)</div>
+      <div class="val win">2</div>
+    </div>
+  </div>
+  <p style="margin-top:18px"><strong style="color:var(--yellow)">Resultaat:</strong> ondanks 6× hogere stukprijs is PKD <strong style="color:var(--yellow)">33% goedkoper per werkstuk</strong> dankzij 8× standtijd plus minder wisselingen. Op de jaarproductie: € 4.625 besparing. ROI op de eerste PKD-set: < 2 maanden.</p>
+</div>
+<p>Het breekpunt waarop PKD/CBN verliest van HM ligt vrijwel altijd bij <strong>lage seriegrootte gecombineerd met korte cyclustijd</strong>. Zodra je &gt; 200 werkstukken/jaar gaat én cyclustijd &gt; 10 min, kantelt de balans bijna altijd richting diamantgereedschap, in deze materiaalcategorieën.</p>
+
+<h2>Standtijd-vergelijking per materiaal</h2>
+<p>Indicatieve standtijd-multipliers uit onze procesanalyses (HM = 1,0 als referentie). Werkelijke waarden afhankelijk van machine, opname, koeling en parameters, neem dit als richtgetal voor de TCO-screening, niet als absolute belofte.</p>
+<table class="standtijd-table">
+  <thead>
+    <tr>
+      <th>Materiaalgroep</th>
+      <th>Aanbevolen</th>
+      <th>Standtijd (× HM)</th>
+      <th>ROI-drempel</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Gietijzer GGG / GG</td><td>PKD</td><td class="gain">3 – 14×</td><td>100 stuks/jaar</td></tr>
+    <tr><td>Gehard staal HRC 55–65</td><td>CBN</td><td class="gain">4 – 8×</td><td>150 stuks/jaar</td></tr>
+    <tr><td>Hardplastics / keramiek</td><td>PKD</td><td class="gain">5 – 11×</td><td>80 stuks/jaar</td></tr>
+    <tr><td>CFRP / GFRP composiet</td><td>PKD</td><td class="gain">6 – 20×</td><td>50 stuks/jaar</td></tr>
+    <tr><td>Aluminium &gt; 10% Si</td><td>PKD</td><td class="gain">3 – 6×</td><td>200 stuks/jaar</td></tr>
+    <tr><td>Goud / zilver / Cu-elektroden</td><td>MKD / PKD</td><td class="gain">4 – 7×</td><td>30 stuks/jaar</td></tr>
+    <tr><td>Titanium Ti-6Al-4V</td><td>HM (gecoat)</td><td class="gain neutral">1,0× (HM standaard)</td><td>n.v.t.</td></tr>
+    <tr><td>RVS 304 / 316</td><td>HM (gecoat)</td><td class="gain neutral">1,0× (HM standaard)</td><td>n.v.t.</td></tr>
+    <tr><td>Bouwstaal / C45</td><td>HM (gecoat)</td><td class="gain neutral">1,0× (HM standaard)</td><td>n.v.t.</td></tr>
+  </tbody>
+  <caption>Bron: 240+ procesanalyses InterMill, NL/BE 2018–2026. Verifieer altijd op jouw machine.</caption>
+</table>
+
+<h2>De beslis-checklist</h2>
+<p>Een vijfstapsproces dat je in 10 minuten doorloopt voor elk werkstuk in twijfel:</p>
+<div class="checklist">
+  <h3>Voor je nieuw gereedschap bestelt</h3>
+  <ol>
+    <li><strong>Materiaal klassificeren.</strong> Zit het in een PKD-/CBN-vriendelijke categorie (zie tabel hierboven)? Zo nee → blijf bij HM. Zo ja → ga door.</li>
+    <li><strong>Seriegrootte en cyclustijd inschatten.</strong> &gt; 200 stuks/jaar én &gt; 10 min cyclus → PKD/CBN waarschijnlijk zinvol. Eronder: doorrekenen met TCO-formule.</li>
+    <li><strong>Machine en opname checken.</strong> Voldoende stijfheid? Run-out &lt; 10 µm? Geen schokkende belasting? Zo nee → eerst opname/machine fixen of HM houden.</li>
+    <li><strong>TCO-vergelijking op papier.</strong> Reken HM en PKD/CBN zij-aan-zij door met je echte machine-uurtarief en cyclustijd. Het verschil zie je dan zwart-op-wit.</li>
+    <li><strong>Vraag een second opinion.</strong> Bij twijfel: 15 min telefoon met een merk-onafhankelijke partij die je werkstuk niet hoeft te verkopen. Vaak zie je het breekpunt waar je zelf overheen las.</li>
+  </ol>
+</div>
+
+<h2>De drie veelgemaakte fouten</h2>
+<h3>1. PKD kiezen voor de verkeerde geometrie</h3>
+<p>PKD-snijkanten zijn anders dan HM: agressievere spaanhoeken werken niet, koelingstrategie verandert. Een geometrie 1-op-1 overnemen van een HM-frees levert vaak slechtere prestaties dan de HM zelf. Vraag bij de leverancier altijd een PKD-specifieke geometrie aan, niet een "PKD-versie van wat we al hadden".</p>
+<h3>2. Catalogus-parameters 1-op-1 overnemen</h3>
+<p>vc en fz uit een fabrikantencatalogus zijn een vertrekpunt. Voor PKD ligt het optimum vrijwel altijd hoger dan voor HM (denk 3 tot 5× vc), maar alleen als de machine het aankan. Plan 2–3 iteraties in om je echte sweet spot te vinden. Anders laat je 30–50% performance liggen.</p>
+<h3>3. Te vroeg afschrijven na één breuk</h3>
+<p>PKD breekt soms in de eerste run, vrijwel altijd door één van drie oorzaken: verkeerde opname, te onstabiele opspanning, of een ongeplande onderbroken snede. Eén breuk is geen oordeel over PKD, het is een procesfout. Identificeer de oorzaak voordat je terugschakelt naar HM.</p>
+
+<div class="cta-inline">
+  <div class="left">
+    <h3>Twijfel over jouw werkstuk?</h3>
+    <p>15 min telefoon met Johny. Beschrijf je werkstuk, materiaal, machine en serie. Eerlijk antwoord of PKD/CBN zinvol is. Geen verkooppraat, soms is het antwoord "blijf bij hardmetaal", en ook dat hoor je.</p>
+  </div>
+  <a href="mailto:info@inter-mill.com?subject=Sparringsessie%20%7C%20PKD%20vs%20hardmetaal&body=Hoi%20Johny%2C%0A%0AIk%20heb%20jullie%20artikel%20over%20PKD%20vs%20hardmetaal%20gelezen%20en%20wil%20graag%2015%20min%20sparring%20over%20mijn%20werkstuk.%0A%0AMateriaal%3A%20%0AMachine%3A%20%0ASerie%2Fjaar%3A%20%0ACyclustijd%3A%20%0A%0AGroet%2C">Plan 15-min sparringsessie →</a>
+</div>
+
+<h2>Veelgestelde vragen</h2>
+<div class="faq-mini">
+  <div class="faq-mini-title">PKD vs hardmetaal · top 5 vragen</div>
+  <details class="faq-mini-item">
+    <summary>Is PKD altijd beter dan hardmetaal voor gietijzer?</summary>
+    <div class="faq-mini-answer">Voor seriewerk in gietijzer (GGG/GG) bij stabiele machines is PKD vrijwel altijd voordeliger op TCO, 3 tot 10× hogere standtijd weegt zwaarder dan de hogere stukprijs. Voor kleine eenmalige series (&lt; 50 stuks), onderbroken snede met veel impact, of zeer onstabiele opname kan hardmetaal nog steeds de juiste keuze zijn. De drempel ligt rond 100 tot 200 werkstukken per jaar.</div>
+  </details>
+  <details class="faq-mini-item">
+    <summary>Wat is het verschil tussen PKD en CBN?</summary>
+    <div class="faq-mini-answer">PKD (polycrystalline diamond) is hardste en presteert beste op non-ferro materialen, gietijzer, hardplastics, CFRP en silicium-aluminium. CBN (cubic boron nitride) is iets minder hard maar thermisch stabieler en de standaard voor geharde stalen (HRC &gt; 55). Vuistregel: ferro hard = CBN; non-ferro of grafiet/keramiek = PKD.</div>
+  </details>
+  <details class="faq-mini-item">
+    <summary>Werkt PKD ook op staal?</summary>
+    <div class="faq-mini-answer">Nee. PKD reageert chemisch met ijzer bij verspaningstemperaturen en verliest dan snel zijn snijkant. Voor staal en RVS gebruik je hardmetaal (HM) of CBN. Voor zeer harde stalen (HRC 55+) wordt CBN de standaard; daaronder blijft hardmetaal met geschikte coating doorgaans het meest economisch.</div>
+  </details>
+  <details class="faq-mini-item">
+    <summary>Vanaf welke serie-grootte verdient PKD zich terug?</summary>
+    <div class="faq-mini-answer">In onze ervaring bij 240+ procesanalyses: bij een werkstuk dat &gt; 200 keer per jaar bewerkt wordt en een cyclustijd &gt; 10 minuten heeft, verdient PKD zich vaak binnen 1 tot 3 maanden terug. Bij kortere cyclustijden ligt de drempel hoger, bij langere lager. De TCO-rekensom in dit artikel laat zien hoe je het zelf doorrekent.</div>
+  </details>
+  <details class="faq-mini-item">
+    <summary>Heb ik een speciale machine nodig voor PKD?</summary>
+    <div class="faq-mini-answer">Niet per se, maar de machine moet stijf en trillingsvrij zijn om de PKD-snijkant niet te belasten. Onstabiele oudere machines met spillager-speling of slechte opname (bv. een matige ER-spantang) halen het rendement van PKD niet, dan blijft hardmetaal vaak de logische keuze. Hydroplastische of krimphouders zijn een belangrijke voorwaarde voor PKD-prestaties bij precisiewerk.</div>
+  </details>
+</div>
+
+<h2>In één zin</h2>
+<p>Verspaan je in PKD-/CBN-vriendelijk materiaal, met &gt; 200 stuks/jaar én een stijve opname? Dan kost het je geld om bij hardmetaal te blijven. Verspaan je in staal, RVS, of met instabiele opspanning? Dan kost het je geld om over te stappen. De TCO-rekensom hierboven geeft je een definitief antwoord in 10 minuten.</p>
+
+</article>
+
+<section class="related">
+  <div class="container">
+    <div class="related-title">★ Verder lezen</div>
+    <div class="related-cards">
+      <a class="related-card" href="/whitepaper.html">
+        <div class="kicker">Whitepaper · 14 p</div>
+        <h4>12 dure fouten bij gereedschapskeuze</h4>
+        <p>Wat we keer op keer terugzien bij 240+ procesanalyses, met daarbij hoe je het anders aanpakt. Inclusief de drie trillingsbronnen en de TCO-aanpak.</p>
+      </a>
+      <a class="related-card" href="/index.html">
+        <div class="kicker">Hoofdsite · sparring</div>
+        <h4>Plan een 15-min sparringsessie</h4>
+        <p>Beschrijf je werkstuk, materiaal en machine. Krijg eerlijk antwoord of PKD/CBN voor jou zinvol is, of dat hardmetaal de juiste keuze blijft. Geen verkooppraat.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>InterMill · VerspaningsAdvies &amp; -Gereedschap · Maarheeze, NL</div>
+    <div><a href="tel:+31610906759">+31 (0)6 10 90 67 59</a> · <a href="mailto:info@inter-mill.com">info@inter-mill.com</a></div>
+  </div>
+</footer>
+
+<script src="/consent.js" defer></script>
+</body>
+</html>

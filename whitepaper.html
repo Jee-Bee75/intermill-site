@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>12 dure fouten bij gereedschapskeuze · InterMill whitepaper</title>
+<meta name="description" content="Whitepaper van InterMill: 12 dure fouten die we keer op keer zien bij gereedschapskeuze in verspaning, en hoe je ze voorkomt.">
+<meta name="theme-color" content="#FFDD00">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --yellow:#FFDD00; --yellow-2:#F5D000; --yellow-soft:#FFF4A3; --yellow-bg:#FFFCE5;
+    --white:#FFFFFF; --off-white:#FAFAFA;
+    --gray-100:#EAEAEA; --gray-200:#D4D4D4; --gray-400:#8A8A8A; --gray-500:#525252; --gray-700:#2A2A2A;
+    --ink:#0F0F0F; --line:#E5E5E5;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Manrope',sans-serif;background:var(--white);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+  picture{display:contents}
+  ::selection{background:var(--yellow);color:var(--ink)}
+  a{color:inherit}
+  .display{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;line-height:0.98;letter-spacing:-0.04em}
+  .mono{font-family:'JetBrains Mono',monospace;letter-spacing:0.16em;text-transform:uppercase}
+  .container{max-width:920px;margin:0 auto;padding:0 48px}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray-500);display:flex;align-items:center;gap:12px;margin-bottom:20px}
+  .eyebrow::before{content:'';width:28px;height:3px;background:var(--yellow)}
+  .eyebrow.light{color:var(--gray-200)}
+  .mark{background:var(--yellow);color:var(--ink);padding:0 8px;display:inline-block}
+
+  /* Cover */
+  .cover{background:var(--ink);color:var(--white);min-height:100vh;padding:80px 0;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+  .cover::after{content:'';position:absolute;right:-15%;top:-15%;width:60%;height:130%;background:radial-gradient(ellipse at center,rgba(255,221,0,0.10),transparent 65%);pointer-events:none}
+  .cover-top, .cover-mid, .cover-bottom{position:relative;z-index:2}
+  .cover-brand{display:inline-flex;align-items:center;line-height:0}
+  .cover-brand img{height:54px;width:auto;display:block}
+  .cover-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gray-400);margin-top:6px}
+  .cover h1{font-size:clamp(48px,7.5vw,96px);max-width:14ch;margin:24px 0 28px}
+  .cover h1 .y{color:var(--yellow)}
+  .cover-sub{font-size:20px;color:var(--gray-200);max-width:48ch;line-height:1.5}
+  .cover-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--gray-700);padding-top:22px}
+  .cover-meta div{padding-right:24px;border-right:1px solid var(--gray-700)}
+  .cover-meta div:last-child{border-right:none}
+  .cover-meta .k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gray-400);margin-bottom:6px}
+  .cover-meta .v{font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:700}
+  .cover-version{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:var(--yellow);margin-top:16px}
+
+  /* Inleiding */
+  .intro{padding:80px 0;background:var(--off-white);border-bottom:1px solid var(--line)}
+  .intro h2{font-size:clamp(32px,4vw,52px);margin-bottom:24px;max-width:18ch}
+  .intro p{font-size:17px;color:var(--gray-500);margin-bottom:18px;max-width:60ch}
+  .intro .lede{font-size:19px;color:var(--ink);max-width:60ch}
+  .toc{margin-top:48px;border-top:2px solid var(--ink);padding-top:24px}
+  .toc-title{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gray-500);margin-bottom:18px}
+  .toc ol{list-style:none;counter-reset:fout;display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);background:var(--line)}
+  .toc li{counter-increment:fout;background:var(--white);padding:16px 22px;display:flex;gap:14px;align-items:baseline;font-size:14.5px;line-height:1.4}
+  .toc li::before{content:counter(fout,decimal-leading-zero);font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gray-400);min-width:28px}
+  .toc li strong{font-weight:700;color:var(--ink)}
+
+  /* Fout pagina */
+  .fout{padding:80px 0;border-bottom:1px solid var(--line);position:relative}
+  .fout-num{font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gray-400);margin-bottom:12px}
+  .fout-num span{background:var(--yellow);color:var(--ink);padding:4px 10px;margin-right:10px;font-weight:500}
+  .fout h2{font-size:clamp(34px,4.4vw,56px);margin-bottom:28px;max-width:22ch;line-height:1.02}
+  .fout-intro{font-size:18px;color:var(--gray-500);max-width:62ch;line-height:1.6;margin-bottom:40px}
+  .fout-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:24px}
+  .fout-grid .cell{background:var(--white);padding:28px 26px}
+  .cell h3{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gray-500);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  .cell h3::before{content:'';width:18px;height:2px;background:var(--yellow)}
+  .cell p{font-size:14.5px;line-height:1.6;color:var(--ink)}
+  .cell.duur h3{color:#B42318}
+  .cell.duur h3::before{background:#B42318}
+  .cell.anders h3{color:#067647}
+  .cell.anders h3::before{background:#067647}
+  .imnote{background:var(--ink);color:var(--white);padding:24px 28px;display:flex;gap:20px;align-items:flex-start}
+  .imnote-avatar{width:46px;height:46px;background:var(--yellow);color:var(--ink);font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:18px;display:grid;place-items:center;border-radius:50%;flex-shrink:0}
+  .imnote-body{font-size:14.5px;line-height:1.6;color:var(--gray-200)}
+  .imnote-body b{color:var(--yellow);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;display:block;margin-bottom:6px;font-weight:500}
+
+  /* Outro op laatste fout */
+  .outro-block{margin-top:48px;background:var(--yellow);color:var(--ink);padding:36px 32px}
+  .outro-block .eyebrow{margin-bottom:14px}
+  .outro-block h3{font-family:'Bricolage Grotesque',sans-serif;font-size:28px;font-weight:700;letter-spacing:-0.02em;line-height:1.1;margin-bottom:14px;max-width:22ch}
+  .outro-block p{font-size:15px;color:var(--gray-700);margin-bottom:20px;max-width:50ch}
+  .outro-cta{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--yellow);text-decoration:none;font-weight:700;font-size:14px;padding:14px 22px}
+  .outro-cta:hover{background:var(--gray-700)}
+
+  /* Page footer (bottom of each fout) */
+  .pf{display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gray-400);margin-top:48px;padding-top:16px;border-top:1px solid var(--line)}
+
+  /* Top bar — back-link naar hoofdsite (alleen op web, niet in PDF) */
+  .topbar{background:var(--ink);color:var(--white);border-bottom:1px solid var(--gray-700)}
+  .topbar-inner{max-width:920px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .topbar-brand{display:inline-flex;align-items:center;color:var(--white);text-decoration:none;line-height:0}
+  .topbar-brand img{height:30px;width:auto;display:block}
+  .topbar-actions{display:flex;align-items:center;gap:22px}
+  .topbar-back{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gray-200);text-decoration:none;transition:color .15s}
+  .topbar-back:hover{color:var(--white)}
+  .topbar-dl{
+    font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;
+    letter-spacing:0.04em;
+    color:var(--ink);background:var(--yellow);
+    padding:9px 16px;
+    text-decoration:none;
+    display:inline-flex;align-items:center;gap:8px;
+    transition:background .15s;
+    border:2px solid var(--yellow);
+  }
+  .topbar-dl:hover{background:var(--white);border-color:var(--white)}
+  .topbar-dl svg{width:14px;height:14px;display:block}
+
+  @media (max-width:720px){
+    .container{padding:0 24px}
+    .cover-meta,.fout-grid,.toc ol{grid-template-columns:1fr}
+    .cover-meta div{border-right:none;border-bottom:1px solid var(--gray-700);padding-bottom:14px;margin-bottom:14px}
+    .cover-meta div:last-child{border-bottom:none}
+    .topbar-inner{padding:12px 22px;gap:14px}
+    .topbar-brand{font-size:16px}
+    .topbar-actions{gap:12px}
+    .topbar-back{display:none}
+    .topbar-dl{font-size:11px;padding:8px 12px}
+  }
+
+  /* ===== PRINT / PDF · A4 portrait ===== */
+  @media print{
+    @page{ size:A4 portrait; margin:0; }
+    *{ -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; }
+    html,body{ background:#fff; }
+    .container{ padding:0 36px; }
+    .cover{ min-height:auto; padding:46px 0 50px; break-after:page; }
+    .cover h1{ font-size:46px; max-width:14ch; }
+    .cover-sub{ font-size:16px; }
+    .intro{ padding:40px 0; break-after:page; }
+    .intro h2{ font-size:30px; }
+    .intro p,.intro .lede{ font-size:14.5px; }
+    .toc ol{ grid-template-columns:1fr 1fr; }
+    .toc li{ font-size:12.5px; padding:11px 14px; }
+    .fout{ padding:40px 0; break-before:page; border-bottom:none; }
+    .fout h2{ font-size:32px; }
+    .fout-intro{ font-size:14.5px; margin-bottom:24px; }
+    .fout-grid .cell{ padding:18px 18px; }
+    .cell p{ font-size:13px; }
+    .imnote{ padding:18px 20px; }
+    .imnote-body{ font-size:13px; }
+    .outro-block{ padding:24px 22px; margin-top:28px; }
+    .outro-block h3{ font-size:22px; }
+    .pf{ margin-top:24px; padding-top:10px; font-size:9px; }
+    .fout-grid,.fout-intro,.imnote,.outro-block{ break-inside:avoid; }
+    h1,h2,h3{ break-after:avoid; }
+    .topbar{ display:none; }
+  }
+</style>
+<link rel="canonical" href="https://inter-mill.com/whitepaper.html">
+<meta property="og:image" content="https://inter-mill.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://inter-mill.com/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "Organization", "@id": "https://inter-mill.com/#organization", "name": "InterMill", "url": "https://inter-mill.com/" },
+    {
+      "@type": "WebPage",
+      "@id": "https://inter-mill.com/whitepaper.html#webpage",
+      "url": "https://inter-mill.com/whitepaper.html",
+      "name": "12 dure fouten bij gereedschapskeuze · InterMill whitepaper",
+      "isPartOf": { "@id": "https://inter-mill.com/#website" },
+      "about": { "@id": "https://inter-mill.com/#organization" },
+      "inLanguage": "nl-NL"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="topbar-brand" href="index.html" aria-label="InterMill — naar hoofdsite"><picture><source srcset="logo-light.webp" type="image/webp"><img src="logo-light.png" alt="InterMill" width="888" height="324"></picture></a>
+    <div class="topbar-actions">
+      <a class="topbar-back" href="index.html">← Naar de hoofdsite</a>
+      <a class="topbar-dl" href="whitepaper.pdf" download="InterMill-12-dure-fouten-bij-gereedschapskeuze.pdf" aria-label="Download deze whitepaper als PDF">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 4v-2h14v2H5z"/></svg>
+        Download als PDF
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ COVER (p1) ============ -->
+<section class="cover">
+  <div class="container cover-top">
+    <div class="cover-brand"><picture><source srcset="logo-light.webp" type="image/webp"><img src="logo-light.png" alt="InterMill" width="888" height="324"></picture></div>
+    <div class="cover-tag">WHITEPAPER · VERSPANINGSADVIES</div>
+  </div>
+
+  <div class="container cover-mid">
+    <div class="eyebrow light">Voor verspaners die het optimum willen halen</div>
+    <h1 class="display">12 dure fouten bij <span class="y">gereedschapskeuze</span>, en hoe je ze voorkomt.</h1>
+    <p class="cover-sub">Wat we keer op keer terugzien bij 240+ procesanalyses in de Nederlandse en Belgische metaalbewerking. Geen marketing, maar werkvloerkennis, opgeschreven door iemand die er stond.</p>
+  </div>
+
+  <div class="container cover-bottom">
+    <div class="cover-meta">
+      <div><div class="k">Auteur</div><div class="v">Johny Govers</div></div>
+      <div><div class="k">Functie</div><div class="v">Oprichter InterMill · 28 jr werkvloer</div></div>
+      <div><div class="k">Editie</div><div class="v">Mei 2026 · 14 pagina's</div></div>
+    </div>
+    <div class="cover-version">★ V0.1 · EERSTE OPZET TER REVIEW DOOR JOHNY</div>
+  </div>
+</section>
+
+<!-- ============ INLEIDING (p2) ============ -->
+<section class="intro">
+  <div class="container">
+    <div class="eyebrow">Inleiding</div>
+    <h2 class="display">Voor wie? Waarom? Hoe te lezen.</h2>
+    <p class="lede"><strong>Voor wie:</strong> werkvoorbereiders, bedrijfsleiders en CNC-operators in de verspaning die het idee hebben dat er nog winst zit in hun proces, maar niet precies weten waar.</p>
+    <p><strong>Waarom dit document:</strong> in 28 jaar werkvloer en 240+ procesanalyses zijn er twaalf fouten die ik wekelijks tegenkom. Geen rare uitzonderingen, maar gewone keuzes, vaak uit gewoonte gemaakt, die samen 60–80% van de verloren marge in verspaning verklaren. Dit boekje benoemt ze, met daarbij hoe het anders kan en wat het oplevert.</p>
+    <p><strong>Hoe te lezen:</strong> elke fout staat op één pagina. Links: waarom de fout duur is. Rechts: hoe het anders kan. Onderaan: een korte noot uit de werkvloer. Lees in elke volgorde. Pak eruit wat bij jouw proces past.</p>
+
+    <div class="toc">
+      <div class="toc-title">Inhoud · de 12 fouten</div>
+      <ol>
+        <li><strong>Hardmetaal blijven gebruiken waar diamant al de norm is.</strong></li>
+        <li><strong>Eén leverancier voor alles.</strong></li>
+        <li><strong>Bestellen op symptoom, niet op oorzaak.</strong></li>
+        <li><strong>Trillingen onderschatten: de drie bronnen.</strong></li>
+        <li><strong>HSS verkeerd inzetten.</strong></li>
+        <li><strong>Standtijd niet meten.</strong></li>
+        <li><strong>Klemming en opname onderschatten.</strong></li>
+        <li><strong>Catalogus-parameters 1-op-1 overnemen.</strong></li>
+        <li><strong>Specials te laat overwegen.</strong></li>
+        <li><strong>Te lang doorgaan met versleten gereedschap.</strong></li>
+        <li><strong>Verspaningsbeslissingen door niet-verspaners.</strong></li>
+        <li><strong>Geen tweede mening vóór een grote serie.</strong></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOUT 01 (p3) ============ -->
+<section class="fout">
+  <div class="container">
+    <div class="fout-num"><span>FOUT 01</span> Van 12</div>
+    <h2 class="display">Hardmetaal blijven gebruiken waar diamant al jaren de norm is.</h2>
+    <p class="fout-intro">Voor gietijzer (GGG/GG), geharde stalen vanaf HRC 55, hardplastics, CFRP en non-ferro metalen levert <strong>PKD-, CBN- of monodiamant-gereedschap</strong> structureel 3 tot 10× meer standtijd dan standaard hardmetaal. Toch zien we wekelijks productieprocessen waar HM nog steeds standaard is, niet omdat het beter is, maar omdat het altijd al zo ging.</p>
+
+    <div class="fout-grid">
+      <div class="cell duur">
+        <h3>Waarom het duur is</h3>
+        <p>Elke inzetwissel kost 4–10 minuten machinestilstand. Op 8 wissels per dag is dat snel een uur productieverlies. Plus de inkoopkosten van de HM-inzetten zelf, die je daarmee 3–10× zo vaak nodig hebt. Bij een gietijzer-cilinderkop zagen we de standtijd van 1 dag (HM) naar 14 dagen (DTS-PKD) gaan, bij hetzelfde werkstuk en dezelfde machine.</p>
+      </div>
+      <div class="cell anders">
+        <h3>Hoe het anders kan</h3>
+        <p>Per materiaalgroep (M-01 gietijzer, M-02 geharde stalen, M-11 titanium, M-12 CFRP) éénmaal evalueren of PKD/CBN/diamant zinvol is. De investering per inzet is hoger, maar de TCO meestal 30–60% lager. ROI in 1–3 maanden bij serieproductie. Maak één rekensom. Daarna stuurt die het hele inkoopbeleid.</p>
+      </div>
+    </div>
+
+    <div class="imnote">
+      <div class="imnote-avatar">JG</div>
+      <div class="imnote-body">
+        <b>Op de werkvloer</b>
+        Dit is de meest voorkomende winst die we vinden bij een procesanalyse. Negen van de tien keer is "we doen het altijd zo" de enige reden waarom er nog HM ligt voor een werkstuk waar diamant al jaren superieur is.
+      </div>
+    </div>
+
+    <div class="pf"><span>InterMill · 12 dure fouten</span><span>P. 03 / 14</span></div>
+  </div>
+</section>
+
+<!-- ============ FOUT 02 (p4) ============ -->
+<section class="fout">
+  <div class="container">
+    <div class="fout-num"><span>FOUT 02</span> Van 12</div>
+    <h2 class="display">Eén leverancier voor alles.</h2>
+    <p class="fout-intro">Als je vaste gereedschapsleverancier ook fabrikant of exclusief distributeur is, zit er onvermijdelijk een <strong>quotum in zijn advies</strong>. Niet kwaadwillig, maar gewoon economisch logisch. En voor jouw specifieke werkstuk is "wat hij deze maand kwijt moet" zelden de objectief beste oplossing.</p>
+
+    <div class="fout-grid">
+      <div class="cell duur">
+        <h3>Waarom het duur is</h3>
+        <p>Je betaalt makkelijk 10–30% meer dan nodig, óf je gebruikt gereedschap dat technisch niet de beste keuze is voor jouw materiaal / opname. Vaak gecombineerd: hoge prijs én suboptimale prestatie. Vooral pijnlijk bij specials, waar de verschillen tussen aanbieders groot zijn.</p>
+      </div>
+      <div class="cell anders">
+        <h3>Hoe het anders kan</h3>
+        <p>Werk met een merk-onafhankelijke partij die uit het volledige veld kan kiezen. Vraag bij elke significante bestelling expliciet: "welke twee alternatieven zijn er, en waarom kies je deze?" Geen goed antwoord = je krijgt geen onafhankelijk advies.</p>
+      </div>
+    </div>
+
+    <div class="imnote">
+      <div class="imnote-avatar">JG</div>
+      <div class="imnote-body">
+        <b>Op de werkvloer</b>
+        InterMill is bewust merk-onafhankelijk. We werken met Brütsch-Rüegger, MEHI, DTS, NOGA, BiG-Plus en tientallen specialisten. Geen bonus voor merk X, geen maandquotum voor leverancier Y. Het advies dient jouw resultaat. Punt.
+      </div>
+    </div>
+
+    <div class="pf"><span>InterMill · 12 dure fouten</span><span>P. 04 / 14</span></div>
+  </div>
+</section>
+
+<!-- ============ FOUT 03 (p5) ============ -->
+<section class="fout">
+  <div class="container">
+    <div class="fout-num"><span>FOUT 03</span> Van 12</div>
+    <h2 class="display">Bestellen op symptoom, niet op oorzaak.</h2>
+    <p class="fout-intro">"Stuur 10 frezen Ø12 mm" is een gereedschapsbestelling. <strong>"Waarom slijt deze Ø12-frees op dit werkstuk binnen 30 min?"</strong> is een procesanalyse. De eerste lost niets op; je blijft het symptoom kopen. De tweede legt de oorzaak bloot, vaak in opname, parameters of materiaalkeuze.</p>
+
+    <div class="fout-grid">
+      <div class="cell duur">
+        <h3>Waarom het duur is</h3>
+        <p>Je betaalt herhaaldelijk voor inzetten die je probleem niet oplossen. Erger nog: vaak weet niemand wáár het probleem precies zit, dus blijft het terugkomen. Reken het door: 4 extra inzetten per week × 52 weken = een paar duizend euro per jaar, plus de gemiste productiecapaciteit.</p>
+      </div>
+      <div class="cell anders">
+        <h3>Hoe het anders kan</h3>
+        <p>Vóór een herhaalbestelling: 15–60 min procesanalyse (telefoon of op locatie). Beschrijf werkstuk, materiaal, machine, opname, parameters, standtijd. Een vakgenoot ziet er vrijwel altijd 1–3 verbeterpunten in. Dán pas bestellen, eventueel ander gereedschap.</p>
+      </div>
+    </div>
+
+    <div class="imnote">
+      <div class="imnote-avatar">JG</div>
+      <div class="imnote-body">
+        <b>Op de werkvloer</b>
+        Een procesanalyse is bij ons altijd gratis. Niet uit goedheid, maar uit overtuiging. Bij 240+ analyses kwamen er gemiddeld 2 tot 3 verbeterpunten uit waar de klant zelf niet aan dacht. Dat verdient een gesprek terug, ook zonder bestelling.
+      </div>
+    </div>
+
+    <div class="pf"><span>InterMill · 12 dure fouten</span><span>P. 05 / 14</span></div>
+  </div>
+</section>
+
+<!-- ============ FOUT 04 (p6) ============ -->
+<section class="fout">
+  <div class="container">
+    <div class="fout-num"><span>FOUT 04</span> Van 12</div>
+    <h2 class="display">Trillingen onderschatten: er zijn maar drie bronnen.</h2>
+    <p class="fout-intro">80% van de "het loopt niet lekker"-meldingen die we krijgen, komt uit drie trillingsbronnen: <strong>(1) te lange uitsteeklengte</strong>, <strong>(2) een opname met te veel speling of run-out</strong>, <strong>(3) snijgeometrie die niet past bij het materiaal of de stand</strong>. Geen vierde. Als je deze drie systematisch checkt, los je vier van de vijf trillingsproblemen op.</p>
+
+    <div class="fout-grid">
+      <div class="cell duur">
+        <h3>Waarom het duur is</h3>
+        <p>Trillingen veroorzaken slechte oppervlakteruwheid (Ra omhoog), kortere standtijd, breuken, en in het slechtste geval afgekeurde werkstukken. Bij precisiewerk al snel duizenden euro's per incident. Plus de stilstand om uit te zoeken wat er mis is.</p>
+      </div>
+      <div class="cell anders">
+        <h3>Hoe het anders kan</h3>
+        <p>Meet uitsteeklengte (streef naar l/d &lt; 4 waar mogelijk). Check run-out met een meetklok (&lt; 5 µm voor precisiewerk). Voor kritische bewerkingen: hydroplastische of krimphouder. Voor diep kotteren: trillingsgedempte stang (bv. MEHI).</p>
+      </div>
+    </div>
+
+    <div class="imnote">
+      <div class="imnote-avatar">JG</div>
+      <div class="imnote-body">
+        <b>Op de werkvloer</b>
+        Bij specials adviseren we standaard de bijpassende opname mee, niet alleen het snijgereedschap. Een Porsche-motor in een Lada-chassis lever je nooit, en toch zien we dat patroon wekelijks bij precisiefrezen aan een ER-spantang.
+      </div>
+    </div>
+
+    <div class="pf"><span>InterMill · 12 dure fouten</span><span>P. 06 / 14</span></div>
+  </div>
+</section>
+
+<!-- ============ FOUT 05 (p7) ============ -->
+<section class="fout">
+  <div class="container">
+    <div class="fout-num"><span>FOUT 05</span> Van 12</div>
+    <h2 class="display">HSS verkeerd inzetten.</h2>
+    <p class="fout-intro">HSS heeft nog steeds een plek: bij kleine series, lage snijsnelheid of ruwbewerking op zacht materiaal. Maar voor terugkerende productie op staal, RVS, titanium of geharde materialen is HSS in 2026 meestal een <strong>dure gewoonte</strong>. Niet kapot, maar wel suboptimaal.</p>
+
+    <div class="fout-grid">
+      <div class="cell duur">
+        <h3>Waarom het duur is</h3>
+        <p>HSS draait typisch op 3–5× lagere snijsnelheid dan HM. Dat is direct 3–5× meer machine-tijd voor dezelfde bewerking. Op productieseries betekent dat een dure machine die te lang aan één werkstuk vastzit, terwijl er een wachtrij staat.</p>
+      </div>
+      <div class="cell anders">
+        <h3>Hoe het anders kan</h3>
+        <p>Voor elke terugkerende bewerking één keer afwegen: HM of HSS? Reken TCO door (gereedschapsprijs + machine-tijd + standtijd, niet alleen stukprijs). In 80% van de gevallen wint HM, zelfs als het 4× duurder is per inzet.</p>
+      </div>
+    </div>
+
+    <div class="imnote">
+      <div class="imnote-avatar">JG</div>
+      <div class="imnote-body">
+        <b>Op de werkvloer</b>
+        Soms is het eerlijke antwoord wél "HSS is hier prima", bijvoorbeeld bij een kleine eenmalige serie op een zacht materiaal. Die feedback geven we ook. Het gaat om de TCO van jouw werkstuk, niet om welke inzet wij het liefst verkopen.
+      </div>
+    </div>
+
+    <div class="pf"><span>InterMill · 12 dure fouten</span><span>P. 07 / 14</span></div>
+  </div>
+</section>
+
+<!-- ============ FOUT 06 (p8) ============ -->
+<section class="fout">
+  <div class="container">
+    <div class="fout-num"><span>FOUT 06</span> Van 12</div>
+    <h2 class="display">Standtijd niet meten: sturen op onderbuik.</h2>
+    <p class="fout-intro">Wat je niet meet, kun je niet verbeteren. We zien werkplaatsen waar een inzet "wordt vervangen als ie er versleten uitziet". Dat is <strong>sturen op gevoel</strong>, niet op data. En het is de op één na grootste verspilling in verspaning, na verkeerde materiaalkeuze.</p>
+
+    <div class="fout-grid">
+      <div class="cell duur">
+        <h3>Waarom het duur is</h3>
+        <p>Twee kanten op: te vroeg wisselen = inzetten verspild en onnodige stilstand. Te laat wisselen = slechte oppervlakte, breuken, soms een afgekeurd werkstuk. Beide door dezelfde oorzaak: geen idee waar je werkelijk staat op de slijtcurve.</p>
+      </div>
+      <div class="cell anders">
+        <h3>Hoe het anders kan</h3>
+        <p>Tel het aantal werkstukken per inzet en leg het simpel vast (papier, Excel, machine-software). Na 50 werkstukken zie je het patroon. Stuur op die data: wissel op aantal, niet op gevoel. Verbeterpunten worden meteen meetbaar.</p>
+      </div>
+    </div>
+
+    <div class="imnote">
+      <div class="imnote-avatar">JG</div>
+      <div class="imnote-body">
+        <b>Op de werkvloer</b>
+        Bij specials leveren we standaard een verwachte standtijd-range mee. Dat geeft je een ankerpunt: zit je structureel onder de range, dan is er iets aan opname, parameters of materiaalbatch wat aandacht vraagt.
+      </div>
+    </div>
+
+    <div class="pf"><span>InterMill · 12 dure fouten</span><span>P. 08 / 14</span></div>
+  </div>
+</section>
+
+<!-- ============ FOUT 07 (p9) ============ -->
+<section class="fout">
+  <div class="container">
+    <div class="fout-num"><span>FOUT 07</span> Van 12</div>
+    <h2 class="display">Klemming en opname onderschatten.</h2>
+    <p class="fout-intro">Het beste snijgereedschap aan een matige opname is een matige bewerking. We zien werkplaatsen die kapitaal investeren in <strong>DTS-PKD-frezen</strong> en dan in een standaard ER-spantang draaien. Een Porsche-motor in een Lada-chassis: je betaalt voor de potentie, maar haalt hem niet.</p>
+
+    <div class="fout-grid">
+      <div class="cell duur">
+        <h3>Waarom het duur is</h3>
+        <p>Je tankt eersteklas inzetten en levert tweederangs prestaties: slechtere standtijd, slechtere oppervlakte, meer trillingen (zie fout 04). De ROI van het dure gereedschap halveer je effectief, omdat de zwakke schakel ergens anders zit.</p>
+      </div>
+      <div class="cell anders">
+        <h3>Hoe het anders kan</h3>
+        <p>Matchen: hydroplastisch of krimphouder voor precisie. BiG-Plus voor zware ruwbewerking (twee-vlaks contact, vooral op scheepsdieselmotoren). MEHI met trillingsdemping voor diep kotteren. Vraag bij elk gereedschapsadvies: welke opname hoort hierbij?</p>
+      </div>
+    </div>
+
+    <div class="imnote">
+      <div class="imnote-avatar">JG</div>
+      <div class="imnote-body">
+        <b>Op de werkvloer</b>
+        Bij elk special-advies kijken we naar de hele keten: machine → spil → opname → gereedschap → werkstuk. Niet alleen naar het laatste schakeltje. De zwakste schakel bepaalt de prestatie van het geheel.
+      </div>
+    </div>
+
+    <div class="pf"><span>InterMill · 12 dure fouten</span><span>P. 09 / 14</span></div>
+  </div>
+</section>
+
+<!-- ============ FOUT 08 (p10) ============ -->
+<section class="fout">
+  <div class="container">
+    <div class="fout-num"><span>FOUT 08</span> Van 12</div>
+    <h2 class="display">Catalogus-parameters 1-op-1 overnemen.</h2>
+    <p class="fout-intro">v<sub>c</sub>, f<sub>z</sub>, a<sub>p</sub>, a<sub>e</sub> uit de fabrikantencatalogus zijn een <strong>vertrekpunt, geen eindpunt</strong>. Jouw machine (stijfheid, vermogen, leeftijd), jouw koeling (intern via spil of extern), jouw opname en jouw materiaal-batch: allemaal beïnvloeden ze het optimum. Soms substantieel.</p>
+
+    <div class="fout-grid">
+      <div class="cell duur">
+        <h3>Waarom het duur is</h3>
+        <p>Twee mogelijkheden: óf je laat 20–40% performance liggen (te conservatief overnemen), óf je breekt inzetten en werkstukken (te agressief, want catalogus gaat uit van ideale condities). Beide kosten geld.</p>
+      </div>
+      <div class="cell anders">
+        <h3>Hoe het anders kan</h3>
+        <p>Catalogus als startpunt, dan 2 tot 3 iteraties om te optimaliseren. Verhoog v<sub>c</sub> in stappen van 10% tot je standtijd-effect ziet, varieer f<sub>z</sub> en check verspaningsvolume Q. Leg vast wat werkt. Dat wordt jouw eigen catalogus.</p>
+      </div>
+    </div>
+
+    <div class="imnote">
+      <div class="imnote-avatar">JG</div>
+      <div class="imnote-body">
+        <b>Op de werkvloer</b>
+        Bij de eerste run sta ik op afspraak naast je monteur. Niet om te verkopen, maar om de parameters op jouw context te zetten. Dat scheelt vaak weken trial-and-error en is het verschil tussen "het werkt" en "het werkt goed".
+      </div>
+    </div>
+
+    <div class="pf"><span>InterMill · 12 dure fouten</span><span>P. 10 / 14</span></div>
+  </div>
+</section>
+
+<!-- ============ FOUT 09 (p11) ============ -->
+<section class="fout">
+  <div class="container">
+    <div class="fout-num"><span>FOUT 09</span> Van 12</div>
+    <h2 class="display">Specials te laat overwegen.</h2>
+    <p class="fout-intro">Een special heeft een lange doorlooptijd-perceptie ("dat duurt weken!"). De realiteit bij ons: offerte voor specials standaard <strong>binnen 1 werkdag</strong>, ontwerp + productie 1–5 weken afhankelijk van complexiteit. En de TCO is verrassend vaak fors lager dan met standaardgereedschap door blijven modderen.</p>
+
+    <div class="fout-grid">
+      <div class="cell duur">
+        <h3>Waarom het duur is</h3>
+        <p>Je blijft betalen voor standaardgereedschap dat 50–70% van zijn cyclus aan een niet-passend werkstuk besteedt: onnodige bewegingen, extra wisselingen, overbodige bewerkingsstappen. Op een serie van 1.000 stuks loopt dat snel in de duizenden euro's.</p>
+      </div>
+      <div class="cell anders">
+        <h3>Hoe het anders kan</h3>
+        <p>Vuistregel: werkstuk &gt; 200×/jaar én cyclustijd &gt; 10 min → reken een special door. Vaak verdient hij zichzelf binnen 1 tot 3 maanden terug. Bij twijfel: vraag een berekening op, vóórdat je een nieuwe bulkbestelling standaardgereedschap plaatst.</p>
+      </div>
+    </div>
+
+    <div class="imnote">
+      <div class="imnote-avatar">JG</div>
+      <div class="imnote-body">
+        <b>Op de werkvloer</b>
+        Die TCO-berekening maken we gratis. Geen verplichting tot afname, alleen een eerlijk antwoord of de special in jouw situatie zichzelf snel terugverdient. Soms is het antwoord "nee". Ook dat hoor je van ons.
+      </div>
+    </div>
+
+    <div class="pf"><span>InterMill · 12 dure fouten</span><span>P. 11 / 14</span></div>
+  </div>
+</section>
+
+<!-- ============ FOUT 10 (p12) ============ -->
+<section class="fout">
+  <div class="container">
+    <div class="fout-num"><span>FOUT 10</span> Van 12</div>
+    <h2 class="display">Te lang doorgaan met versleten gereedschap.</h2>
+    <p class="fout-intro">"Het werkt nog" is in verspaning vaak de duurste zin. Een inzet die nét over zijn standtijd is, <strong>snijdt niet meer; hij smeert, schuurt en duwt</strong>. Resultaat: slechte oppervlakte, opwarming, meer trillingen, en uiteindelijk vaak een afgekeurd werkstuk of een spoedherstel.</p>
+
+    <div class="fout-grid">
+      <div class="cell duur">
+        <h3>Waarom het duur is</h3>
+        <p>Eén verkeerd doorgereden precisiewerkstuk kost vaak veel meer dan tien nieuwe inzetten. Plus de capaciteitsverstoring: spoedherstel verdringt geplande productie. Op kritieke werkstukken (klant wacht) is de schade nog groter.</p>
+      </div>
+      <div class="cell anders">
+        <h3>Hoe het anders kan</h3>
+        <p>Combineer fout 06 (meten) met een visuele check elke 50 werkstukken. Bij twijfel: vervangen. Schaduwkosten van een onnodig vervangen inzet zijn altijd kleiner dan die van een doorgesleten inzet die schade veroorzaakt.</p>
+      </div>
+    </div>
+
+    <div class="imnote">
+      <div class="imnote-avatar">JG</div>
+      <div class="imnote-body">
+        <b>Op de werkvloer</b>
+        Standtijd-monitoring hoort bij onze nazorg bij specials. Niet omdat we het leuk vinden om checklists in te vullen, maar omdat het de manier is om standtijd en kwaliteit op niveau te houden zonder verrassingen.
+      </div>
+    </div>
+
+    <div class="pf"><span>InterMill · 12 dure fouten</span><span>P. 12 / 14</span></div>
+  </div>
+</section>
+
+<!-- ============ FOUT 11 (p13) ============ -->
+<section class="fout">
+  <div class="container">
+    <div class="fout-num"><span>FOUT 11</span> Van 12</div>
+    <h2 class="display">Verspaningsbeslissingen door niet-verspaners.</h2>
+    <p class="fout-intro">Inkoop kijkt naar stukprijs. Werkvoorbereiding kijkt naar levertijd. Bedrijfsleiding kijkt naar marge. <strong>Niemand kijkt naar de TCO van het verspaningsproces als geheel</strong>, terwijl daar 80% van de waarde ligt. Het resultaat: optimaal gereedschap, suboptimale beslissingen.</p>
+
+    <div class="fout-grid">
+      <div class="cell duur">
+        <h3>Waarom het duur is</h3>
+        <p>Een inzet die 30% duurder is, maar 2× zo lang meegaat, is per werkstuk 35% goedkoper. Wordt door pure stukprijs-inkoop nooit gekozen. Op een jaarcontract van duizenden inzetten is dat tienduizenden euro's verkeerde keuze, onzichtbaar in het inkoopdashboard.</p>
+      </div>
+      <div class="cell anders">
+        <h3>Hoe het anders kan</h3>
+        <p>Betrek je verspaner (intern of extern) bij gereedschapsbeslissingen. Reken TCO door: stukprijs × verbruik + machinetijd × tarief + uitval × werkstukwaarde. Dat getal stuurt de keuze, niet de stukprijs alleen.</p>
+      </div>
+    </div>
+
+    <div class="imnote">
+      <div class="imnote-avatar">JG</div>
+      <div class="imnote-body">
+        <b>Op de werkvloer</b>
+        Wij helpen die TCO-berekening maken, vrijblijvend. Het kost een uur sparring en levert een rekensom op die je kunt gebruiken in elk inkoopgesprek. Geen tovenarij, gewoon de cijfers op een rij.
+      </div>
+    </div>
+
+    <div class="pf"><span>InterMill · 12 dure fouten</span><span>P. 13 / 14</span></div>
+  </div>
+</section>
+
+<!-- ============ FOUT 12 + OUTRO (p14) ============ -->
+<section class="fout">
+  <div class="container">
+    <div class="fout-num"><span>FOUT 12</span> Van 12 · de laatste, en de goedkoopst te voorkomen</div>
+    <h2 class="display">Geen tweede mening vóór een grote serie.</h2>
+    <p class="fout-intro">Een externe vakman die met je meekijkt vóórdat een serie van 1.000+ werkstukken op de baan komt, kost je een uur. Een verkeerde keuze bij stuk #1 die je pas bij stuk #200 ontdekt, kost je <strong>een week</strong>, plus mogelijk de klant.</p>
+
+    <div class="fout-grid">
+      <div class="cell duur">
+        <h3>Waarom het duur is</h3>
+        <p>Er gaat 100–500× iets fout vóórdat je het ontdekt. Bij precisiewerk of materiaal met lange levertijd loopt dat uit op weken vertraging, schadeposten, en in het ergste geval een ontevreden klant die de relatie heroverweegt.</p>
+      </div>
+      <div class="cell anders">
+        <h3>Hoe het anders kan</h3>
+        <p>Bij élk niet-routine werkstuk (nieuw materiaal, nieuwe tolerantie, nieuwe serie): vraag 15 min sparring vóóraf. Geen ego. Een tweede paar ogen vindt vaak wat het eerste mist, juist omdat het de gewoonte níet kent.</p>
+      </div>
+    </div>
+
+    <div class="imnote">
+      <div class="imnote-avatar">JG</div>
+      <div class="imnote-body">
+        <b>Op de werkvloer</b>
+        Dit is letterlijk waarvoor InterMill bestaat. 15 min telefoon kost niks. Als ik niets toevoeg, hoor je dat ook, en ben je 15 minuten en nul euro kwijt. Als ik wél iets zie, scheelt het je waarschijnlijk een week.
+      </div>
+    </div>
+
+    <div class="outro-block">
+      <div class="eyebrow">Wat nu?</div>
+      <h3>Wil je dat we deze 12 fouten doorlopen op jouw werkstuk?</h3>
+      <p>15 minuten telefoon. Beschrijf je werkstuk, materiaal en machine. Ik denk meteen mee. Geen verkooppraat, geen verplichting. Gewoon een vakgenoot die meekijkt.</p>
+      <a class="outro-cta" href="mailto:info@inter-mill.com?subject=Sparringsessie%20%7C%20whitepaper&body=Hoi%20Johny%2C%0A%0AIk%20heb%20de%20whitepaper%20%2212%20dure%20fouten%22%20gelezen%20en%20wil%20graag%20een%2015-min%20sparringsessie%20plannen.%0A%0ABedrijf%3A%20%0AWerkstuk%2Fmateriaal%3A%20%0AMachine%3A%20%0ATelefoon%3A%20%0A%0AGroet%2C">Plan 15-min sparringsessie →</a>
+    </div>
+
+    <div class="pf"><span>InterMill · 12 dure fouten · Mei 2026 · v0.1 · eerste opzet</span><span>P. 14 / 14</span></div>
+  </div>
+</section>
+
+<script src="consent.js" defer></script>
+</body>
+</html>

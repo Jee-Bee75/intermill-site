@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cookieverklaring · InterMill</title>
+<meta name="description" content="Cookieverklaring van InterMill, welke cookies we plaatsen, waarom, hoe lang en hoe je toestemming intrekt of cookies blokkeert.">
+<meta name="theme-color" content="#FFDD00">
+<meta name="robots" content="index,follow">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://inter-mill.com/cookies.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --yellow:#FFDD00; --yellow-bg:#FFFCE5;
+    --white:#FFFFFF; --off-white:#FAFAFA;
+    --gray-100:#EAEAEA; --gray-200:#D4D4D4; --gray-400:#8A8A8A; --gray-500:#525252; --gray-700:#2A2A2A;
+    --ink:#0F0F0F; --line:#E5E5E5;
+    --green:#067647; --orange:#B54708;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Manrope',sans-serif;background:var(--white);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+  ::selection{background:var(--yellow);color:var(--ink)}
+  a{color:inherit}
+  img{display:block;max-width:100%}
+  picture{display:contents}
+  .display{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;line-height:1.05;letter-spacing:-0.03em}
+
+  .topbar{background:var(--ink);color:var(--white);border-bottom:1px solid var(--gray-700)}
+  .topbar-inner{max-width:860px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .brand{display:inline-flex;align-items:center;text-decoration:none;color:var(--white);line-height:0}
+  .brand img{height:30px;width:auto;display:block}
+  .topbar-back{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--yellow);text-decoration:none}
+  .topbar-back:hover{color:var(--white)}
+
+  .container{max-width:860px;margin:0 auto;padding:0 32px}
+  .hero{padding:64px 0 40px;border-bottom:1px solid var(--line)}
+  .breadcrumb{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gray-400);margin-bottom:24px}
+  .breadcrumb a{color:var(--gray-400);text-decoration:none}
+  .breadcrumb a:hover{color:var(--ink)}
+  .breadcrumb .sep{margin:0 8px;opacity:0.5}
+  h1.title{font-size:clamp(34px,5vw,52px);max-width:22ch;margin-bottom:18px}
+  .meta{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gray-500)}
+  .meta b{color:var(--ink);font-weight:500}
+
+  article{padding:40px 0 80px;font-size:16px;line-height:1.7;color:var(--gray-700)}
+  article > * + *{margin-top:18px}
+  article h2{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,3vw,28px);font-weight:700;letter-spacing:-0.02em;line-height:1.2;color:var(--ink);margin-top:44px;display:flex;align-items:baseline;gap:14px}
+  article h2 .num{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--gray-400);font-weight:500;letter-spacing:0.1em;min-width:32px}
+  article h3{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:700;letter-spacing:-0.01em;color:var(--ink);margin-top:24px}
+  article p, article li{font-size:15.5px}
+  article p strong, article li strong{color:var(--ink);font-weight:700}
+  article ul, article ol{padding-left:22px}
+  article li{margin-bottom:6px}
+  article a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--yellow);text-decoration-thickness:2px;text-underline-offset:2px}
+  article a:hover{background:var(--yellow)}
+
+  table{width:100%;border-collapse:collapse;margin-top:16px;font-size:14px;border:1px solid var(--ink)}
+  th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);border-right:1px solid var(--line);vertical-align:top}
+  th:last-child,td:last-child{border-right:none}
+  thead th{background:var(--ink);color:var(--white);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;font-weight:500}
+  tbody tr:nth-child(even){background:var(--off-white)}
+  .pill{display:inline-block;padding:2px 8px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;font-weight:500}
+  .pill.func{background:#D1FADF;color:var(--green)}
+  .pill.anal{background:#FEF0C7;color:var(--orange)}
+
+  .note{background:var(--yellow-bg);border-left:4px solid var(--yellow);padding:20px 24px;margin-top:20px}
+  .note .lbl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gray-500);margin-bottom:8px}
+  .note p{font-size:14.5px;color:var(--ink);line-height:1.55}
+
+  footer{background:var(--ink);color:var(--white);padding:32px 0;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase}
+  footer .container{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;align-items:center}
+  footer a{color:var(--gray-400);text-decoration:none}
+  footer a:hover{color:var(--yellow)}
+
+  @media (max-width:600px){
+    .container,.topbar-inner{padding-left:22px;padding-right:22px}
+    article h2{flex-direction:column;gap:4px}
+  }
+</style>
+<meta property="og:image" content="https://inter-mill.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://inter-mill.com/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "Organization", "@id": "https://inter-mill.com/#organization", "name": "InterMill", "url": "https://inter-mill.com/" },
+    {
+      "@type": "WebPage",
+      "@id": "https://inter-mill.com/cookies.html#webpage",
+      "url": "https://inter-mill.com/cookies.html",
+      "name": "Cookieverklaring InterMill",
+      "isPartOf": { "@id": "https://inter-mill.com/#website" },
+      "about": { "@id": "https://inter-mill.com/#organization" },
+      "inLanguage": "nl-NL"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html" aria-label="InterMill, naar hoofdsite">
+      <picture><source srcset="logo-light.webp" type="image/webp"><img src="logo-light.png" alt="InterMill" width="888" height="324"></picture>
+    </a>
+    <a class="topbar-back" href="index.html">← Naar de hoofdsite</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Kruimelpad">
+      <a href="index.html">InterMill</a>
+      <span class="sep">/</span>
+      <span>Cookieverklaring</span>
+    </nav>
+    <h1 class="display title">Cookieverklaring</h1>
+    <div class="meta">Laatst bijgewerkt <b>20 mei 2026</b> · Versie <b>1.0</b></div>
+  </div>
+</section>
+
+<article class="container">
+
+  <p>Deze website gebruikt een minimaal aantal cookies. Geen tracking-pixels, geen advertentie-cookies, geen profilering. Hieronder zie je precies wat we plaatsen en waarom, en hoe je je toestemming intrekt.</p>
+
+  <h2><span class="num">01</span> Wat is een cookie?</h2>
+  <p>Een cookie is een klein tekstbestand dat een website op je apparaat plaatst tijdens je bezoek. Het bevat geen persoonsgegevens uit zichzelf, maar kan in combinatie met andere informatie wel iets over jou onthouden, zoals dat je al eerder op de site was, of welke pagina's je bekeek.</p>
+  <p>Naast cookies kunnen sites ook andere technieken gebruiken (lokale opslag, sessie-storage). Voor de leesbaarheid noemen we alles hier "cookies".</p>
+
+  <h2><span class="num">02</span> Welke cookies gebruiken we?</h2>
+  <p>We onderscheiden twee categorieën: <strong>functionele cookies</strong> (geen toestemming nodig) en <strong>analytische cookies</strong> (alleen na jouw toestemming).</p>
+
+  <h3>Functionele cookies <span class="pill func">altijd actief</span></h3>
+  <table>
+    <thead>
+      <tr><th>Naam</th><th>Doel</th><th>Bewaartijd</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>intermill_consent</code></td><td>Onthouden of je akkoord ging met cookies of de banner sloot</td><td>12 maanden</td></tr>
+    </tbody>
+  </table>
+  <p>Deze cookie is strikt nodig voor de werking van de site (om je toestemmingskeuze te onthouden). Volgens de telecomwet hoeven we hier geen toestemming voor te vragen.</p>
+
+  <h3>Analytische cookies <span class="pill anal">alleen na toestemming</span></h3>
+  <p>Als je toestemming geeft, plaatsen we Google Analytics 4 (GA4) cookies om geanonimiseerd te meten hoe bezoekers de site gebruiken. Doel: pagina's verbeteren waar mensen vastlopen. We verwerken géén persoonsgegevens; we kijken naar geaggregeerde patronen.</p>
+  <table>
+    <thead>
+      <tr><th>Naam</th><th>Door</th><th>Doel</th><th>Bewaartijd</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>_ga</code></td><td>Google</td><td>Unieke bezoeker onderscheiden (geanonimiseerd)</td><td>2 jaar</td></tr>
+      <tr><td><code>_ga_XXXXXXXXXX</code></td><td>Google</td><td>Sessie-status bewaren</td><td>2 jaar</td></tr>
+    </tbody>
+  </table>
+  <p>We hebben in onze GA4-configuratie ingesteld:</p>
+  <ul>
+    <li><strong>IP-adressen geanonimiseerd</strong> (laatste octet onleesbaar gemaakt voordat verwerking start).</li>
+    <li><strong>Google Signals uitgeschakeld</strong>, geen koppeling met Google-accounts of advertentienetwerk.</li>
+    <li><strong>Data-bewaartermijn 14 maanden</strong> in GA4 zelf (daarna automatisch verwijderd).</li>
+    <li><strong>Verwerkersovereenkomst</strong> met Google ondertekend.</li>
+  </ul>
+
+  <h2><span class="num">03</span> Toestemming geven of intrekken</h2>
+  <p>Bij je eerste bezoek krijg je een cookie-melding waarin je akkoord gaat met analytische cookies of weigert. Je keuze wordt 12 maanden bewaard.</p>
+  <p><strong>Toestemming wijzigen?</strong> Klik op "Cookies beheren" onderaan elke pagina, of verwijder de <code>intermill_consent</code>-cookie uit je browser. Bij je volgende bezoek krijg je de banner opnieuw.</p>
+  <p><strong>Helemaal geen cookies van deze site?</strong> Dat kun je instellen in je browser:</p>
+  <ul>
+    <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Chrome</a></li>
+    <li><a href="https://support.mozilla.org/nl/kb/cookies-toestaan-weigeren" target="_blank" rel="noopener">Firefox</a></li>
+    <li><a href="https://support.apple.com/nl-nl/guide/safari/sfri11471/mac" target="_blank" rel="noopener">Safari</a></li>
+    <li><a href="https://support.microsoft.com/nl-nl/microsoft-edge/cookies-verwijderen-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener">Edge</a></li>
+  </ul>
+
+  <h2><span class="num">04</span> Wat veranderen cookies blokkeren?</h2>
+  <p>Geen functionele beperking, de site werkt volledig zonder analytische cookies. We zien dan alleen geen statistieken van jouw bezoek. Niks gaat kapot.</p>
+
+  <h2><span class="num">05</span> Doorgifte buiten EU</h2>
+  <p>Google Analytics is een dienst van Google LLC (Verenigde Staten). Google werkt onder het EU-US Data Privacy Framework. We hebben EU-datalocatie en IP-anonimisering ingesteld waar mogelijk om de doorgifte te beperken. Meer details staan in onze <a href="privacy.html">privacyverklaring</a>.</p>
+
+  <h2><span class="num">06</span> Wijzigingen</h2>
+  <p>We mogen deze cookieverklaring aanpassen wanneer we andere cookies gaan plaatsen of als wet- of regelgeving wijzigt. De datum bovenaan toont wanneer de laatste wijziging plaatsvond. Bij belangrijke wijzigingen vragen we opnieuw je toestemming.</p>
+
+  <h2><span class="num">07</span> Contact</h2>
+  <p>Vragen over cookies, of wil je weten welke gegevens we van je verwerken? Mail of bel:</p>
+  <ul>
+    <li><strong>E-mail:</strong> <a href="mailto:info@inter-mill.com">info@inter-mill.com</a></li>
+    <li><strong>Telefoon:</strong> <a href="tel:+31610906759">+31 (0)6 10 90 67 59</a></li>
+  </ul>
+
+  <div class="note">
+    <div class="lbl">★ Meer weten over hoe we met persoonsgegevens omgaan?</div>
+    <p>Lees onze <a href="privacy.html">privacyverklaring</a> voor het complete verhaal: welke gegevens we verwerken, waarom, hoe lang en wat jouw rechten zijn.</p>
+  </div>
+
+</article>
+
+<footer>
+  <div class="container">
+    <div>InterMill · Maarheeze, NL · <a href="cookies.html">Cookies</a> · <a href="privacy.html">Privacy</a></div>
+    <div><a href="index.html">← Naar de hoofdsite</a></div>
+  </div>
+</footer>
+
+<script src="consent.js" defer></script>
+</body>
+</html>
