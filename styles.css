@@ -115,10 +115,14 @@
     z-index:1000;
   }
   .nav-dropdown:hover .nav-menu,
-  .nav-dropdown:focus-within .nav-menu{
+  .nav-dropdown:focus-within .nav-menu,
+  .nav-dropdown.open .nav-menu{
     opacity:1;visibility:visible;transform:translateY(0);
     transition:opacity .15s, transform .15s, visibility 0s 0s;
   }
+  .nav-dropdown.open .nav-trigger,
+  .nav-dropdown.open .nav-trigger .caret{color:var(--ink)}
+  .nav-dropdown.open .nav-trigger .caret{transform:rotate(180deg)}
   .nav-menu a{
     display:block;padding:11px 20px;
     font-family:'Manrope',sans-serif;
