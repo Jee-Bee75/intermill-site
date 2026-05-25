@@ -87,7 +87,7 @@
       '<div class="imc-inner">' +
         '<div class="imc-text">' +
           '<strong>Cookies op deze site.</strong> We gebruiken functionele cookies (altijd) en, alleen met jouw toestemming, analytische cookies van Google Analytics om de site te verbeteren. Geen advertenties, geen profilering, geen verkoop van gegevens. ' +
-          '<a href="/cookies.html">Lees details</a>.' +
+          '<a href="/intermill-site/cookies.html">Lees details</a>.' +
         '</div>' +
         '<div class="imc-actions">' +
           '<button type="button" class="imc-btn imc-btn-decline" data-choice="decline">Alleen functioneel</button>' +
