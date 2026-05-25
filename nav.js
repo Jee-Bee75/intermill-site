@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  document.addEventListener('DOMContentLoaded', function () {
+  function init() {
     var dropdowns = document.querySelectorAll('.nav-dropdown');
     if (!dropdowns.length) return;
 
@@ -48,5 +48,11 @@
         }
       });
     });
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();
