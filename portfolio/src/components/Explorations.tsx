@@ -6,42 +6,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 gsap.registerPlugin(ScrollTrigger);
 
 const items = [
-  {
-    id: 1,
-    col: 0,
-    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500&q=80&fit=crop',
-    rotation: -3,
-  },
-  {
-    id: 2,
-    col: 1,
-    image: 'https://images.unsplash.com/photo-1604871000636-074fa5117945?w=500&q=80&fit=crop',
-    rotation: 2,
-  },
-  {
-    id: 3,
-    col: 0,
-    image: 'https://images.unsplash.com/photo-1635776062360-af423602aff3?w=500&q=80&fit=crop',
-    rotation: 1,
-  },
-  {
-    id: 4,
-    col: 1,
-    image: 'https://images.unsplash.com/photo-1618172193622-ae2d025f4032?w=500&q=80&fit=crop',
-    rotation: -2,
-  },
-  {
-    id: 5,
-    col: 0,
-    image: 'https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?w=500&q=80&fit=crop',
-    rotation: 3,
-  },
-  {
-    id: 6,
-    col: 1,
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80&fit=crop',
-    rotation: -1,
-  },
+  { id: 1, col: 0, gradient: 'linear-gradient(135deg, #89AACC 0%, #4E85BF 100%)', rotation: -3 },
+  { id: 2, col: 1, gradient: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)', rotation: 2 },
+  { id: 3, col: 0, gradient: 'linear-gradient(135deg, #2d1b4e 0%, #3d2a5e 100%)', rotation: 1 },
+  { id: 4, col: 1, gradient: 'linear-gradient(135deg, #0a1a0a 0%, #2a4a2a 100%)', rotation: -2 },
+  { id: 5, col: 0, gradient: 'linear-gradient(135deg, #1a0a0a 0%, #4a1a1a 100%)', rotation: 3 },
+  { id: 6, col: 1, gradient: 'linear-gradient(135deg, #1a1a1a 0%, #3a3a3a 100%)', rotation: -1 },
 ];
 
 export default function Explorations() {
@@ -188,12 +158,11 @@ export default function Explorations() {
                     transform: `rotate(${item.rotation}deg)`,
                     border: '1px solid hsl(0 0% 12%)',
                   }}
-                  onClick={() => setLightbox(item.image)}
+                  onClick={() => setLightbox(item.gradient)}
                 >
-                  <img
-                    src={item.image}
-                    alt=""
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  <div
+                    className="w-full h-full transition-transform duration-500 hover:scale-105"
+                    style={{ background: item.gradient }}
                   />
                 </div>
               ))}
@@ -209,12 +178,11 @@ export default function Explorations() {
                     transform: `rotate(${item.rotation}deg)`,
                     border: '1px solid hsl(0 0% 12%)',
                   }}
-                  onClick={() => setLightbox(item.image)}
+                  onClick={() => setLightbox(item.gradient)}
                 >
-                  <img
-                    src={item.image}
-                    alt=""
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  <div
+                    className="w-full h-full transition-transform duration-500 hover:scale-105"
+                    style={{ background: item.gradient }}
                   />
                 </div>
               ))}
@@ -234,10 +202,9 @@ export default function Explorations() {
             exit={{ opacity: 0 }}
             onClick={() => setLightbox(null)}
           >
-            <motion.img
-              src={lightbox}
-              alt=""
-              className="max-w-full max-h-full rounded-2xl object-contain"
+            <motion.div
+              className="w-80 h-80 rounded-2xl"
+              style={{ background: lightbox ?? undefined }}
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}

@@ -6,28 +6,28 @@ const projects = [
     title: 'Automotive Motion',
     span: 7,
     aspect: 'aspect-[16/10]',
-    image: 'https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?w=900&q=80&fit=crop',
+    gradient: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%)',
   },
   {
     id: 2,
     title: 'Urban Architecture',
     span: 5,
     aspect: 'aspect-[4/5]',
-    image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=700&q=80&fit=crop',
+    gradient: 'linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 50%, #2d2d2d 100%)',
   },
   {
     id: 3,
     title: 'Human Perspective',
     span: 5,
     aspect: 'aspect-[4/5]',
-    image: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=700&q=80&fit=crop',
+    gradient: 'linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 50%, #3d2a5e 100%)',
   },
   {
     id: 4,
     title: 'Brand Identity',
     span: 7,
     aspect: 'aspect-[16/10]',
-    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=900&q=80&fit=crop',
+    gradient: 'linear-gradient(135deg, #0a1a0a 0%, #1a2e1a 40%, #2a4a2a 100%)',
   },
 ];
 
@@ -112,11 +112,10 @@ export default function Works() {
               transition={{ duration: 0.8, ease: 'easeOut', delay: i * 0.1 }}
             >
               <div className={`relative w-full ${p.aspect} overflow-hidden`}>
-                {/* Image */}
-                <img
-                  src={p.image}
-                  alt={p.title}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                {/* Background */}
+                <div
+                  className="absolute inset-0 transition-transform duration-700 group-hover:scale-105"
+                  style={{ background: p.gradient }}
                 />
 
                 {/* Halftone overlay */}

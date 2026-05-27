@@ -4,28 +4,28 @@ const entries = [
   {
     id: 1,
     title: 'The Art of Minimal Design Systems',
-    image: 'https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=200&q=80&fit=crop',
+    gradient: 'linear-gradient(135deg, #89AACC, #4E85BF)',
     readTime: '5 min read',
     date: 'Mar 12, 2026',
   },
   {
     id: 2,
     title: 'Building for Performance Without Compromise',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=200&q=80&fit=crop',
+    gradient: 'linear-gradient(135deg, #2d2d2d, #4a4a4a)',
     readTime: '8 min read',
     date: 'Feb 28, 2026',
   },
   {
     id: 3,
     title: 'Motion Design: When Animation Serves Purpose',
-    image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=200&q=80&fit=crop',
+    gradient: 'linear-gradient(135deg, #1a1a2e, #0f3460)',
     readTime: '6 min read',
     date: 'Jan 15, 2026',
   },
   {
     id: 4,
     title: 'Founder Lessons from 5 Years of Building Products',
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=200&q=80&fit=crop',
+    gradient: 'linear-gradient(135deg, #1a2e1a, #2a4a2a)',
     readTime: '10 min read',
     date: 'Dec 4, 2025',
   },
@@ -117,13 +117,10 @@ export default function Journal() {
               }}
             >
               {/* Thumbnail */}
-              <div className="flex-shrink-0 w-12 h-12 rounded-full overflow-hidden">
-                <img
-                  src={entry.image}
-                  alt={entry.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              <div
+                className="flex-shrink-0 w-12 h-12 rounded-full"
+                style={{ background: entry.gradient }}
+              />
 
               {/* Text */}
               <div className="flex-1 min-w-0">
