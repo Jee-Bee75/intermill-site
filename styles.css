@@ -85,7 +85,17 @@
     bottom:4px;left:14px;right:14px;
     height:3px;background:var(--yellow);
   }
-  /* Dropdown menu (Assortiment) */
+  /* Dropdown menu (Assortiment) — <details>/<summary> for iOS-proof toggle */
+  details.nav-dropdown{position:relative;display:inline-block}
+  details.nav-dropdown > summary{list-style:none;cursor:pointer;outline:none}
+  details.nav-dropdown > summary::-webkit-details-marker{display:none}
+  details.nav-dropdown > summary::marker{content:''}
+  details.nav-dropdown[open] > .nav-trigger .caret{transform:rotate(180deg);color:var(--ink)}
+  details.nav-dropdown[open] > .nav-trigger{color:var(--ink)}
+  details.nav-dropdown[open] .nav-menu{
+    opacity:1;visibility:visible;transform:translateY(0);
+    transition:opacity .15s, transform .15s, visibility 0s 0s;
+  }
   .nav-dropdown{position:relative;display:inline-block}
   .nav-dropdown .nav-trigger{
     background:transparent;border:none;
