@@ -1488,6 +1488,53 @@
     background:var(--line);
     border:1px solid var(--line);
   }
+  /* Categorie-tiles op /assortiment/ overview — wit default, geel hover, BRW zwart */
+  .cat-grid{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:10px;
+  }
+  .cat-tile{
+    background:var(--white);
+    border:1px solid var(--line);
+    padding:18px 14px;
+    aspect-ratio:1;
+    display:flex;flex-direction:column;justify-content:space-between;
+    text-decoration:none;color:var(--ink);
+    transition:background .2s, border-color .2s, color .2s, transform .2s;
+  }
+  .cat-tile:hover{background:var(--yellow);border-color:var(--ink);transform:translateY(-2px)}
+  .cat-tile .cat-num{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--gray-500);
+    letter-spacing:0.12em;
+  }
+  .cat-tile:hover .cat-num{color:var(--ink)}
+  .cat-tile .cat-name{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-size:18px;
+    font-weight:800;
+    letter-spacing:-0.02em;
+    line-height:1.05;
+  }
+  .cat-tile.cat-tile-brw{
+    background:var(--ink);
+    color:var(--white);
+    border-color:var(--ink);
+  }
+  .cat-tile.cat-tile-brw .cat-num{color:var(--yellow)}
+  .cat-tile.cat-tile-brw:hover{background:var(--yellow);color:var(--ink);border-color:var(--ink)}
+  .cat-tile.cat-tile-brw:hover .cat-num{color:var(--ink)}
+  @media (max-width:900px){
+    .cat-grid{grid-template-columns:repeat(3,1fr)}
+    .cat-tile .cat-name{font-size:15px}
+  }
+  @media (max-width:600px){
+    .cat-grid{grid-template-columns:repeat(2,1fr)}
+    .cat-tile{padding:14px 12px}
+    .cat-tile .cat-name{font-size:14px}
+  }
   .mat{
     background:var(--white);
     padding:16px 14px;
