@@ -1638,10 +1638,29 @@
   /* Echt smal mobiel — voorkom horizontale overflow op iPhone/Android */
   @media (max-width:600px){
     .page-nav-inner{padding:10px 12px;gap:6px;flex-wrap:wrap}
-    .nav-tabs{order:3;flex-basis:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
-    .nav-tabs::-webkit-scrollbar{display:none}
-    .nav-tabs button, .nav-tabs a, .nav-dropdown .nav-trigger{padding:6px 8px;font-size:11px;white-space:nowrap}
-    .nav-tabs button.active::after, .nav-tabs a.active::after{bottom:0;left:8px;right:8px;height:2px}
+    /* nav-tabs wrap i.p.v. scroll → dropdown kan inline-expand zonder clipping */
+    .nav-tabs{order:3;flex-basis:100%;display:flex;flex-wrap:wrap;gap:2px;overflow:visible}
+    .nav-tabs > a, .nav-tabs > button{padding:8px 10px;font-size:12px;white-space:nowrap}
+    .nav-tabs button.active::after, .nav-tabs a.active::after{bottom:0;left:10px;right:10px;height:2px}
+    /* Dropdown: trigger volle breedte, menu inline-expand i.p.v. absolute */
+    .nav-dropdown{flex-basis:100%;display:block;border-top:1px solid var(--line);margin-top:2px;padding-top:2px}
+    .nav-dropdown .nav-trigger{padding:8px 10px;font-size:12px;width:100%;justify-content:space-between;display:flex}
+    .nav-menu{
+      position:static;
+      transform:none !important;
+      box-shadow:none;
+      border:none;
+      width:100%;
+      padding:0;
+      display:none;
+      opacity:1;
+      visibility:visible;
+      transition:none;
+      background:var(--off-white);
+      margin-top:4px;
+    }
+    .nav-dropdown.open .nav-menu{display:block}
+    .nav-menu a{padding:10px 18px;font-size:13px;border-left:3px solid var(--yellow)}
     .nav-cta{padding:9px 12px;font-size:11px;letter-spacing:0;white-space:nowrap}
     .nav-cta span{display:none}
     .brand img{height:28px}
