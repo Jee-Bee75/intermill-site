@@ -1488,6 +1488,34 @@
     background:var(--line);
     border:1px solid var(--line);
   }
+  /* Materialen als compact chips i.p.v. grote tegels (snijgereedschap subpage) */
+  .mat-chips{
+    display:flex;flex-wrap:wrap;gap:8px;
+    margin-top:24px;
+  }
+  .mat-chip{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'Manrope',sans-serif;
+    font-size:13px;
+    font-weight:600;
+    color:var(--ink);
+    background:var(--white);
+    border:1px solid var(--line);
+    padding:8px 14px;
+    line-height:1.2;
+    transition:background .15s, border-color .15s;
+  }
+  .mat-chip:hover{background:var(--yellow);border-color:var(--ink)}
+  .mat-chip-num{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    letter-spacing:0.08em;
+    color:var(--gray-500);
+    background:var(--off-white);
+    padding:2px 6px;
+    border-radius:2px;
+  }
+  .mat-chip:hover .mat-chip-num{background:var(--ink);color:var(--yellow)}
   /* Categorie-tiles op /assortiment/ overview — wit default, geel hover, BRW zwart */
   .cat-grid{
     display:grid;
