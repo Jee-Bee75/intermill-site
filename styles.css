@@ -246,6 +246,9 @@
   }
   .btn-wa:hover{background:#128C7E;border-color:#128C7E;color:#FFFFFF}
   .btn-wa svg{width:22px;height:22px;flex-shrink:0;display:block}
+  .btn-li{background:#0A66C2;border-color:#0A66C2;color:#fff;display:inline-flex;align-items:center;gap:8px}
+  .btn-li:hover{background:#004182;border-color:#004182;color:#fff}
+  .btn-li svg{flex-shrink:0}
   .btn .arrow{transition:transform .2s;font-weight:400;font-size:18px}
   .btn:hover .arrow{transform:translateX(4px)}
 
