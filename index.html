@@ -365,6 +365,17 @@
   const TOTAL   = 5000;
   let closed    = false;
 
+  /* ── CLOSE — gedefinieerd EERST zodat setTimeout het kan aanroepen ── */
+  function doClose(){
+    if(closed) return;
+    closed = true;
+    if(typeof rainTimer !== 'undefined') clearInterval(rainTimer);
+    el.classList.add('out');
+    setTimeout(() => { el.remove(); }, 950);
+    sessionStorage.setItem('im_done','1');
+  }
+  window.imClose = doClose;
+
   /* ── VERSPANING RAIN ──
      Tekens uit de verspaningswereld: diameters, parameters,
      eenheden, procesletters, InterMill-woorden              */
@@ -451,19 +462,10 @@
     barFill.style.width = '100%';
   }, 200);
 
-  setTimeout(() => imClose(), TOTAL);
+  setTimeout(doClose, TOTAL);
 
-  el.addEventListener('click', imClose);
-  document.addEventListener('keydown', e => { if(e.key === 'Escape') imClose(); });
-
-  window.imClose = function(){
-    if(closed) return;
-    closed = true;
-    clearInterval(rainTimer);
-    el.classList.add('out');
-    setTimeout(() => { el.style.display = 'none'; }, 900);
-    sessionStorage.setItem('im_done', '1');
-  };
+  el.addEventListener('click', doClose);
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') doClose(); });
 })();
 </script>
 <a class="skip-link" href="#main">Sla navigatie over</a>
