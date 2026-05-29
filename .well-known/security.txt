@@ -1,0 +1,5 @@
+Contact: mailto:info@inter-mill.com
+Expires: 2027-05-28T00:00:00.000Z
+Preferred-Languages: nl, en
+Canonical: https://inter-mill.com/.well-known/security.txt
+Policy: Meld kwetsbaarheden verantwoordelijk via e-mail. We reageren binnen 5 werkdagen.
