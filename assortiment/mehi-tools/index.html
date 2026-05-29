@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MEHI Tools via InterMill — Kotterspecials op maat uit Finland</title>
+<meta name="description" content="MEHI® kottergereedschap via InterMill: boring heads, roughing & finishing tools, back-face boring, houders en maatwerk. Fins vakmanschap, Benelux-levering.">
+<meta name="theme-color" content="#FFDD00">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="/favicon.ico" type="image/x-icon">
+<link rel="canonical" href="https://inter-mill.com/assortiment/mehi-tools/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="nl_BE">
+<meta property="og:site_name" content="InterMill">
+<meta property="og:title" content="MEHI Tools via InterMill — Kotterspecials op maat">
+<meta property="og:url" content="https://inter-mill.com/assortiment/mehi-tools/">
+<meta property="og:image" content="https://inter-mill.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+  --mehi-blue: #00B4D8;
+
+  .mehi-hero{
+    background:var(--ink);
+    padding:80px 0 72px;
+    border-bottom:1px solid rgba(255,255,255,0.07);
+    position:relative;
+    overflow:hidden;
+  }
+  .mehi-hero::before{
+    content:'';
+    position:absolute;inset:0;
+    background-image:radial-gradient(circle,rgba(0,180,216,0.06) 1px,transparent 1px);
+    background-size:36px 36px;
+    pointer-events:none;
+  }
+  .mehi-hero-inner{
+    position:relative;z-index:1;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+  }
+  .mehi-badge{
+    display:inline-flex;align-items:center;gap:10px;
+    background:rgba(0,180,216,0.10);
+    border:1px solid rgba(0,180,216,0.25);
+    padding:6px 14px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;letter-spacing:0.22em;text-transform:uppercase;
+    color:#00B4D8;
+    margin-bottom:24px;
+  }
+  .mehi-badge-dot{
+    width:6px;height:6px;border-radius:50%;
+    background:#00B4D8;
+    animation:mehi-pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes mehi-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.7)}}
+  .mehi-hero h1{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-size:clamp(36px,5vw,72px);
+    font-weight:700;letter-spacing:-0.03em;line-height:1.0;
+    color:var(--white);margin-bottom:20px;
+  }
+  .mehi-hero h1 em{color:#00B4D8;font-style:normal}
+  .mehi-hero .lede{color:var(--gray-400);font-size:clamp(15px,1.6vw,18px);max-width:52ch;margin-bottom:32px}
+  .mehi-hero-buttons{display:flex;gap:12px;flex-wrap:wrap}
+
+  .mehi-meta-panel{
+    background:rgba(0,180,216,0.05);
+    border:1px solid rgba(0,180,216,0.15);
+    padding:32px;
+  }
+  .mehi-meta-logo{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-size:26px;font-weight:700;letter-spacing:-0.02em;
+    color:var(--white);margin-bottom:4px;
+  }
+  .mehi-meta-sub{
+    font-size:12px;letter-spacing:0.2em;text-transform:uppercase;
+    color:var(--gray-500);margin-bottom:24px;
+  }
+  .mehi-meta-stats{
+    display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:28px;
+  }
+  .mehi-stat-val{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-size:32px;font-weight:700;letter-spacing:-0.03em;
+    color:#00B4D8;line-height:1;
+  }
+  .mehi-stat-label{
+    font-size:12px;letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--gray-500);margin-top:4px;
+  }
+  .mehi-meta-rule{height:1px;background:rgba(255,255,255,0.07);margin-bottom:20px;}
+  .mehi-meta-row{
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:13px;color:var(--gray-400);padding:8px 0;
+    border-bottom:1px solid rgba(255,255,255,0.05);
+  }
+  .mehi-meta-row:last-child{border-bottom:none}
+  .mehi-meta-row strong{color:var(--white);font-weight:500}
+
+  /* Products */
+  .mehi-products{
+    padding:80px 0;
+    background:var(--off-white);
+  }
+  .mehi-products-header{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:40px;align-items:end;margin-bottom:48px;
+  }
+  .mehi-products-header h2{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-size:clamp(28px,3.5vw,48px);font-weight:700;
+    letter-spacing:-0.02em;line-height:1.1;
+  }
+  .mehi-products-header p{color:var(--gray-600);font-size:16px;max-width:44ch}
+
+  .mehi-product-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:2px;
+  }
+  .mehi-product-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    padding:32px 28px;
+    display:flex;flex-direction:column;
+    text-decoration:none;color:inherit;
+    transition:all 0.25s ease;
+    position:relative;
+    overflow:hidden;
+    min-height:220px;
+  }
+  .mehi-product-card::after{
+    content:'';
+    position:absolute;bottom:0;left:0;right:0;
+    height:3px;background:#00B4D8;
+    transform:scaleX(0);transform-origin:left;
+    transition:transform 0.25s ease;
+  }
+  .mehi-product-card:hover{
+    background:var(--ink);color:var(--white);
+    transform:translateY(-2px);
+    box-shadow:0 12px 32px rgba(0,0,0,0.12);
+    z-index:1;
+  }
+  .mehi-product-card:hover::after{transform:scaleX(1)}
+  .mehi-product-num{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;letter-spacing:0.2em;text-transform:uppercase;
+    color:#00B4D8;margin-bottom:auto;padding-bottom:16px;
+  }
+  .mehi-product-card:hover .mehi-product-num{color:rgba(0,180,216,0.6)}
+  .mehi-product-name{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-size:20px;font-weight:700;letter-spacing:-0.01em;
+    line-height:1.2;margin-bottom:10px;
+  }
+  .mehi-product-desc{
+    font-size:13px;color:var(--gray-600);line-height:1.6;
+    margin-bottom:20px;flex:1;
+  }
+  .mehi-product-card:hover .mehi-product-desc{color:var(--gray-400)}
+  .mehi-product-link{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;letter-spacing:0.18em;text-transform:uppercase;
+    color:var(--ink);display:flex;align-items:center;gap:6px;font-weight:500;
+  }
+  .mehi-product-card:hover .mehi-product-link{color:#00B4D8}
+
+  /* USP strip */
+  .mehi-usp{
+    background:var(--ink);
+    border-top:1px solid rgba(255,255,255,0.07);
+    border-bottom:1px solid rgba(255,255,255,0.07);
+    padding:64px 0;
+  }
+  .mehi-usp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;}
+  .mehi-usp-item{
+    padding-left:20px;
+    border-left:2px solid rgba(0,180,216,0.2);
+  }
+  .mehi-usp-item:first-child{border-left-color:#00B4D8}
+  .mehi-usp-val{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-size:36px;font-weight:700;letter-spacing:-0.03em;
+    color:#00B4D8;line-height:1;margin-bottom:6px;
+  }
+  .mehi-usp-label{
+    font-size:13px;color:var(--gray-400);line-height:1.5;
+  }
+
+  @media(max-width:1100px){
+    .mehi-product-grid{grid-template-columns:repeat(2,1fr)}
+    .mehi-usp-grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media(max-width:900px){
+    .mehi-hero-inner,.mehi-products-header{grid-template-columns:1fr}
+    .mehi-product-grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media(max-width:580px){
+    .mehi-product-grid,.mehi-usp-grid{grid-template-columns:1fr}
+  }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Sla navigatie over</a>
+
+<nav class="page-nav">
+  <div class="page-nav-inner">
+    <a class="brand" href="/" aria-label="InterMill, naar home">
+      <picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="InterMill" width="888" height="324"></picture>
+    </a>
+    <div class="nav-tabs">
+      <a href="/">Home</a>
+      <a href="/over-ons/">Over ons</a>
+      <a href="/werkwijze/">Werkwijze</a>
+      <a href="/assortiment/" class="active" aria-current="page">Assortiment</a>
+      <a href="/kennisbank/">Kennisbank</a>
+      <a href="/contact/">Contact</a>
+    </div>
+    <a class="nav-cta" href="/plannen/">Plan sparringsessie <span style="font-size:18px">→</span></a>
+  </div>
+</nav>
+
+<main class="pages" id="main" tabindex="-1">
+
+  <!-- HERO -->
+  <section class="mehi-hero">
+    <div class="container">
+      <div class="mehi-hero-inner">
+        <div>
+          <div class="product-breadcrumb" style="margin-bottom:20px">
+            <a href="/assortiment/">ASSORTIMENT</a> &nbsp;/&nbsp; <span class="current">MEHI TOOLS</span>
+          </div>
+          <div class="mehi-badge">
+            <span class="mehi-badge-dot"></span>
+            Fins fabrikant · ISO 9001
+          </div>
+          <h1>Kotterspecials die <em>wél passen.</em></h1>
+          <p class="lede">MEHI® maakt kottergereedschap op maat: boring heads, roughing- en finishingtooling, back-face boring en houders voor de zwaarste verspaningsoperaties. InterMill levert en adviseert in de Benelux.</p>
+          <div class="mehi-hero-buttons">
+            <a class="btn" href="mailto:info@inter-mill.com?subject=Offerte%20%7C%20MEHI%20kottergereedschap&body=Hoi%20Johny%2C%0A%0AIk%20zoek%20MEHI-kottergereedschap%20voor%20de%20volgende%20toepassing%3A%0A%0ABoringsdiameter%3A%20%0AMateriaal%3A%20%0AMachine%2Fspindel%3A%20%0ANauwkeurigheid%3A%20%0ABedrijf%3A%20%0ATelefoon%3A%20%0A%0AGroet%2C">Vraag offerte aan <span class="arrow">→</span></a>
+            <a class="btn btn-outline-light" href="https://www.mehi.fi/mehi-english/" target="_blank" rel="noopener">Bekijk MEHI direct ↗</a>
+          </div>
+        </div>
+        <div class="mehi-meta-panel">
+          <div class="mehi-meta-logo">MEHI® Tools</div>
+          <div class="mehi-meta-sub">Mehi Oy — Suomussalmi, Finland · Est. 1973</div>
+          <div class="mehi-meta-stats">
+            <div>
+              <div class="mehi-stat-val">0,001</div>
+              <div class="mehi-stat-label">mm tolerantie</div>
+            </div>
+            <div>
+              <div class="mehi-stat-val">50+</div>
+              <div class="mehi-stat-label">jaar vakmanschap</div>
+            </div>
+            <div>
+              <div class="mehi-stat-val">4 wkn</div>
+              <div class="mehi-stat-label">levertijd specials</div>
+            </div>
+            <div>
+              <div class="mehi-stat-val">ISO</div>
+              <div class="mehi-stat-label">9001 gecertificeerd</div>
+            </div>
+          </div>
+          <div class="mehi-meta-rule"></div>
+          <div class="mehi-meta-row"><span>Type</span><strong>Maatwerk &amp; specials</strong></div>
+          <div class="mehi-meta-row"><span>Toepassingen</span><strong>CNC &amp; conventioneel</strong></div>
+          <div class="mehi-meta-row"><span>Bereik</span><strong>Tot Ø 2000 mm</strong></div>
+          <div class="mehi-meta-row"><span>Advies via InterMill</span><strong>Gratis, merk-onafhankelijk</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="mehi-products">
+    <div class="container">
+      <div class="mehi-products-header">
+        <div>
+          <div class="eyebrow" style="margin-bottom:14px">Productgroepen</div>
+          <h2>Elke borings&shy;toepassing, één fabrikant.</h2>
+        </div>
+        <p>Geen catalogusartikel dat net niet past — MEHI maakt het precies zoals jouw machine en toepassing het vragen. Johny regelt de offerte.</p>
+      </div>
+      <div class="mehi-product-grid">
+
+        <div class="mehi-product-card">
+          <div class="mehi-product-num">M–01 · Roughing</div>
+          <div class="mehi-product-name">Roughing tools</div>
+          <div class="mehi-product-desc">Grof kottergereedschap voor hoge materiaalafname in gietijzer, staal en legeringen. Ontworpen voor maximale stabiliteit bij onderbroken snedes en scheve vlakken.</div>
+          <div class="mehi-product-link">Offerte aanvragen →</div>
+        </div>
+
+        <div class="mehi-product-card">
+          <div class="mehi-product-num">M–02 · Finishing</div>
+          <div class="mehi-product-name">Finishing tools</div>
+          <div class="mehi-product-desc">Fijnkottergereedschap voor maattoleranties tot IT6. Passend voor motorblokken, hydrauliekblokken en precisie-machineonderdelen met oppervlaktewaarden tot Ra 0,4.</div>
+          <div class="mehi-product-link">Offerte aanvragen →</div>
+        </div>
+
+        <div class="mehi-product-card">
+          <div class="mehi-product-num">M–03 · Boring heads</div>
+          <div class="mehi-product-name">Kotterkoppen</div>
+          <div class="mehi-product-desc">Verstelbare en vaste kotterkoppen voor diameters tot Ø 2000 mm. Inclusief trillingsgedempte uitvoering voor grote uitsteeklengten en slanke bewerkingen.</div>
+          <div class="mehi-product-link">Offerte aanvragen →</div>
+        </div>
+
+        <div class="mehi-product-card">
+          <div class="mehi-product-num">M–04 · Back-face</div>
+          <div class="mehi-product-name">Back-face boring</div>
+          <div class="mehi-product-desc">Gereedschap voor tegenzijdig kotteren zonder de machine te verplaatsen. Ideaal voor flanscounterboren, afdichtingszittingen en moeilijk bereikbare doorlopen.</div>
+          <div class="mehi-product-link">Offerte aanvragen →</div>
+        </div>
+
+        <div class="mehi-product-card">
+          <div class="mehi-product-num">M–05 · Toolholders</div>
+          <div class="mehi-product-name">Gereedschaphouders</div>
+          <div class="mehi-product-desc">Houders voor alle gangbare spindelinterfaces (BT, HSK, ISO, Capto). Op maat voor lange overhangen met ingebouwde trillingsdemping waar standaard houders falen.</div>
+          <div class="mehi-product-link">Offerte aanvragen →</div>
+        </div>
+
+        <div class="mehi-product-card">
+          <div class="mehi-product-num">M–06 · Extensions</div>
+          <div class="mehi-product-name">Verlengstukken &amp; adapters</div>
+          <div class="mehi-product-desc">Starre en modulaire verlengstukken voor diep kotteren in scheepsdieselmotoren, perslichamen en grote machineframes. Gebalanceerd voor hogere toerentallen.</div>
+          <div class="mehi-product-link">Offerte aanvragen →</div>
+        </div>
+
+        <div class="mehi-product-card">
+          <div class="mehi-product-num">M–07 · Fixturing</div>
+          <div class="mehi-product-name">Opspan- &amp; fixturingoplossingen</div>
+          <div class="mehi-product-desc">Mechanische, hydraulische en pneumatische opspansystemen op maat voor complexe werkstukken. Inclusief precisie-positionering voor serieproductie.</div>
+          <div class="mehi-product-link">Offerte aanvragen →</div>
+        </div>
+
+        <div class="mehi-product-card">
+          <div class="mehi-product-num">M–08 · Gauges</div>
+          <div class="mehi-product-name">Meetinstrumenten &amp; kalibers</div>
+          <div class="mehi-product-desc">Plug- en ringkalibers, meetdoornen en speciale maatinstrumenten afgestemd op de MEHI-gereedschappen. Toleranties conform ISO 286.</div>
+          <div class="mehi-product-link">Offerte aanvragen →</div>
+        </div>
+
+        <div class="mehi-product-card">
+          <div class="mehi-product-num">M–09 · Nozzles</div>
+          <div class="mehi-product-name">Hardmetalen nozzles</div>
+          <div class="mehi-product-desc">CBN- en HM-nozzles voor waterjet- en koelsmeermiddeltoevoer onder hoge druk. Uitzonderlijke slijtvastheid bij agressieve koelmiddelen en hoge drukken tot 400 bar.</div>
+          <div class="mehi-product-link">Offerte aanvragen →</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- USP STRIP -->
+  <section class="mehi-usp">
+    <div class="container">
+      <div class="eyebrow on-dark" style="margin-bottom:40px">Waarom MEHI via InterMill</div>
+      <div class="mehi-usp-grid">
+        <div class="mehi-usp-item">
+          <div class="mehi-usp-val">28j</div>
+          <div class="mehi-usp-label">Verspaningservaring bij InterMill — wij weten welke MEHI-spec bij jouw toepassing past</div>
+        </div>
+        <div class="mehi-usp-item">
+          <div class="mehi-usp-val">0,001</div>
+          <div class="mehi-usp-label">mm tolerantie haalbaar — MEHI maakt wat standaard gereedschap niet kan</div>
+        </div>
+        <div class="mehi-usp-item">
+          <div class="mehi-usp-val">1×</div>
+          <div class="mehi-usp-label">Aanspreekpunt — offerte, levering en nazorg via InterMill, geen Fins taalprobleem</div>
+        </div>
+        <div class="mehi-usp-item">
+          <div class="mehi-usp-val">4wkn</div>
+          <div class="mehi-usp-label">Levertijd specials — MEHI produceert snel, wij houden je op de hoogte</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="container-narrow">
+      <div class="eyebrow on-dark" style="justify-content:center;margin-bottom:24px">Klaar voor een offerte?</div>
+      <h2 class="display">Stuur je tekening.<br><em>Wij regelen de rest.</em></h2>
+      <p class="lede">Boringsdiameter, materiaal, machine en nauwkeurigheid — meer hebben we niet nodig. Johny stuurt binnen 1 werkdag een offerte terug.</p>
+      <div class="final-cta-buttons">
+        <a class="btn" href="mailto:info@inter-mill.com?subject=MEHI%20Special%20%7C%20Offerte&body=Hoi%20Johny%2C%0A%0AIk%20zoek%20een%20MEHI-special%3A%0A%0AProductgroep%3A%20%0ABoringsdiameter%3A%20%0AMateriaal%20werkstuk%3A%20%0AMachine%20%2F%20spindel%3A%20%0ATolerantie%3A%20%0ASeriegrote%3A%20%0ABedrijf%3A%20%0ATelefoon%3A%20%0A%0AGroet%2C">Offerte aanvragen <span class="arrow">→</span></a>
+        <a class="btn btn-outline-light" href="https://www.mehi.fi/mehi-english/" target="_blank" rel="noopener">MEHI direct bekijken ↗</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><picture><source srcset="/logo-light.webp" type="image/webp"><img src="/logo-light.png" alt="InterMill" width="888" height="324" loading="lazy" decoding="async"></picture></div>
+        <p style="opacity:0.7;font-size:14px;max-width:36ch">VerspaningsAdvies &amp; -Gereedschap. Officieel partner voor MEHI® kottergereedschap in de Benelux.</p>
+      </div>
+      <div><h4>Navigatie</h4><ul><li><a href="/over-ons/">Over ons</a></li><li><a href="/werkwijze/">Werkwijze</a></li><li><a href="/assortiment/">Assortiment</a></li><li><a href="/kennisbank/">Kennisbank</a></li><li><a href="/contact/">Contact</a></li></ul></div>
+      <div><h4>MEHI Producten</h4><ul>
+        <li><a href="https://www.mehi.fi/mehi-english/" target="_blank" rel="noopener">Roughing tools ↗</a></li>
+        <li><a href="https://www.mehi.fi/mehi-english/" target="_blank" rel="noopener">Finishing tools ↗</a></li>
+        <li><a href="https://www.mehi.fi/mehi-english/" target="_blank" rel="noopener">Boring heads ↗</a></li>
+        <li><a href="https://www.mehi.fi/mehi-english/" target="_blank" rel="noopener">Back-face boring ↗</a></li>
+      </ul></div>
+      <div><h4>Contact</h4><ul><li><a href="tel:+31610906759">+31 (0)6 10 90 67 59</a></li><li><a href="mailto:info@inter-mill.com">info@inter-mill.com</a></li><li><a href="https://www.google.com/maps/search/?api=1&query=Rondven+57+Maarheeze" target="_blank" rel="noopener">Rondven 57, Maarheeze</a></li><li><a href="https://www.linkedin.com/in/johny-govers/" target="_blank" rel="noopener">LinkedIn →</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><div>©2026 INTERMILL · <a href="/privacy.html">Privacy</a> · <a href="/cookies.html">Cookies</a></div><div>VERSPANER FIRST</div></div>
+  </div>
+</footer>
+
+<script src="/nav.js" defer></script>
+<script src="/animations.js" defer></script>
+</body>
+</html>

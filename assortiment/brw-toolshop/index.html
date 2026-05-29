@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BRW ToolShop via InterMill — 200.000+ artikelen, één leverancier</title>
+<meta name="description" content="Het volledige Brütsch-Rüegger assortiment via InterMill. Meetgereedschap, productietechnologie, assemblagehulpmiddelen en meer. Offerte aanvragen of direct doorlinken.">
+<meta name="theme-color" content="#FFDD00">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="/favicon.ico" type="image/x-icon">
+<link rel="canonical" href="https://inter-mill.com/assortiment/brw-toolshop/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="nl_BE">
+<meta property="og:site_name" content="InterMill">
+<meta property="og:title" content="BRW ToolShop via InterMill — 200.000+ artikelen">
+<meta property="og:url" content="https://inter-mill.com/assortiment/brw-toolshop/">
+<meta property="og:image" content="https://inter-mill.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+  /* ── BRW-TOOLSHOP PAGE STYLES ─────────────────────────────────── */
+  .brw-hero{
+    background:var(--ink);
+    padding:80px 0 72px;
+    border-bottom:1px solid rgba(255,255,255,0.07);
+    position:relative;
+    overflow:hidden;
+  }
+  .brw-hero::before{
+    content:'';
+    position:absolute;inset:0;
+    background-image:radial-gradient(circle,rgba(255,221,0,0.05) 1px,transparent 1px);
+    background-size:36px 36px;
+    pointer-events:none;
+  }
+  .brw-hero-inner{
+    position:relative;z-index:1;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+  }
+  .brw-badge{
+    display:inline-flex;align-items:center;gap:10px;
+    background:rgba(255,221,0,0.08);
+    border:1px solid rgba(255,221,0,0.18);
+    padding:6px 14px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;letter-spacing:0.22em;text-transform:uppercase;
+    color:var(--yellow);
+    margin-bottom:24px;
+  }
+  .brw-badge-dot{
+    width:6px;height:6px;border-radius:50%;
+    background:var(--yellow);
+    animation:brw-pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes brw-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.7)}}
+  .brw-hero h1{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-size:clamp(36px,5vw,72px);
+    font-weight:700;letter-spacing:-0.03em;line-height:1.0;
+    color:var(--white);margin-bottom:20px;
+  }
+  .brw-hero h1 em{color:var(--yellow);font-style:normal}
+  .brw-hero .lede{color:var(--gray-400);font-size:clamp(15px,1.6vw,18px);max-width:52ch;margin-bottom:32px}
+  .brw-hero-buttons{display:flex;gap:12px;flex-wrap:wrap}
+
+  .brw-meta-panel{
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    padding:32px;
+  }
+  .brw-meta-logo{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-size:26px;font-weight:700;letter-spacing:-0.02em;
+    color:var(--white);margin-bottom:4px;
+  }
+  .brw-meta-sub{
+    font-size:12px;letter-spacing:0.2em;text-transform:uppercase;
+    color:var(--gray-500);margin-bottom:24px;
+  }
+  .brw-meta-stats{
+    display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:28px;
+  }
+  .brw-stat-item{}
+  .brw-stat-val{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-size:32px;font-weight:700;letter-spacing:-0.03em;
+    color:var(--yellow);line-height:1;
+  }
+  .brw-stat-label{
+    font-size:12px;letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--gray-500);margin-top:4px;
+  }
+  .brw-meta-rule{
+    height:1px;background:rgba(255,255,255,0.07);margin-bottom:20px;
+  }
+  .brw-meta-row{
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:13px;color:var(--gray-400);padding:8px 0;
+    border-bottom:1px solid rgba(255,255,255,0.05);
+  }
+  .brw-meta-row:last-child{border-bottom:none}
+  .brw-meta-row strong{color:var(--white);font-weight:500}
+
+  /* Category section */
+  .brw-cats{
+    padding:80px 0;
+    background:var(--off-white);
+  }
+  .brw-cats-header{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:40px;align-items:end;margin-bottom:48px;
+  }
+  .brw-cats-header h2{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-size:clamp(28px,3.5vw,48px);font-weight:700;
+    letter-spacing:-0.02em;line-height:1.1;
+  }
+  .brw-cats-header p{color:var(--gray-600);font-size:16px;max-width:44ch}
+
+  .brw-cat-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:2px;
+  }
+  .brw-cat-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    padding:28px 24px;
+    display:flex;flex-direction:column;
+    text-decoration:none;color:inherit;
+    transition:all 0.25s ease;
+    position:relative;
+    overflow:hidden;
+    min-height:200px;
+  }
+  .brw-cat-card::after{
+    content:'';
+    position:absolute;bottom:0;left:0;right:0;
+    height:3px;background:var(--yellow);
+    transform:scaleX(0);transform-origin:left;
+    transition:transform 0.25s ease;
+  }
+  .brw-cat-card:hover{
+    background:var(--ink);color:var(--white);
+    transform:translateY(-2px);
+    box-shadow:0 12px 32px rgba(0,0,0,0.12);
+    z-index:1;
+  }
+  .brw-cat-card:hover::after{transform:scaleX(1)}
+  .brw-cat-num{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;letter-spacing:0.2em;text-transform:uppercase;
+    color:var(--gray-500);margin-bottom:auto;
+    padding-bottom:16px;
+  }
+  .brw-cat-card:hover .brw-cat-num{color:rgba(255,221,0,0.5)}
+  .brw-cat-name{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-size:18px;font-weight:700;letter-spacing:-0.01em;
+    line-height:1.2;margin-bottom:8px;
+  }
+  .brw-cat-desc{
+    font-size:13px;color:var(--gray-600);line-height:1.5;
+    margin-bottom:20px;flex:1;
+  }
+  .brw-cat-card:hover .brw-cat-desc{color:var(--gray-400)}
+  .brw-cat-link{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;letter-spacing:0.18em;text-transform:uppercase;
+    color:var(--ink);display:flex;align-items:center;gap:6px;
+    font-weight:500;
+  }
+  .brw-cat-card:hover .brw-cat-link{color:var(--yellow)}
+
+  /* How it works strip */
+  .brw-how{
+    background:var(--ink);
+    border-top:1px solid rgba(255,255,255,0.07);
+    border-bottom:1px solid rgba(255,255,255,0.07);
+    padding:64px 0;
+  }
+  .brw-how-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:40px;
+  }
+  .brw-how-step{padding-left:24px;border-left:2px solid rgba(255,221,0,0.25)}
+  .brw-how-step:first-child{border-left-color:var(--yellow)}
+  .brw-how-num{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;letter-spacing:0.2em;text-transform:uppercase;
+    color:var(--yellow);margin-bottom:12px;
+  }
+  .brw-how-step h3{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-size:20px;font-weight:700;letter-spacing:-0.01em;
+    color:var(--white);margin-bottom:10px;
+  }
+  .brw-how-step p{font-size:14px;color:var(--gray-400);line-height:1.6}
+
+  @media(max-width:1100px){
+    .brw-cat-grid{grid-template-columns:repeat(3,1fr)}
+  }
+  @media(max-width:900px){
+    .brw-hero-inner,.brw-cats-header{grid-template-columns:1fr}
+    .brw-cat-grid{grid-template-columns:repeat(2,1fr)}
+    .brw-how-grid{grid-template-columns:1fr;gap:28px}
+  }
+  @media(max-width:580px){
+    .brw-cat-grid{grid-template-columns:1fr}
+  }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Sla navigatie over</a>
+
+<nav class="page-nav">
+  <div class="page-nav-inner">
+    <a class="brand" href="/" aria-label="InterMill, naar home">
+      <picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="InterMill" width="888" height="324"></picture>
+    </a>
+    <div class="nav-tabs">
+      <a href="/">Home</a>
+      <a href="/over-ons/">Over ons</a>
+      <a href="/werkwijze/">Werkwijze</a>
+      <a href="/assortiment/" class="active" aria-current="page">Assortiment</a>
+      <a href="/kennisbank/">Kennisbank</a>
+      <a href="/contact/">Contact</a>
+    </div>
+    <a class="nav-cta" href="/plannen/">Plan sparringsessie <span style="font-size:18px">→</span></a>
+  </div>
+</nav>
+
+<main class="pages" id="main" tabindex="-1">
+
+  <!-- HERO -->
+  <section class="brw-hero">
+    <div class="container">
+      <div class="brw-hero-inner">
+        <div>
+          <div class="product-breadcrumb" style="margin-bottom:20px">
+            <a href="/assortiment/">ASSORTIMENT</a> &nbsp;/&nbsp; <span class="current">BRW TOOLSHOP</span>
+          </div>
+          <div class="brw-badge">
+            <span class="brw-badge-dot"></span>
+            Officieel partnerschap
+          </div>
+          <h1>Heel het <em>BRW-assortiment.</em><br>Eén factuur.</h1>
+          <p class="lede">200.000+ artikelen van Brütsch-Rüegger Tools beschikbaar via InterMill. Merk-onafhankelijk advies welke artikelen voor jouw toepassing werken — daarna geregeld.</p>
+          <div class="brw-hero-buttons">
+            <a class="btn" href="mailto:info@inter-mill.com?subject=Offerte%20%7C%20BRW-assortiment&body=Hoi%20Johny%2C%0A%0AIk%20zoek%20het%20volgende%20uit%20het%20BRW-assortiment%3A%0A%0ACategorie%3A%20%0AArtikel%2Fomschrijving%3A%20%0AAantal%3A%20%0ABedrijf%3A%20%0ATelefoon%3A%20%0A%0AGroet%2C">Vraag offerte aan <span class="arrow">→</span></a>
+            <a class="btn btn-outline-light" href="https://www.brw.ch/en-CH" target="_blank" rel="noopener">Bekijk BRW direct ↗</a>
+          </div>
+        </div>
+        <div class="brw-meta-panel">
+          <div class="brw-meta-logo">Brütsch-Rüegger</div>
+          <div class="brw-meta-sub">Tools — Zürich, Zwitserland · Est. 1926</div>
+          <div class="brw-meta-stats">
+            <div class="brw-stat-item">
+              <div class="brw-stat-val">200K+</div>
+              <div class="brw-stat-label">Artikelen</div>
+            </div>
+            <div class="brw-stat-item">
+              <div class="brw-stat-val">12</div>
+              <div class="brw-stat-label">Categorieën</div>
+            </div>
+            <div class="brw-stat-item">
+              <div class="brw-stat-val">24u</div>
+              <div class="brw-stat-label">Levering Benelux</div>
+            </div>
+            <div class="brw-stat-item">
+              <div class="brw-stat-val">1×</div>
+              <div class="brw-stat-label">Factuur via InterMill</div>
+            </div>
+          </div>
+          <div class="brw-meta-rule"></div>
+          <div class="brw-meta-row"><span>Advies</span><strong>Gratis, merk-onafhankelijk</strong></div>
+          <div class="brw-meta-row"><span>Bestelling</span><strong>Via InterMill of direct bij BRW</strong></div>
+          <div class="brw-meta-row"><span>Kalibratie</span><strong>ISO 17025 op aanvraag</strong></div>
+          <div class="brw-meta-row"><span>Specials</span><strong>Offerte binnen 1 werkdag</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="brw-cats">
+    <div class="container">
+      <div class="brw-cats-header">
+        <div>
+          <div class="eyebrow" style="margin-bottom:14px">Categorieën</div>
+          <h2>Wat je zoekt, hebben we.</h2>
+        </div>
+        <p>Klik door naar de categorie op de BRW-site, of stuur direct een offerteverzoek via InterMill. Johny regelt het.</p>
+      </div>
+      <div class="brw-cat-grid">
+
+        <a class="brw-cat-card" href="https://www.brw.ch/en-CH/Measurement-technology/" target="_blank" rel="noopener">
+          <div class="brw-cat-num">B–01 · Meetgereedschap</div>
+          <div class="brw-cat-name">Meetgereedschap &amp; kalibratie</div>
+          <div class="brw-cat-desc">Handmeten, 3D-tasten, contour- en oppervlaktemeting. Van schuifmaat tot coördinaten-meetmachine.</div>
+          <div class="brw-cat-link">Bekijk categorie ↗</div>
+        </a>
+
+        <a class="brw-cat-card" href="https://www.brw.ch/en-CH/Production-technology/" target="_blank" rel="noopener">
+          <div class="brw-cat-num">B–02 · Productie</div>
+          <div class="brw-cat-name">Productietechnologie</div>
+          <div class="brw-cat-desc">Snijgereedschap, boren, frezen en draadsnijden voor alle gangbare materialen en machines.</div>
+          <div class="brw-cat-link">Bekijk categorie ↗</div>
+        </a>
+
+        <a class="brw-cat-card" href="https://www.brw.ch/en-CH/Swiss-turning-and-micromachining/" target="_blank" rel="noopener">
+          <div class="brw-cat-num">B–03 · Precisie</div>
+          <div class="brw-cat-name">Swiss draaien &amp; microverspaning</div>
+          <div class="brw-cat-desc">Gespecialiseerd gereedschap voor Zwitserse precisie-draaibanken en microbewerkingen onder Ø 1 mm.</div>
+          <div class="brw-cat-link">Bekijk categorie ↗</div>
+        </a>
+
+        <a class="brw-cat-card" href="https://www.brw.ch/en-CH/Assembly-technology/" target="_blank" rel="noopener">
+          <div class="brw-cat-num">B–04 · Assemblage</div>
+          <div class="brw-cat-name">Assemblagetechnologie</div>
+          <div class="brw-cat-desc">Schroefgereedschap, koppelsleutels, persgereedschap, montagehulpmiddelen en bevestigingstechniek.</div>
+          <div class="brw-cat-link">Bekijk categorie ↗</div>
+        </a>
+
+        <a class="brw-cat-card" href="https://www.brw.ch/en-CH/Grinding-and-cutting-technology/" target="_blank" rel="noopener">
+          <div class="brw-cat-num">B–05 · Slijpen</div>
+          <div class="brw-cat-name">Slijp- &amp; snijgereedschap</div>
+          <div class="brw-cat-desc">Slijpschijven, afbraamgereedschap, vijlen en polijstmiddelen voor metaal, kunststof en composiet.</div>
+          <div class="brw-cat-link">Bekijk categorie ↗</div>
+        </a>
+
+        <a class="brw-cat-card" href="https://www.brw.ch/en-CH/Chemical-technical-products/" target="_blank" rel="noopener">
+          <div class="brw-cat-num">B–06 · Chemisch</div>
+          <div class="brw-cat-name">Chemisch-technische producten</div>
+          <div class="brw-cat-desc">Koelsmeermiddelen, reinigingsmiddelen, corrosiebescherming, lijmen en afdichtingsmiddelen.</div>
+          <div class="brw-cat-link">Bekijk categorie ↗</div>
+        </a>
+
+        <a class="brw-cat-card" href="https://www.brw.ch/en-CH/Shop-equipment/" target="_blank" rel="noopener">
+          <div class="brw-cat-num">B–07 · Werkplaats</div>
+          <div class="brw-cat-name">Werkplaatsinrichting &amp; opslag</div>
+          <div class="brw-cat-desc">Gereedschapswagens, werkbanken, opbergsystemen en magazijninrichting voor de productiewerkplaats.</div>
+          <div class="brw-cat-link">Bekijk categorie ↗</div>
+        </a>
+
+        <a class="brw-cat-card" href="https://www.brw.ch/en-CH/Joining-technique/" target="_blank" rel="noopener">
+          <div class="brw-cat-num">B–08 · Verbindingstechniek</div>
+          <div class="brw-cat-name">Verbindingstechniek</div>
+          <div class="brw-cat-desc">Bouten, moeren, ringen en overige normonderdelen in alle gangbare maten en materialen.</div>
+          <div class="brw-cat-link">Bekijk categorie ↗</div>
+        </a>
+
+        <a class="brw-cat-card" href="https://www.brw.ch/en-CH/Standard-parts/" target="_blank" rel="noopener">
+          <div class="brw-cat-num">B–09 · Normonderdelen</div>
+          <div class="brw-cat-name">Standaardonderdelen</div>
+          <div class="brw-cat-desc">Normaliën, passingstukken, assen, veren en cilinderpennen voor constructie en machinebouw.</div>
+          <div class="brw-cat-link">Bekijk categorie ↗</div>
+        </a>
+
+        <a class="brw-cat-card" href="https://www.brw.ch/en-CH/Personal-protective-equipment/" target="_blank" rel="noopener">
+          <div class="brw-cat-num">B–10 · Veiligheid</div>
+          <div class="brw-cat-name">Persoonlijke beschermingsmiddelen</div>
+          <div class="brw-cat-desc">Veiligheidsbrillen, gehoorbescherming, handschoenen en overige PBM voor de verspaningswerkplaats.</div>
+          <div class="brw-cat-link">Bekijk categorie ↗</div>
+        </a>
+
+        <a class="brw-cat-card" href="https://www.brw.ch/en-CH/Compressed-air-and-pneumatics/" target="_blank" rel="noopener">
+          <div class="brw-cat-num">B–11 · Pneumatiek</div>
+          <div class="brw-cat-name">Perslucht &amp; pneumatiek</div>
+          <div class="brw-cat-desc">Persluchtgereedschap, koppelingen, slangen en regelapparatuur voor pneumatische toepassingen.</div>
+          <div class="brw-cat-link">Bekijk categorie ↗</div>
+        </a>
+
+        <a class="brw-cat-card" href="https://www.brw.ch/en-CH/Watchmaking-tools/" target="_blank" rel="noopener">
+          <div class="brw-cat-num">B–12 · Horlogerie</div>
+          <div class="brw-cat-name">Fijnmechanica &amp; horlogerie</div>
+          <div class="brw-cat-desc">Gespecialiseerd gereedschap voor horlogerie, optiek en fijnmechanische precisie-assemblage.</div>
+          <div class="brw-cat-link">Bekijk categorie ↗</div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="brw-how">
+    <div class="container">
+      <div class="eyebrow on-dark" style="margin-bottom:40px">Hoe werkt het</div>
+      <div class="brw-how-grid">
+        <div class="brw-how-step">
+          <div class="brw-how-num">01 / Advies</div>
+          <h3>Jij belt, wij denken mee</h3>
+          <p>Weet je niet precies wat je zoekt? Stuur je toepassing door — Johny adviseert merk-onafhankelijk welk BRW-artikel het beste past bij jouw machine, materiaal en seriegrootte.</p>
+        </div>
+        <div class="brw-how-step">
+          <div class="brw-how-num">02 / Bestelling</div>
+          <h3>Eén offerte, één order</h3>
+          <p>Je plaatst de bestelling via InterMill of verwijst door naar de BRW ToolShop. In beide gevallen één aanspreekpunt, één inkooporder en één factuur — ook als je meerdere categorieën combineert.</p>
+        </div>
+        <div class="brw-how-step">
+          <div class="brw-how-num">03 / Levering</div>
+          <h3>Morgen op de mat</h3>
+          <p>Standaard catalogusartikelen worden 24u geleverd binnen de Benelux. Specials en maatwerk worden vooraf geoffreerd met een concrete levertijd.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="container-narrow">
+      <div class="eyebrow on-dark" style="justify-content:center;margin-bottom:24px">Niet gevonden wat je zoekt?</div>
+      <h2 class="display">Vraag het <em>direct aan.</em></h2>
+      <p class="lede">Stuur het artikelnummer, de omschrijving of gewoon een foto van wat je nodig hebt. Johny regelt de rest.</p>
+      <div class="final-cta-buttons">
+        <a class="btn" href="mailto:info@inter-mill.com?subject=BRW%20Assortiment%20%7C%20Offerte&body=Hoi%20Johny%2C%0A%0AIk%20zoek%20het%20volgende%20via%20BRW%3A%0A%0AArtikel%2Fnr.%3A%20%0ACategorie%3A%20%0AToepassing%3A%20%0AHoeveelheid%3A%20%0ABedrijf%3A%20%0ATelefoon%3A%20%0A%0AGroet%2C">Offerte aanvragen <span class="arrow">→</span></a>
+        <a class="btn btn-outline-light" href="https://www.brw.ch/en-CH" target="_blank" rel="noopener">BRW direct bekijken ↗</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><picture><source srcset="/logo-light.webp" type="image/webp"><img src="/logo-light.png" alt="InterMill" width="888" height="324" loading="lazy" decoding="async"></picture></div>
+        <p style="opacity:0.7;font-size:14px;max-width:36ch">VerspaningsAdvies &amp; -Gereedschap. Officieel partner voor het volledige BRW-assortiment in de Benelux.</p>
+      </div>
+      <div><h4>Navigatie</h4><ul><li><a href="/over-ons/">Over ons</a></li><li><a href="/werkwijze/">Werkwijze</a></li><li><a href="/assortiment/">Assortiment</a></li><li><a href="/kennisbank/">Kennisbank</a></li><li><a href="/contact/">Contact</a></li></ul></div>
+      <div><h4>BRW Categorieën</h4><ul>
+        <li><a href="https://www.brw.ch/en-CH/Measurement-technology/" target="_blank" rel="noopener">Meetgereedschap ↗</a></li>
+        <li><a href="https://www.brw.ch/en-CH/Production-technology/" target="_blank" rel="noopener">Productietechnologie ↗</a></li>
+        <li><a href="https://www.brw.ch/en-CH/Assembly-technology/" target="_blank" rel="noopener">Assemblagetechnologie ↗</a></li>
+        <li><a href="https://www.brw.ch/en-CH/Shop-equipment/" target="_blank" rel="noopener">Werkplaatsinrichting ↗</a></li>
+      </ul></div>
+      <div><h4>Contact</h4><ul><li><a href="tel:+31610906759">+31 (0)6 10 90 67 59</a></li><li><a href="mailto:info@inter-mill.com">info@inter-mill.com</a></li><li><a href="https://www.google.com/maps/search/?api=1&query=Rondven+57+Maarheeze" target="_blank" rel="noopener">Rondven 57, Maarheeze</a></li><li><a href="https://www.linkedin.com/in/johny-govers/" target="_blank" rel="noopener">LinkedIn →</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><div>©2026 INTERMILL · <a href="/privacy.html">Privacy</a> · <a href="/cookies.html">Cookies</a></div><div>VERSPANER FIRST</div></div>
+  </div>
+</footer>
+
+<script src="/nav.js" defer></script>
+<script src="/animations.js" defer></script>
+</body>
+</html>
