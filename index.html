@@ -172,6 +172,145 @@
 </script>
 </head>
 <body>
+
+<!-- ═══════════════════════════════════════════════════
+     INTERMILL INTRO — Matrix-stijl, geel/wit
+     Verschijnt eenmalig per sessie (sessionStorage)
+═══════════════════════════════════════════════════ -->
+<div id="im-intro" aria-hidden="true" style="
+  position:fixed;inset:0;z-index:9999;
+  background:#0a0a0a;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  overflow:hidden;
+  transition:opacity .6s ease;
+">
+  <canvas id="im-matrix" style="position:absolute;inset:0;width:100%;height:100%;opacity:0.35"></canvas>
+  <div id="im-words" style="
+    position:relative;z-index:2;
+    display:flex;flex-direction:column;align-items:center;gap:12px;
+    text-align:center;
+  "></div>
+  <div id="im-skip" style="
+    position:absolute;bottom:32px;right:36px;
+    color:rgba(255,221,0,0.4);
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;letter-spacing:.15em;text-transform:uppercase;
+    cursor:pointer;user-select:none;
+    transition:color .2s;
+  " onclick="skipIntro()">skip →</div>
+</div>
+
+<style>
+  #im-intro{font-family:'Bricolage Grotesque','Arial Black',sans-serif}
+  .im-word{
+    font-size:clamp(52px,12vw,120px);
+    font-weight:900;
+    letter-spacing:-0.03em;
+    line-height:1;
+    opacity:0;
+    transform:translateY(24px) scale(.96);
+    transition:opacity .5s ease, transform .5s ease;
+    color:#fff;
+  }
+  .im-word.show{opacity:1;transform:translateY(0) scale(1)}
+  .im-word.yellow{color:#FFDD00}
+  .im-label{
+    font-size:clamp(11px,1.5vw,14px);
+    letter-spacing:.35em;
+    text-transform:uppercase;
+    color:rgba(255,221,0,0.5);
+    opacity:0;
+    margin-top:4px;
+    transition:opacity .4s ease .2s;
+  }
+  .im-label.show{opacity:1}
+  #im-skip:hover{color:rgba(255,221,0,0.8)}
+</style>
+
+<script>
+(function(){
+  // Skip als al gezien in deze browsersessie
+  if(sessionStorage.getItem('im_intro_seen')){
+    document.getElementById('im-intro').style.display='none';
+    return;
+  }
+
+  // Matrix rain op canvas
+  const canvas = document.getElementById('im-matrix');
+  const ctx    = canvas.getContext('2d');
+  let W, H, cols, drops;
+  const chars  = 'INTERMILLPRECIESSNELONAFHANKELIJK01VERSPANINGGEREEDSCHAP';
+
+  function resize(){
+    W = canvas.width  = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+    cols  = Math.floor(W / 18);
+    drops = Array(cols).fill(1);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function drawMatrix(){
+    ctx.fillStyle = 'rgba(10,10,10,0.18)';
+    ctx.fillRect(0,0,W,H);
+    ctx.font = '15px monospace';
+    for(let i=0;i<drops.length;i++){
+      const ch = chars[Math.floor(Math.random()*chars.length)];
+      // abwisseling: wit voor bovenste druppel, geel voor rest
+      const isHead = drops[i]*18 < H * .15;
+      ctx.fillStyle = isHead ? '#ffffff' : '#FFDD00';
+      ctx.fillText(ch, i*18, drops[i]*18);
+      if(drops[i]*18 > H && Math.random()>.96) drops[i]=0;
+      drops[i]++;
+    }
+  }
+  const matrixTimer = setInterval(drawMatrix, 45);
+
+  // Woorden met timings
+  const words = [
+    {text:'PRECIES', label:'nauwkeurig advies',   yellow:true,  delay:600},
+    {text:'SNEL',    label:'morgen geleverd',      yellow:false, delay:1200},
+    {text:'SUPER',   label:'onafhankelijk',        yellow:true,  delay:1800},
+  ];
+
+  const container = document.getElementById('im-words');
+  words.forEach(w => {
+    const wrap = document.createElement('div');
+    wrap.innerHTML = `
+      <div class="im-word${w.yellow?' yellow':''}">${w.text}</div>
+      <div class="im-label">${w.label}</div>
+    `;
+    container.appendChild(wrap);
+    setTimeout(()=>{
+      wrap.querySelector('.im-word').classList.add('show');
+      wrap.querySelector('.im-label').classList.add('show');
+    }, w.delay);
+  });
+
+  // Na alle woorden: logo-flash dan fade-out
+  setTimeout(()=>{
+    // Voeg InterMill logo toe
+    const logo = document.createElement('div');
+    logo.style.cssText='margin-top:48px;opacity:0;transition:opacity .5s ease;color:#FFDD00;font-size:clamp(14px,2vw,20px);letter-spacing:.4em;text-transform:uppercase;';
+    logo.textContent = '— INTER MILL —';
+    container.appendChild(logo);
+    requestAnimationFrame(()=>{ logo.style.opacity='1'; });
+  }, 2600);
+
+  setTimeout(closeIntro, 3600);
+
+  function closeIntro(){
+    clearInterval(matrixTimer);
+    const el = document.getElementById('im-intro');
+    el.style.opacity='0';
+    setTimeout(()=>{ el.style.display='none'; }, 650);
+    sessionStorage.setItem('im_intro_seen','1');
+  }
+
+  window.skipIntro = closeIntro;
+})();
+</script>
 <a class="skip-link" href="#main">Sla navigatie over</a>
 <nav class="page-nav">
 <div class="page-nav-inner">
