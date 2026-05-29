@@ -174,40 +174,45 @@
 <body>
 
 <!-- ═══════════════════════════════════════════════════
-     INTERMILL INTRO — Portfolio-stijl loading screen
+     INTERMILL INTRO — Verspaning rain + scramble reveal
      Eenmalig per sessie · klik/ESC om over te slaan
 ═══════════════════════════════════════════════════ -->
 <div id="im-intro" aria-hidden="true">
-  <!-- Top-left label -->
-  <div id="im-label">INTERMILL</div>
+  <canvas id="im-rain"></canvas>
 
-  <!-- Top-right skip -->
-  <button id="im-skip" onclick="imClose()" aria-label="Sla intro over">ESC</button>
+  <div id="im-stage">
+    <!-- Logo boven -->
+    <div id="im-logo">
+      <span class="im-logo-inter">INTER</span><span class="im-logo-mill">MILL</span>
+    </div>
 
-  <!-- Center: drie woorden gestapeld -->
-  <div id="im-center">
-    <div class="im-row" id="imr0">
-      <div class="im-word">ONAFHANKELIJK</div>
-      <div class="im-sub">onpartijdig advies &nbsp;·&nbsp; geen merkdruk</div>
+    <!-- Drie kernwoorden -->
+    <div id="im-values">
+      <div class="im-val" id="imv0">
+        <span class="im-val-word" data-text="ONAFHANKELIJK"></span>
+        <span class="im-val-sub">onpartijdig advies · geen merkdruk</span>
+      </div>
+      <div class="im-sep"></div>
+      <div class="im-val" id="imv1">
+        <span class="im-val-word" data-text="PRECIES"></span>
+        <span class="im-val-sub">maatwerkgereedschap · µm-nauwkeurig</span>
+      </div>
+      <div class="im-sep"></div>
+      <div class="im-val" id="imv2">
+        <span class="im-val-word" data-text="SNEL"></span>
+        <span class="im-val-sub">standaard morgen · specials binnen 5 dagen</span>
+      </div>
     </div>
-    <div class="im-row" id="imr1">
-      <div class="im-word yellow">PRECIES</div>
-      <div class="im-sub">maatwerkgereedschap &nbsp;·&nbsp; µm-nauwkeurig</div>
-    </div>
-    <div class="im-row" id="imr2">
-      <div class="im-word">SNEL</div>
-      <div class="im-sub">standaard morgen &nbsp;·&nbsp; specials binnen 5 dagen</div>
-    </div>
+
+    <!-- Tagline -->
+    <div id="im-tagline">VerspaningsAdvies &amp; Gereedschap</div>
   </div>
 
-  <!-- Bottom: counter + bar -->
-  <div id="im-bottom">
-    <div id="im-counter-row">
-      <span id="im-pct-label">%</span>
-      <span id="im-counter">000</span>
-    </div>
-    <div id="im-bar-track"><div id="im-bar-fill"></div></div>
-  </div>
+  <!-- Progress bar -->
+  <div id="im-bar"><div id="im-bar-fill"></div></div>
+
+  <!-- Skip -->
+  <button id="im-skip" onclick="imClose()" aria-label="Sla intro over">ESC / klik om over te slaan</button>
 </div>
 
 <style>
@@ -216,123 +221,127 @@
   position:fixed;inset:0;z-index:9999;
   background:#0F0F0F;
   display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
   overflow:hidden;
   opacity:1;
-  transition:opacity .6s ease-in-out;
+  transition:opacity .7s cubic-bezier(.4,0,.2,1);
+  cursor:pointer;
+  font-family:'Bricolage Grotesque','Arial Black',sans-serif;
   -webkit-font-smoothing:antialiased;
 }
 #im-intro.out{opacity:0;pointer-events:none}
 
-/* ── TOP-LEFT LABEL ── */
-#im-label{
-  position:absolute;top:32px;left:32px;
-  font-family:'JetBrains Mono','Courier New',monospace;
-  font-size:11px;letter-spacing:.3em;text-transform:uppercase;
-  color:#525252;
+/* ── VERSPANING RAIN CANVAS ── */
+#im-rain{
+  position:absolute;inset:0;
+  width:100%;height:100%;
   opacity:0;
-  animation:im-fadein .6s ease .1s forwards;
+  transition:opacity 1.2s ease;
+}
+#im-rain.visible{opacity:.28}
+#im-rain.fading{opacity:0}
+
+/* ── CENTRE STAGE ── */
+#im-stage{
+  position:relative;z-index:2;
+  display:flex;flex-direction:column;
+  align-items:center;
+  gap:0;
+  text-align:center;
+  padding:0 24px;
 }
 
-/* ── TOP-RIGHT SKIP ── */
-#im-skip{
-  position:absolute;top:28px;right:28px;
-  background:none;border:1px solid rgba(255,255,255,.1);
-  padding:6px 14px;
-  font-family:'JetBrains Mono',monospace;
-  font-size:10px;letter-spacing:.2em;text-transform:uppercase;
-  color:rgba(255,255,255,.25);
-  cursor:pointer;
-  transition:color .2s,border-color .2s;
-}
-#im-skip:hover{color:rgba(255,221,0,.8);border-color:rgba(255,221,0,.4)}
-
-/* ── CENTER ── */
-#im-center{
-  flex:1;
-  display:flex;flex-direction:column;
-  align-items:flex-start;justify-content:center;
-  overflow:hidden;
-  gap:clamp(8px,2.5vh,28px);
-  padding:80px clamp(24px,6vw,80px) 0;
-}
-.im-row{
-  display:flex;flex-direction:column;
-  gap:clamp(4px,0.8vh,10px);
-  opacity:0;
-  transform:translateY(28px);
-  transition:opacity .55s cubic-bezier(.22,.61,.36,1),
-             transform .55s cubic-bezier(.22,.61,.36,1);
-}
-.im-row.show{opacity:1;transform:translateY(0)}
-.im-word{
-  font-family:'Bricolage Grotesque','Arial Black',sans-serif;
-  font-weight:800;
-  font-size:clamp(52px,13vw,150px);
-  letter-spacing:-0.04em;
-  line-height:0.92;
-  color:rgba(255,255,255,.9);
-}
-.im-word.yellow{color:#FFDD00;}
-.im-sub{
-  font-family:'JetBrains Mono','Courier New',monospace;
-  font-size:clamp(12px,1.5vw,16px);
-  letter-spacing:.18em;
+/* ── LOGO ── */
+#im-logo{
+  font-size:clamp(13px,1.8vw,18px);
+  letter-spacing:.55em;
   text-transform:uppercase;
-  color:#484848;
-  padding-left:4px;
+  margin-bottom:52px;
+  opacity:0;
+  transform:translateY(-8px);
+  transition:opacity .5s ease, transform .5s ease;
+}
+#im-logo.show{opacity:1;transform:translateY(0)}
+.im-logo-inter{color:#fff;font-weight:800}
+.im-logo-mill{color:#FFDD00;font-weight:900;position:relative;}
+.im-logo-mill::before{
+  content:'';display:inline-block;
+  width:6px;height:6px;background:#FFDD00;
+  border-radius:50%;margin:0 6px 2px;vertical-align:middle;
 }
 
-/* ── BOTTOM ── */
-#im-bottom{
-  padding:32px;
+/* ── VALUES ROW ── */
+#im-values{
+  display:flex;align-items:center;gap:0;
+  flex-wrap:wrap;justify-content:center;
+}
+.im-val{
   display:flex;flex-direction:column;
-  gap:16px;
+  align-items:center;gap:10px;
+  padding:0 clamp(16px,4vw,56px);
+  opacity:0;transform:translateY(20px);
+  transition:opacity .55s ease, transform .55s ease;
 }
-#im-counter-row{
-  display:flex;align-items:baseline;justify-content:flex-end;
-  gap:8px;
+.im-val.show{opacity:1;transform:translateY(0)}
+.im-val-word{
+  display:block;
+  font-size:clamp(36px,8.5vw,96px);
+  font-weight:900;letter-spacing:-0.04em;line-height:1;
+  color:#fff;min-width:1ch;
 }
-#im-pct-label{
+#imv0 .im-val-word,
+#imv2 .im-val-word{
+  background:linear-gradient(135deg,#FFDD00 0%,#fff 55%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+#imv1 .im-val-word{color:#fff}
+.im-val-sub{
+  font-family:'JetBrains Mono','Courier New',monospace;
+  font-size:clamp(9px,1.1vw,11px);letter-spacing:.22em;
+  text-transform:uppercase;color:rgba(255,221,0,.45);white-space:nowrap;
+}
+.im-sep{
+  width:1px;height:clamp(48px,9vw,96px);
+  background:linear-gradient(to bottom,transparent,rgba(255,221,0,.3),transparent);
+  flex-shrink:0;
+}
+
+/* ── TAGLINE ── */
+#im-tagline{
+  margin-top:56px;
   font-family:'JetBrains Mono',monospace;
-  font-size:13px;letter-spacing:.1em;
-  color:#3a3a3a;
+  font-size:clamp(10px,1.3vw,13px);letter-spacing:.3em;text-transform:uppercase;
+  color:rgba(255,255,255,.35);opacity:0;transition:opacity .6s ease;
 }
-#im-counter{
-  font-family:'Bricolage Grotesque','Arial Black',sans-serif;
-  font-weight:800;
-  font-size:clamp(56px,10vw,110px);
-  letter-spacing:-0.04em;
-  line-height:1;
-  color:#fff;
-  font-variant-numeric:tabular-nums;
-}
-#im-bar-track{
-  height:3px;
-  background:rgba(255,255,255,.06);
-  border-radius:2px;
-  overflow:hidden;
+#im-tagline.show{opacity:1}
+
+/* ── PROGRESS BAR ── */
+#im-bar{
+  position:absolute;bottom:0;left:0;right:0;
+  height:2px;background:rgba(255,221,0,.08);
 }
 #im-bar-fill{
-  height:100%;
-  width:0%;
-  background:#FFDD00;
-  border-radius:2px;
-  box-shadow:0 0 8px rgba(255,221,0,.45);
-  transition:width .05s linear;
+  height:100%;width:0%;background:#FFDD00;
+  transition:width linear;box-shadow:0 0 8px rgba(255,221,0,.6);
 }
 
-/* ── ANIMATIONS ── */
-@keyframes im-fadein{
-  from{opacity:0;transform:translateY(-8px)}
-  to{opacity:1;transform:translateY(0)}
+/* ── SKIP ── */
+#im-skip{
+  position:absolute;bottom:20px;right:28px;
+  background:none;border:none;padding:6px 0;
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(255,255,255,.2);cursor:pointer;transition:color .25s;
 }
+#im-skip:hover{color:rgba(255,221,0,.7)}
 
 @media(max-width:600px){
-  #im-label{top:20px;left:20px}
-  #im-skip{top:16px;right:16px}
-  #im-bottom{padding:20px}
-  #im-center{padding:72px 24px 0}
-  .im-sub{letter-spacing:.1em}
+  #im-values{flex-direction:column;gap:8px}
+  .im-sep{width:clamp(48px,30vw,120px);height:1px;
+    background:linear-gradient(to right,transparent,rgba(255,221,0,.3),transparent)}
+  .im-val{padding:8px 0}
+  .im-val-sub{display:none}
 }
 </style>
 
@@ -343,50 +352,111 @@
     return;
   }
 
-  const DURATION = 3000; // ms teller looptijd
-
-  const intro   = document.getElementById('im-intro');
-  const counter = document.getElementById('im-counter');
+  const el      = document.getElementById('im-intro');
+  const rain    = document.getElementById('im-rain');
+  const ctx     = rain.getContext('2d');
   const barFill = document.getElementById('im-bar-fill');
+  const TOTAL   = 5000;
+  let closed    = false;
 
-  let closed  = false;
-  let startTs = null;
-  let rafId   = null;
+  /* ── VERSPANING RAIN ──
+     Tekens uit de verspaningswereld: diameters, parameters,
+     eenheden, procesletters, InterMill-woorden              */
+  const POOL_CHARS = (
+    // Cijfers — bewerkingsparameters zitten vol getallen
+    '0123456789' +
+    // Eenheden & symbolen
+    'Ø µ ° · / .' +
+    // Procesparameters (Vc, fz, ap, ae, RPM, HRC)
+    'VcfzapaeRPMHr' +
+    // InterMill kernwoorden letters
+    'INTERMILONAFHKEJSPG' +
+    // Extra machining-context letters
+    'BCDQSTWXYZ'
+  ).replace(/ /g,''); // spaties eruit
 
-  /* ── STAGGERED ROW REVEAL ── */
-  [0, 280, 560].forEach((delay, i) => {
-    setTimeout(() => {
-      document.getElementById('imr' + i).classList.add('show');
-    }, delay);
-  });
+  let W,H,cols,drops;
+  function resize(){
+    W = rain.width  = rain.offsetWidth;
+    H = rain.height = rain.offsetHeight;
+    cols  = Math.floor(W / 18);
+    drops = Array(cols).fill(0).map(() => Math.random() * -80);
+  }
+  resize();
+  window.addEventListener('resize', resize);
 
-  /* ── COUNTER via rAF ── */
-  function tick(ts){
-    if(!startTs) startTs = ts;
-    const elapsed  = ts - startTs;
-    const progress = Math.min(elapsed / DURATION, 1);
-    const count    = Math.floor(progress * 100);
-
-    counter.textContent = String(count).padStart(3, '0');
-    barFill.style.width = (progress * 100) + '%';
-
-    if(progress < 1){
-      rafId = requestAnimationFrame(tick);
-    } else {
-      setTimeout(imClose, 500);
+  function drawRain(){
+    ctx.fillStyle = 'rgba(15,15,15,0.14)';
+    ctx.fillRect(0, 0, W, H);
+    for(let i = 0; i < cols; i++){
+      const ch  = POOL_CHARS[Math.floor(Math.random() * POOL_CHARS.length)];
+      const y   = drops[i] * 18;
+      const head = drops[i] < H * 0.007; // bovenste druppel
+      // Kop: wit helder; staart: geel semitrnsparant
+      ctx.fillStyle = head
+        ? 'rgba(255,255,255,0.95)'
+        : `rgba(255,221,0,${0.3 + Math.random() * 0.45})`;
+      ctx.font = `${head ? 'bold ' : ''}13px 'JetBrains Mono',monospace`;
+      ctx.fillText(ch, i * 18, y);
+      if(y > H && Math.random() > 0.965) drops[i] = 0;
+      drops[i] += 0.9 + Math.random() * 0.3;
     }
   }
-  rafId = requestAnimationFrame(tick);
+  let rainTimer = setInterval(drawRain, 42);
 
-  /* ── SKIP ── */
-  document.addEventListener('keydown', e=>{ if(e.key==='Escape') imClose(); });
+  /* ── SCRAMBLE REVEAL ──
+     Scramble-alphabet: verspanings­tekens + ASCII           */
+  const SCRAMBLE = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789Ø°µ#·/';
+  function scramble(el, target, duration, delay){
+    setTimeout(() => {
+      let frame = 0;
+      const totalFrames = Math.round(duration / 40);
+      const resolveAt = i => Math.floor((i / target.length) * totalFrames * 0.7);
+      el.textContent = target.split('').map(() =>
+        SCRAMBLE[Math.floor(Math.random() * SCRAMBLE.length)]).join('');
+      const t = setInterval(() => {
+        frame++;
+        el.textContent = target.split('').map((ch, i) => {
+          if(frame >= resolveAt(i)) return ch;
+          return SCRAMBLE[Math.floor(Math.random() * SCRAMBLE.length)];
+        }).join('');
+        if(frame >= totalFrames) clearInterval(t);
+      }, 40);
+    }, delay);
+  }
 
-  window.imClose=function(){
+  /* ── TIMELINE ── */
+  setTimeout(() => rain.classList.add('visible'), 50);
+  setTimeout(() => document.getElementById('im-logo').classList.add('show'), 300);
+
+  [{id:'imv0',delay:700},{id:'imv1',delay:1250},{id:'imv2',delay:1800}]
+    .forEach(({id, delay}) => {
+      const valEl  = document.getElementById(id);
+      const wordEl = valEl.querySelector('.im-val-word');
+      scramble(wordEl, wordEl.dataset.text, 600, delay);
+      setTimeout(() => valEl.classList.add('show'), delay + 80);
+    });
+
+  setTimeout(() => rain.classList.add('fading'), 2600);
+  setTimeout(() => document.getElementById('im-tagline').classList.add('show'), 3300);
+
+  setTimeout(() => {
+    barFill.style.transitionDuration = (TOTAL - 200) + 'ms';
+    barFill.style.width = '100%';
+  }, 200);
+
+  setTimeout(imClose, TOTAL);
+
+  el.addEventListener('click', imClose);
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') imClose(); });
+
+  window.imClose = function(){
     if(closed) return;
-    closed=true;
-    if(rafId) cancelAnimationFrame(rafId);
-    intro.classList.add('out');
-    setTimeout(()=>{ intro.remove(); sessionStorage.setItem('im_done','1'); }, 650);
+    closed = true;
+    clearInterval(rainTimer);
+    el.classList.add('out');
+    setTimeout(() => { el.style.display = 'none'; }, 750);
+    sessionStorage.setItem('im_done', '1');
   };
 })();
 </script>
