@@ -174,45 +174,32 @@
 <body>
 
 <!-- ═══════════════════════════════════════════════════
-     INTERMILL INTRO — Huisstijl premium
-     Eenmalig per sessie · klik/skip om over te slaan
+     INTERMILL INTRO — Portfolio-stijl loading screen
+     Eenmalig per sessie · klik/ESC om over te slaan
 ═══════════════════════════════════════════════════ -->
 <div id="im-intro" aria-hidden="true">
-  <canvas id="im-rain"></canvas>
+  <!-- Top-left label -->
+  <div id="im-label">INTERMILL</div>
 
-  <div id="im-stage">
-    <!-- Logo boven -->
-    <div id="im-logo">
-      <span class="im-logo-inter">INTER</span><span class="im-logo-mill">MILL</span>
+  <!-- Top-right skip -->
+  <button id="im-skip" onclick="imClose()" aria-label="Sla intro over">ESC</button>
+
+  <!-- Center: cycling word -->
+  <div id="im-center">
+    <div id="im-word-wrap">
+      <span id="im-word">ONAFHANKELIJK</span>
     </div>
-
-    <!-- Drie kernwoorden -->
-    <div id="im-values">
-      <div class="im-val" id="imv0">
-        <span class="im-val-word" data-text="ONAFHANKELIJK"></span>
-        <span class="im-val-sub">onpartijdig advies · geen merkdruk</span>
-      </div>
-      <div class="im-sep"></div>
-      <div class="im-val" id="imv1">
-        <span class="im-val-word" data-text="PRECIES"></span>
-        <span class="im-val-sub">maatwerkgereedschap · µm-nauwkeurig</span>
-      </div>
-      <div class="im-sep"></div>
-      <div class="im-val" id="imv2">
-        <span class="im-val-word" data-text="SNEL"></span>
-        <span class="im-val-sub">standaard morgen · specials binnen 5 dagen</span>
-      </div>
-    </div>
-
-    <!-- Tagline -->
-    <div id="im-tagline">VerspaningsAdvies &amp; Gereedschap</div>
+    <div id="im-sub">VERSPANINGSADVIES &amp; GEREEDSCHAP</div>
   </div>
 
-  <!-- Progress bar -->
-  <div id="im-bar"><div id="im-bar-fill"></div></div>
-
-  <!-- Skip -->
-  <button id="im-skip" onclick="imClose()" aria-label="Sla intro over">ESC / klik om over te slaan</button>
+  <!-- Bottom: counter + bar -->
+  <div id="im-bottom">
+    <div id="im-counter-row">
+      <span id="im-pct-label">%</span>
+      <span id="im-counter">000</span>
+    </div>
+    <div id="im-bar-track"><div id="im-bar-fill"></div></div>
+  </div>
 </div>
 
 <style>
@@ -221,157 +208,134 @@
   position:fixed;inset:0;z-index:9999;
   background:#0F0F0F;
   display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
   overflow:hidden;
   opacity:1;
-  transition:opacity .7s cubic-bezier(.4,0,.2,1);
-  cursor:pointer;
-  font-family:'Bricolage Grotesque','Arial Black',sans-serif;
+  transition:opacity .6s ease-in-out;
   -webkit-font-smoothing:antialiased;
 }
 #im-intro.out{opacity:0;pointer-events:none}
 
-/* ── MATRIX CANVAS ── */
-#im-rain{
-  position:absolute;inset:0;
-  width:100%;height:100%;
+/* ── TOP-LEFT LABEL ── */
+#im-label{
+  position:absolute;top:32px;left:32px;
+  font-family:'JetBrains Mono','Courier New',monospace;
+  font-size:11px;letter-spacing:.3em;text-transform:uppercase;
+  color:#525252;
   opacity:0;
-  transition:opacity 1.2s ease;
+  animation:im-fadein .6s ease .1s forwards;
 }
-#im-rain.visible{opacity:.22}
-#im-rain.fading{opacity:0}
 
-/* ── CENTRE STAGE ── */
-#im-stage{
-  position:relative;z-index:2;
+/* ── TOP-RIGHT SKIP ── */
+#im-skip{
+  position:absolute;top:28px;right:28px;
+  background:none;border:1px solid rgba(255,255,255,.1);
+  padding:6px 14px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.25);
+  cursor:pointer;
+  transition:color .2s,border-color .2s;
+}
+#im-skip:hover{color:rgba(255,221,0,.8);border-color:rgba(255,221,0,.4)}
+
+/* ── CENTER ── */
+#im-center{
+  flex:1;
   display:flex;flex-direction:column;
-  align-items:center;
-  gap:0;
-  text-align:center;
-  padding:0 24px;
+  align-items:center;justify-content:center;
+  overflow:hidden;
+  gap:20px;
 }
-
-/* ── LOGO ── */
-#im-logo{
-  font-size:clamp(13px,1.8vw,18px);
-  letter-spacing:.55em;
-  text-transform:uppercase;
-  margin-bottom:52px;
-  opacity:0;
-  transform:translateY(-8px);
-  transition:opacity .5s ease, transform .5s ease;
+#im-word-wrap{
+  overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  padding:8px 0;
 }
-#im-logo.show{opacity:1;transform:translateY(0)}
-.im-logo-inter{color:#fff;font-weight:800}
-.im-logo-mill{
-  color:#FFDD00;font-weight:900;
-  position:relative;
-}
-.im-logo-mill::before{
-  content:'';
-  display:inline-block;
-  width:6px;height:6px;
-  background:#FFDD00;
-  border-radius:50%;
-  margin:0 6px 2px;
-  vertical-align:middle;
-}
-
-/* ── VALUES ROW ── */
-#im-values{
-  display:flex;
-  align-items:center;
-  gap:0;
-  flex-wrap:wrap;
-  justify-content:center;
-}
-.im-val{
-  display:flex;flex-direction:column;
-  align-items:center;
-  gap:10px;
-  padding:0 clamp(16px,4vw,56px);
-  opacity:0;
-  transform:translateY(20px);
-  transition:opacity .55s ease, transform .55s ease;
-}
-.im-val.show{opacity:1;transform:translateY(0)}
-.im-val-word{
+#im-word{
   display:block;
-  font-size:clamp(36px,8.5vw,96px);
-  font-weight:900;
+  font-family:'Bricolage Grotesque','Arial Black',sans-serif;
+  font-weight:800;
+  font-size:clamp(40px,11vw,130px);
+  letter-spacing:-0.04em;
+  line-height:1;
+  color:rgba(255,255,255,.88);
+  transition:none;
+}
+#im-word.word-in{
+  animation:im-word-in .32s cubic-bezier(.22,.61,.36,1) forwards;
+}
+#im-word.word-out{
+  animation:im-word-out .28s ease-in forwards;
+}
+/* Highlight: geel op actief woord via data-attr */
+#im-word.yellow{
+  color:#FFDD00;
+}
+#im-sub{
+  font-family:'JetBrains Mono','Courier New',monospace;
+  font-size:11px;letter-spacing:.28em;text-transform:uppercase;
+  color:#3a3a3a;
+  opacity:0;
+  animation:im-fadein .6s ease .8s forwards;
+}
+
+/* ── BOTTOM ── */
+#im-bottom{
+  padding:32px;
+  display:flex;flex-direction:column;
+  gap:16px;
+}
+#im-counter-row{
+  display:flex;align-items:baseline;justify-content:flex-end;
+  gap:8px;
+}
+#im-pct-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:13px;letter-spacing:.1em;
+  color:#3a3a3a;
+}
+#im-counter{
+  font-family:'Bricolage Grotesque','Arial Black',sans-serif;
+  font-weight:800;
+  font-size:clamp(56px,10vw,110px);
   letter-spacing:-0.04em;
   line-height:1;
   color:#fff;
-  min-width:1ch;
+  font-variant-numeric:tabular-nums;
 }
-/* Eerste en derde waarde: geel accent op eerste letter */
-#imv0 .im-val-word,
-#imv2 .im-val-word{
-  background:linear-gradient(135deg,#FFDD00 0%,#fff 55%);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
-}
-#imv1 .im-val-word{color:#fff}
-.im-val-sub{
-  font-family:'JetBrains Mono','Courier New',monospace;
-  font-size:clamp(9px,1.1vw,11px);
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  color:rgba(255,221,0,.45);
-  white-space:nowrap;
-}
-/* Separator streep */
-.im-sep{
-  width:1px;
-  height:clamp(48px,9vw,96px);
-  background:linear-gradient(to bottom,transparent,rgba(255,221,0,.3),transparent);
-  flex-shrink:0;
-}
-
-/* ── TAGLINE ── */
-#im-tagline{
-  margin-top:56px;
-  font-family:'JetBrains Mono',monospace;
-  font-size:clamp(10px,1.3vw,13px);
-  letter-spacing:.3em;
-  text-transform:uppercase;
-  color:rgba(255,255,255,.35);
-  opacity:0;
-  transition:opacity .6s ease;
-}
-#im-tagline.show{opacity:1}
-
-/* ── PROGRESS BAR ── */
-#im-bar{
-  position:absolute;bottom:0;left:0;right:0;
-  height:2px;
-  background:rgba(255,221,0,.08);
+#im-bar-track{
+  height:3px;
+  background:rgba(255,255,255,.06);
+  border-radius:2px;
+  overflow:hidden;
 }
 #im-bar-fill{
-  height:100%;width:0%;
+  height:100%;
+  width:0%;
   background:#FFDD00;
-  transition:width linear;
-  box-shadow:0 0 8px rgba(255,221,0,.6);
+  border-radius:2px;
+  box-shadow:0 0 8px rgba(255,221,0,.45);
+  transition:width .05s linear;
 }
 
-/* ── SKIP ── */
-#im-skip{
-  position:absolute;bottom:20px;right:28px;
-  background:none;border:none;padding:6px 0;
-  font-family:'JetBrains Mono',monospace;
-  font-size:10px;letter-spacing:.18em;text-transform:uppercase;
-  color:rgba(255,255,255,.2);
-  cursor:pointer;
-  transition:color .25s;
+/* ── ANIMATIONS ── */
+@keyframes im-fadein{
+  from{opacity:0;transform:translateY(-8px)}
+  to{opacity:1;transform:translateY(0)}
 }
-#im-skip:hover{color:rgba(255,221,0,.7)}
+@keyframes im-word-in{
+  from{opacity:0;transform:translateY(36px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes im-word-out{
+  from{opacity:1;transform:translateY(0)}
+  to{opacity:0;transform:translateY(-36px)}
+}
 
-@media(max-width:600px){
-  #im-values{flex-direction:column;gap:8px}
-  .im-sep{width:clamp(48px,30vw,120px);height:1px;background:linear-gradient(to right,transparent,rgba(255,221,0,.3),transparent)}
-  .im-val{padding:8px 0}
-  .im-val-sub{display:none}
+@media(max-width:480px){
+  #im-label{top:20px;left:20px}
+  #im-skip{top:16px;right:16px}
+  #im-bottom{padding:20px}
 }
 </style>
 
@@ -382,109 +346,79 @@
     return;
   }
 
-  const el     = document.getElementById('im-intro');
-  const rain   = document.getElementById('im-rain');
-  const ctx    = rain.getContext('2d');
-  const barFill= document.getElementById('im-bar-fill');
-  const TOTAL  = 5000; // ms totale intro-duur
-  let closed   = false;
+  const WORDS   = ['ONAFHANKELIJK','PRECIES','SNEL'];
+  const YELLOW  = [false, true, false]; // PRECIES geel
+  const DURATION= 2700; // ms teller looptijd
+  const CYCLE   = 900;  // ms per woord
 
-  /* ── MATRIX RAIN ── */
-  const POOL = 'INTERMILLONAFHANKELIJKPRECIESSNELVERSPANINGGEREEDSCHAP0110';
-  let W,H,cols,drops,speed=1;
-  function resize(){
-    W=rain.width=rain.offsetWidth;
-    H=rain.height=rain.offsetHeight;
-    cols=Math.floor(W/20);
-    drops=Array(cols).fill(0).map(()=>Math.random()*-80);
-  }
-  resize();
-  window.addEventListener('resize',resize);
+  const intro   = document.getElementById('im-intro');
+  const wordEl  = document.getElementById('im-word');
+  const counter = document.getElementById('im-counter');
+  const barFill = document.getElementById('im-bar-fill');
 
-  function drawRain(){
-    ctx.fillStyle='rgba(15,15,15,0.15)';
-    ctx.fillRect(0,0,W,H);
-    for(let i=0;i<cols;i++){
-      const ch=POOL[Math.floor(Math.random()*POOL.length)];
-      const y=drops[i]*20;
-      // kop wit, staart geel gradient
-      const head=y<H*0.12;
-      ctx.fillStyle=head?'rgba(255,255,255,0.9)':'rgba(255,221,0,0.7)';
-      ctx.font=`${head?'bold ':''}14px 'JetBrains Mono',monospace`;
-      ctx.fillText(ch,i*20,y);
-      if(y>H&&Math.random()>0.96) drops[i]=0;
-      drops[i]+=speed;
+  let wordIdx = 0;
+  let closed  = false;
+  let startTs = null;
+  let rafId   = null;
+
+  /* ── WOORD CYCLING ── */
+  function setWord(idx, animate){
+    if(animate){
+      wordEl.classList.remove('word-in');
+      wordEl.classList.add('word-out');
+      setTimeout(()=>{
+        wordEl.textContent = WORDS[idx];
+        wordEl.classList.toggle('yellow', YELLOW[idx]);
+        wordEl.classList.remove('word-out');
+        wordEl.classList.add('word-in');
+      }, 280);
+    } else {
+      wordEl.textContent = WORDS[idx];
+      wordEl.classList.toggle('yellow', YELLOW[idx]);
+      wordEl.classList.add('word-in');
     }
   }
-  let rainTimer=setInterval(drawRain,42);
 
-  /* ── SCRAMBLE REVEAL ── */
-  const SCRAMBLE='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&';
-  function scramble(el,target,duration,delay){
-    setTimeout(()=>{
-      let frame=0;
-      const totalFrames=Math.round(duration/40);
-      const resolveAt=i=>Math.floor((i/target.length)*totalFrames*0.7);
-      el.textContent=target.split('').map(()=>SCRAMBLE[Math.floor(Math.random()*SCRAMBLE.length)]).join('');
-      const t=setInterval(()=>{
-        frame++;
-        el.textContent=target.split('').map((ch,i)=>{
-          if(frame>=resolveAt(i)) return ch;
-          return SCRAMBLE[Math.floor(Math.random()*SCRAMBLE.length)];
-        }).join('');
-        if(frame>=totalFrames) clearInterval(t);
-      },40);
-    },delay);
+  setWord(0, false);
+
+  const cycleTimer = setInterval(()=>{
+    wordIdx = (wordIdx + 1) % WORDS.length;
+    setWord(wordIdx, true);
+  }, CYCLE);
+
+  /* ── COUNTER via rAF ── */
+  function tick(ts){
+    if(!startTs) startTs = ts;
+    const elapsed  = ts - startTs;
+    const progress = Math.min(elapsed / DURATION, 1);
+    const count    = Math.floor(progress * 100);
+
+    counter.textContent = String(count).padStart(3, '0');
+    barFill.style.width = (progress * 100) + '%';
+
+    if(progress < 1){
+      rafId = requestAnimationFrame(tick);
+    } else {
+      clearInterval(cycleTimer);
+      // Laatste woord laten staan, dan sluiten
+      setTimeout(imClose, 500);
+    }
   }
+  rafId = requestAnimationFrame(tick);
 
-  /* ── TIMELINE ── */
-  // t=0   : regen start
-  // t=300 : logo verschijnt
-  // t=700 : waarde 0 scramble-reveal
-  // t=1200: waarde 1
-  // t=1700: waarde 2
-  // t=2600: regen vervaagt
-  // t=3200: tagline
-  // t=4300: bar vol → close
-
-  setTimeout(()=>rain.classList.add('visible'),50);
-
-  setTimeout(()=>document.getElementById('im-logo').classList.add('show'),300);
-
-  [
-    {id:'imv0',delay:700},
-    {id:'imv1',delay:1250},
-    {id:'imv2',delay:1800},
-  ].forEach(({id,delay})=>{
-    const valEl=document.getElementById(id);
-    const wordEl=valEl.querySelector('.im-val-word');
-    const target=wordEl.dataset.text;
-    scramble(wordEl,target,600,delay);
-    setTimeout(()=>valEl.classList.add('show'),delay+80);
+  /* ── SKIP ── */
+  intro.addEventListener('click', function(e){
+    if(e.target !== document.getElementById('im-skip')) return; // alleen skip-knop
   });
-
-  setTimeout(()=>rain.classList.add('fading'),2600);
-  setTimeout(()=>document.getElementById('im-tagline').classList.add('show'),3300);
-
-  // Progress bar
-  setTimeout(()=>{
-    barFill.style.transitionDuration=(TOTAL-200)+'ms';
-    barFill.style.width='100%';
-  },200);
-
-  setTimeout(imClose,TOTAL);
-
-  /* ── CLICK / ESC ── */
-  el.addEventListener('click',imClose);
-  document.addEventListener('keydown',e=>{if(e.key==='Escape')imClose()});
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape') imClose(); });
 
   window.imClose=function(){
     if(closed) return;
     closed=true;
-    clearInterval(rainTimer);
-    el.classList.add('out');
-    setTimeout(()=>{el.style.display='none'},750);
-    sessionStorage.setItem('im_done','1');
+    clearInterval(cycleTimer);
+    if(rafId) cancelAnimationFrame(rafId);
+    intro.classList.add('out');
+    setTimeout(()=>{ intro.remove(); sessionStorage.setItem('im_done','1'); }, 650);
   };
 })();
 </script>
