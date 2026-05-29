@@ -1562,6 +1562,14 @@
   .cat-tile.cat-tile-brw .cat-num{color:var(--yellow)}
   .cat-tile.cat-tile-brw:hover{background:var(--yellow);color:var(--ink);border-color:var(--ink)}
   .cat-tile.cat-tile-brw:hover .cat-num{color:var(--ink)}
+  .cat-tile.cat-tile-mehi{
+    background:#1a1a2e;
+    color:var(--white);
+    border-color:#1a1a2e;
+  }
+  .cat-tile.cat-tile-mehi .cat-num{color:#FF6B00}
+  .cat-tile.cat-tile-mehi:hover{background:#FF6B00;color:#fff;border-color:#FF6B00}
+  .cat-tile.cat-tile-mehi:hover .cat-num{color:#fff}
   @media (max-width:900px){
     .cat-grid{grid-template-columns:repeat(3,1fr)}
     .cat-tile .cat-name{font-size:15px}
