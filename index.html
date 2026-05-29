@@ -184,12 +184,20 @@
   <!-- Top-right skip -->
   <button id="im-skip" onclick="imClose()" aria-label="Sla intro over">ESC</button>
 
-  <!-- Center: cycling word -->
+  <!-- Center: drie woorden gestapeld -->
   <div id="im-center">
-    <div id="im-word-wrap">
-      <span id="im-word">ONAFHANKELIJK</span>
+    <div class="im-row" id="imr0">
+      <div class="im-word">ONAFHANKELIJK</div>
+      <div class="im-sub">onpartijdig advies &nbsp;·&nbsp; geen merkdruk</div>
     </div>
-    <div id="im-sub">VERSPANINGSADVIES &amp; GEREEDSCHAP</div>
+    <div class="im-row" id="imr1">
+      <div class="im-word yellow">PRECIES</div>
+      <div class="im-sub">maatwerkgereedschap &nbsp;·&nbsp; µm-nauwkeurig</div>
+    </div>
+    <div class="im-row" id="imr2">
+      <div class="im-word">SNEL</div>
+      <div class="im-sub">standaard morgen &nbsp;·&nbsp; specials binnen 5 dagen</div>
+    </div>
   </div>
 
   <!-- Bottom: counter + bar -->
@@ -242,41 +250,36 @@
 #im-center{
   flex:1;
   display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
+  align-items:flex-start;justify-content:center;
   overflow:hidden;
-  gap:20px;
+  gap:clamp(8px,2.5vh,28px);
+  padding:80px clamp(24px,6vw,80px) 0;
 }
-#im-word-wrap{
-  overflow:hidden;
-  display:flex;align-items:center;justify-content:center;
-  padding:8px 0;
+.im-row{
+  display:flex;flex-direction:column;
+  gap:clamp(4px,0.8vh,10px);
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .55s cubic-bezier(.22,.61,.36,1),
+             transform .55s cubic-bezier(.22,.61,.36,1);
 }
-#im-word{
-  display:block;
+.im-row.show{opacity:1;transform:translateY(0)}
+.im-word{
   font-family:'Bricolage Grotesque','Arial Black',sans-serif;
   font-weight:800;
-  font-size:clamp(40px,11vw,130px);
+  font-size:clamp(52px,13vw,150px);
   letter-spacing:-0.04em;
-  line-height:1;
-  color:rgba(255,255,255,.88);
-  transition:none;
+  line-height:0.92;
+  color:rgba(255,255,255,.9);
 }
-#im-word.word-in{
-  animation:im-word-in .32s cubic-bezier(.22,.61,.36,1) forwards;
-}
-#im-word.word-out{
-  animation:im-word-out .28s ease-in forwards;
-}
-/* Highlight: geel op actief woord via data-attr */
-#im-word.yellow{
-  color:#FFDD00;
-}
-#im-sub{
+.im-word.yellow{color:#FFDD00;}
+.im-sub{
   font-family:'JetBrains Mono','Courier New',monospace;
-  font-size:11px;letter-spacing:.28em;text-transform:uppercase;
-  color:#3a3a3a;
-  opacity:0;
-  animation:im-fadein .6s ease .8s forwards;
+  font-size:clamp(12px,1.5vw,16px);
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#484848;
+  padding-left:4px;
 }
 
 /* ── BOTTOM ── */
@@ -323,19 +326,13 @@
   from{opacity:0;transform:translateY(-8px)}
   to{opacity:1;transform:translateY(0)}
 }
-@keyframes im-word-in{
-  from{opacity:0;transform:translateY(36px)}
-  to{opacity:1;transform:translateY(0)}
-}
-@keyframes im-word-out{
-  from{opacity:1;transform:translateY(0)}
-  to{opacity:0;transform:translateY(-36px)}
-}
 
-@media(max-width:480px){
+@media(max-width:600px){
   #im-label{top:20px;left:20px}
   #im-skip{top:16px;right:16px}
   #im-bottom{padding:20px}
+  #im-center{padding:72px 24px 0}
+  .im-sub{letter-spacing:.1em}
 }
 </style>
 
@@ -346,45 +343,22 @@
     return;
   }
 
-  const WORDS   = ['ONAFHANKELIJK','PRECIES','SNEL'];
-  const YELLOW  = [false, true, false]; // PRECIES geel
-  const DURATION= 2700; // ms teller looptijd
-  const CYCLE   = 900;  // ms per woord
+  const DURATION = 3000; // ms teller looptijd
 
   const intro   = document.getElementById('im-intro');
-  const wordEl  = document.getElementById('im-word');
   const counter = document.getElementById('im-counter');
   const barFill = document.getElementById('im-bar-fill');
 
-  let wordIdx = 0;
   let closed  = false;
   let startTs = null;
   let rafId   = null;
 
-  /* ── WOORD CYCLING ── */
-  function setWord(idx, animate){
-    if(animate){
-      wordEl.classList.remove('word-in');
-      wordEl.classList.add('word-out');
-      setTimeout(()=>{
-        wordEl.textContent = WORDS[idx];
-        wordEl.classList.toggle('yellow', YELLOW[idx]);
-        wordEl.classList.remove('word-out');
-        wordEl.classList.add('word-in');
-      }, 280);
-    } else {
-      wordEl.textContent = WORDS[idx];
-      wordEl.classList.toggle('yellow', YELLOW[idx]);
-      wordEl.classList.add('word-in');
-    }
-  }
-
-  setWord(0, false);
-
-  const cycleTimer = setInterval(()=>{
-    wordIdx = (wordIdx + 1) % WORDS.length;
-    setWord(wordIdx, true);
-  }, CYCLE);
+  /* ── STAGGERED ROW REVEAL ── */
+  [0, 280, 560].forEach((delay, i) => {
+    setTimeout(() => {
+      document.getElementById('imr' + i).classList.add('show');
+    }, delay);
+  });
 
   /* ── COUNTER via rAF ── */
   function tick(ts){
@@ -399,23 +373,17 @@
     if(progress < 1){
       rafId = requestAnimationFrame(tick);
     } else {
-      clearInterval(cycleTimer);
-      // Laatste woord laten staan, dan sluiten
       setTimeout(imClose, 500);
     }
   }
   rafId = requestAnimationFrame(tick);
 
   /* ── SKIP ── */
-  intro.addEventListener('click', function(e){
-    if(e.target !== document.getElementById('im-skip')) return; // alleen skip-knop
-  });
   document.addEventListener('keydown', e=>{ if(e.key==='Escape') imClose(); });
 
   window.imClose=function(){
     if(closed) return;
     closed=true;
-    clearInterval(cycleTimer);
     if(rafId) cancelAnimationFrame(rafId);
     intro.classList.add('out');
     setTimeout(()=>{ intro.remove(); sessionStorage.setItem('im_done','1'); }, 650);
