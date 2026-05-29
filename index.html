@@ -379,7 +379,7 @@
   function resize(){
     W = rain.width  = rain.offsetWidth;
     H = rain.height = rain.offsetHeight;
-    cols  = Math.floor(W / 18);
+    cols  = Math.floor(W / 28);
     drops = Array(cols).fill(0).map(() => Math.random() * -80);
   }
   resize();
@@ -390,13 +390,13 @@
     ctx.fillRect(0, 0, W, H);
     for(let i = 0; i < cols; i++){
       const ch  = POOL_CHARS[Math.floor(Math.random() * POOL_CHARS.length)];
-      const y   = drops[i] * 18;
+      const y   = drops[i] * 28;
       const head = drops[i] < H * 0.007; // bovenste druppel
       // Kop: wit helder; staart: geel semitrnsparant
       ctx.fillStyle = head
         ? 'rgba(255,255,255,0.95)'
         : `rgba(255,221,0,${0.3 + Math.random() * 0.45})`;
-      ctx.font = `${head ? 'bold ' : ''}13px 'JetBrains Mono',monospace`;
+      ctx.font = `${head ? 'bold ' : ''}22px 'JetBrains Mono',monospace`;
       ctx.fillText(ch, i * 18, y);
       if(y > H && Math.random() > 0.965) drops[i] = 0;
       drops[i] += 0.9 + Math.random() * 0.3;
