@@ -276,9 +276,10 @@
   flex-wrap:wrap;justify-content:center;
 }
 .im-val{
-  display:flex;flex-direction:column;
-  align-items:center;gap:10px;
-  padding:0 clamp(16px,4vw,56px);
+  display:flex;flex-direction:row;
+  align-items:center;
+  gap:clamp(14px,2.2vw,32px);
+  padding:0 clamp(14px,3.5vw,48px);
   opacity:0;transform:translateY(20px);
   transition:opacity .55s ease, transform .55s ease;
 }
@@ -287,7 +288,7 @@
   display:block;
   font-size:clamp(36px,8.5vw,96px);
   font-weight:900;letter-spacing:-0.04em;line-height:1;
-  color:#fff;min-width:1ch;
+  color:#fff;min-width:1ch;flex-shrink:0;
 }
 #imv0 .im-val-word,
 #imv2 .im-val-word{
@@ -298,8 +299,13 @@
 #imv1 .im-val-word{color:#fff}
 .im-val-sub{
   font-family:'JetBrains Mono','Courier New',monospace;
-  font-size:clamp(9px,1.1vw,11px);letter-spacing:.22em;
-  text-transform:uppercase;color:rgba(255,221,0,.45);white-space:nowrap;
+  font-size:clamp(11px,1.35vw,15px);
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.55);
+  line-height:1.5;
+  border-left:1px solid rgba(255,221,0,.3);
+  padding-left:clamp(14px,2.2vw,28px);
 }
 .im-sep{
   width:1px;height:clamp(48px,9vw,96px);
@@ -336,12 +342,12 @@
 }
 #im-skip:hover{color:rgba(255,221,0,.7)}
 
-@media(max-width:600px){
+@media(max-width:680px){
   #im-values{flex-direction:column;gap:8px}
   .im-sep{width:clamp(48px,30vw,120px);height:1px;
     background:linear-gradient(to right,transparent,rgba(255,221,0,.3),transparent)}
-  .im-val{padding:8px 0}
-  .im-val-sub{display:none}
+  .im-val{padding:8px 0;flex-direction:column;align-items:center;gap:8px}
+  .im-val-sub{border-left:none;padding-left:0;font-size:11px;text-align:center}
 }
 </style>
 
