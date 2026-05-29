@@ -216,14 +216,6 @@
 </div>
 
 <style>
-/* ── PAGE REVEAL (content verborgen tijdens intro, fade-in erna) ── */
-body.im-active .page-nav,
-body.im-active #main,
-body.im-active footer{ opacity:0; }
-body.im-reveal .page-nav{ opacity:1; transition:opacity .6s ease .05s; }
-body.im-reveal #main  { opacity:1; transition:opacity .7s ease .15s; }
-body.im-reveal footer { opacity:1; transition:opacity .6s ease .1s; }
-
 /* ── INTRO WRAPPER ── */
 #im-intro{
   position:fixed;inset:0;z-index:9999;
@@ -365,8 +357,6 @@ body.im-reveal footer { opacity:1; transition:opacity .6s ease .1s; }
     document.getElementById('im-intro').style.display='none';
     return;
   }
-  // Verberg pagina-inhoud zolang intro actief is
-  document.body.classList.add('im-active');
 
   const el      = document.getElementById('im-intro');
   const rain    = document.getElementById('im-rain');
@@ -471,8 +461,6 @@ body.im-reveal footer { opacity:1; transition:opacity .6s ease .1s; }
     closed = true;
     clearInterval(rainTimer);
     el.classList.add('out');
-    // Reveal site content terwijl intro omhoog schuift
-    document.body.classList.replace('im-active', 'im-reveal');
     setTimeout(() => { el.style.display = 'none'; }, 900);
     sessionStorage.setItem('im_done', '1');
   };
