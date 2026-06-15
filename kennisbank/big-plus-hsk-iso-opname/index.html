@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BiG-Plus vs HSK vs ISO: spilkop kiezen | InterMill</title>
+<meta name="description" content="Vergelijking BiG-Plus, HSK-A63/E50 en ISO 40/50 opname: stijfheid, run-out, toepassingen en aanbevelingen per bewerkingstype.">
+<meta name="theme-color" content="#FFDD00">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://inter-mill.com/kennisbank/big-plus-hsk-iso-opname/">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:site_name" content="InterMill">
+<meta property="og:title" content="BiG-Plus vs HSK vs ISO: welke spilkopstandaard past bij jouw machine?">
+<meta property="og:description" content="Vergelijking BiG-Plus, HSK-A63/E50 en ISO 40/50 opname: stijfheid, run-out, toepassingen en aanbevelingen per bewerkingstype.">
+<meta property="og:image" content="https://inter-mill.com/og-image.png">
+<meta property="article:author" content="Johny Govers">
+<meta property="article:published_time" content="2026-05-30">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root{
+    --yellow:#FFDD00;--yellow-bg:#FFFCE5;
+    --white:#FFFFFF;--off-white:#FAFAFA;
+    --gray-200:#D4D4D4;--gray-400:#8A8A8A;--gray-500:#525252;--gray-700:#2A2A2A;
+    --ink:#0F0F0F;--line:#E5E5E5;--red:#B42318;--green:#067647;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Manrope',sans-serif;background:var(--white);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;padding-top:67px}
+  ::selection{background:var(--yellow);color:var(--ink)}
+  a{color:inherit}
+  img{display:block;max-width:100%}
+  picture{display:contents}
+  .display{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;line-height:1.02;letter-spacing:-0.03em;overflow-wrap:break-word}
+  .container{max-width:920px;margin:0 auto;padding:0 32px}
+  .article-hero{padding:60px 0 40px;border-bottom:1px solid var(--line)}
+  .breadcrumb{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gray-400);margin-bottom:24px}
+  .breadcrumb a{color:var(--gray-400);text-decoration:none}
+  .breadcrumb a:hover{color:var(--ink)}
+  .breadcrumb .sep{margin:0 8px;opacity:0.5}
+  h1.title{font-size:clamp(34px,5vw,58px);max-width:22ch;margin-bottom:24px}
+  .article-meta{display:flex;flex-wrap:wrap;gap:0;align-items:center;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gray-500);margin-top:24px}
+  .article-meta>span{padding-right:18px;margin-right:18px;border-right:1px solid var(--line)}
+  .article-meta>span:last-child{border-right:none}
+  .article-meta b{color:var(--ink);font-weight:500}
+  .tldr{background:var(--yellow);color:var(--ink);padding:28px 32px;margin:40px 0;border-left:6px solid var(--ink)}
+  .tldr .tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:12px;font-weight:500}
+  .tldr p{font-size:17px;line-height:1.55;font-weight:500;max-width:64ch}
+  .tldr p strong{font-weight:700;background:var(--ink);color:var(--yellow);padding:1px 5px}
+  article.body{padding:40px 0 80px;font-size:17px;line-height:1.7;color:var(--gray-700)}
+  article.body>*+*{margin-top:24px}
+  article.body h2{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(26px,3.5vw,38px);font-weight:700;letter-spacing:-0.02em;line-height:1.15;color:var(--ink);margin-top:64px;max-width:28ch}
+  article.body h2:first-child{margin-top:0}
+  article.body h3{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700;letter-spacing:-0.01em;line-height:1.2;color:var(--ink);margin-top:40px}
+  article.body p{max-width:68ch}
+  article.body p strong,article.body li strong{color:var(--ink);font-weight:700}
+  article.body ul,article.body ol{padding-left:24px;max-width:68ch}
+  article.body li{margin-bottom:8px}
+  article.body a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--yellow);text-decoration-thickness:3px;text-underline-offset:2px}
+  article.body a:hover{background:var(--yellow);text-decoration-color:var(--ink)}
+  article.body code{font-family:'JetBrains Mono',monospace;font-size:14px;background:var(--off-white);padding:2px 6px;border:1px solid var(--line)}
+  .data-table{width:100%;border-collapse:collapse;margin-top:24px;font-size:14.5px;border:1px solid var(--ink)}
+  .data-table th,.data-table td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}
+  .data-table th:last-child,.data-table td:last-child{border-right:none}
+  .data-table thead th{background:var(--ink);color:var(--white);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;font-weight:500}
+  .data-table tbody tr:last-child td{border-bottom:none}
+  .data-table tbody tr:nth-child(even){background:var(--off-white)}
+  .data-table td.pos{font-weight:700;color:var(--green);font-family:'JetBrains Mono',monospace;font-size:13px}
+  .data-table td.neg{font-weight:700;color:var(--red);font-family:'JetBrains Mono',monospace;font-size:13px}
+  .data-table caption{caption-side:bottom;font-size:12px;color:var(--gray-400);text-align:left;padding:10px 0;font-style:italic}
+  .kader{background:var(--ink);color:var(--white);padding:32px;margin:32px 0}
+  .kader .tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--yellow);margin-bottom:14px;font-weight:500}
+  .kader h3{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700;letter-spacing:-0.01em;margin-bottom:16px;color:var(--white)}
+  .kader p{font-size:15.5px;color:var(--gray-200);max-width:none;margin-top:10px}
+  .kader code{font-family:'JetBrains Mono',monospace;font-size:15px;background:var(--gray-700);color:var(--yellow);padding:12px 16px;margin:12px 0;display:block;letter-spacing:0.02em;overflow-x:auto}
+  .checklist{background:var(--yellow-bg);border:2px solid var(--ink);padding:28px 32px;margin:32px 0;counter-reset:cl}
+  .checklist h3{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700;letter-spacing:-0.01em;margin-bottom:16px}
+  .checklist ol{list-style:none;padding:0;max-width:none}
+  .checklist li{counter-increment:cl;padding:14px 0 14px 52px;border-bottom:1px solid rgba(0,0,0,0.1);position:relative;font-size:15.5px;line-height:1.55;color:var(--ink)}
+  .checklist li:last-child{border-bottom:none;padding-bottom:0}
+  .checklist li::before{content:counter(cl,decimal-leading-zero);position:absolute;left:0;top:14px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.1em;background:var(--ink);color:var(--yellow);padding:5px 8px}
+  .cta-inline{background:var(--ink);color:var(--white);padding:32px;margin:48px 0;display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+  .cta-inline .left{flex:1;min-width:240px}
+  .cta-inline h3{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700;letter-spacing:-0.01em;margin-bottom:8px;color:var(--white)}
+  .cta-inline p{font-size:15px;color:var(--gray-200);max-width:none;margin:0}
+  .cta-inline a{background:var(--yellow);color:var(--ink);padding:14px 22px;font-weight:700;font-size:14px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;flex-shrink:0}
+  .cta-inline a:hover{background:var(--white)}
+  .related{padding:0 0 80px;border-top:1px solid var(--line);background:var(--off-white)}
+  .related .container{padding-top:48px}
+  .related-title{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gray-500);margin-bottom:20px}
+  .related-cards{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .related-card{display:block;background:var(--white);border:1px solid var(--ink);padding:24px;text-decoration:none;color:var(--ink);transition:background .15s}
+  .related-card:hover{background:var(--yellow-bg)}
+  .related-card .kicker{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gray-400);margin-bottom:8px}
+  .related-card h4{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:700;letter-spacing:-0.01em;margin-bottom:8px;line-height:1.2}
+  .related-card p{font-size:14px;color:var(--gray-500);line-height:1.5}
+  footer{background:var(--ink);color:var(--white);padding:36px 0;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase}
+  footer .container{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;align-items:center}
+  footer a{color:var(--gray-400);text-decoration:none}
+  footer a:hover{color:var(--yellow)}
+  @media(max-width:700px){
+    .container{padding:0 22px}
+    .related-cards{grid-template-columns:1fr}
+    article.body{font-size:16px}
+    .cta-inline{flex-direction:column;align-items:flex-start}
+    .data-table{font-size:13px}
+    .data-table th,.data-table td{padding:8px 10px}
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "BiG-Plus vs HSK vs ISO: welke spilkopstandaard past bij jouw machine?",
+  "description": "Vergelijking BiG-Plus, HSK-A63/E50 en ISO 40/50 opname: stijfheid, run-out, toepassingen en aanbevelingen per bewerkingstype.",
+  "datePublished": "2026-05-30",
+  "dateModified": "2026-05-30",
+  "inLanguage": "nl-NL",
+  "author": {
+    "@type": "Person",
+    "name": "Johny Govers",
+    "jobTitle": "Oprichter InterMill",
+    "worksFor": {"@id": "https://inter-mill.com/#organization"}
+  },
+  "publisher": {"@id": "https://inter-mill.com/#organization"},
+  "mainEntityOfPage": "https://inter-mill.com/kennisbank/big-plus-hsk-iso-opname/"
+}
+</script>
+<link rel="stylesheet" href="/styles.css?v=20260545">
+</head>
+<body>
+
+<nav class="page-nav">
+  <div class="page-nav-inner">
+    <a class="brand" href="/" aria-label="InterMill, naar home">
+      <picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="InterMill" width="888" height="324"></picture>
+    </a>
+    <div class="nav-tabs">
+      <a href="/">Home</a>
+      <a href="/over-ons/">Over ons</a>
+      <a href="/werkwijze/">Werkwijze</a>
+      <a href="/toepassingen/">Toepassingen</a>
+      <a href="/assortiment/">Assortiment</a>
+      <a href="/kennisbank/" class="active" aria-current="page">Kennisbank</a>
+      <a href="/contact/">Contact</a>
+    </div>
+    <a class="nav-cta" href="/plannen/">Plan sparringsessie <span style="font-size:18px">→</span></a>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="article-hero">
+    <nav class="breadcrumb" aria-label="Kruimelpad">
+      <a href="/">InterMill</a>
+      <span class="sep">/</span>
+      <a href="/kennisbank/">Kennisbank</a>
+      <span class="sep">/</span>
+      <span>Gereedschapskeuze</span>
+    </nav>
+    <h1 class="title display">BiG-Plus vs HSK vs ISO: welke spilkopstandaard past bij jouw machine?</h1>
+    <div class="article-meta">
+      <span>Categorie <b>Gereedschapskeuze</b></span>
+      <span>Leestijd <b>~7 min</b></span>
+      <span>Gepubliceerd <b>2026-05-30</b></span>
+      <span>Door <b>Johny Govers</b></span>
+    </div>
+  </div>
+  <div class="tldr">
+    <div class="tag">★ TL;DR — Kernpunten</div>
+    <p><strong>ISO 40/50</strong> volstaat voor standaard bewerkingen tot 15.000 rpm. <strong>HSK-A63</strong> voor hoge spilsnelheden en snelwisselsystemen. <strong>BiG-Plus</strong> voor maximale stijfheid bij zware ruw- en kotterbewerking — twee-vlaks contact geeft 40–60% minder run-out bij hoge snijkrachten. BiG-Plus en ISO zijn niet uitwisselbaar zonder adapterset.</p>
+  </div>
+</div>
+<div class="container">
+  <article class="body">
+    <h2>De drie standaarden uitgelegd</h2>
+<h3>ISO 40 en ISO 50 (SK/BT)</h3>
+<p>De klassieke standaard, aanwezig op de meeste oudere CNC-bewerkingscentra. Eén conus-contact: bij lage kracht prima, bij hoge kracht of hoge rpm beginnen trillingen toe te nemen omdat de opname axiale speling toelaat. Maximale practische rpm: ∼15.000 (afhankelijk van machine en balanceerklasse).</p>
+
+<h3>HSK (Hohl Schaft Kegel)</h3>
+<p>Holle kortconus met twee-vlaks contact — conus én vlak gelijktijdig. Door de holle conus zit de klemkracht aan de buitenzijde, wat bij hoge centrifugaalkrachten (hoge rpm) de greep versterkt. HSK-A63 is de meest voorkomende variant (werktuigmachines). HSK-E50 voor kleinere spilneuzen. Ideaal voor hoge snelheid (&gt;15.000 rpm) en automatisch gereedschapswisselsystemen.</p>
+
+<h3>BiG-Plus</h3>
+<p>BiG-Plus is een ISO-compatibele standaard die de SK-conus uitbreidt met vlakcontact op de spilkop. Het klemoppervlak is gróter dan ISO, en de conus is nauwer tolerant. Resultaat: bij hoge snijkrachten — zware ruwbewerking, kotteren, BiG-Plus-specifieke heavy-duty toepassingen — is de stijfheid structureel beter dan standaard ISO.</p>
+
+<h2>Vergelijkingstabel</h2>
+<table class="data-table">
+<thead><tr><th>Kenmerk</th><th>ISO 40/50</th><th>HSK-A63</th><th>BiG-Plus SK40/50</th></tr></thead>
+<tbody>
+<tr><td>Contact-type</td><td>Conus alleen</td><td>Conus + vlak</td><td>Conus + vlak</td></tr>
+<tr><td>Stijfheid bij hoge kracht</td><td>Basis</td><td>Goed</td><td class="pos">Uitstekend</td></tr>
+<tr><td>Max rpm (praktisch)</td><td>∼15.000</td><td class="pos">&gt;40.000</td><td>∼20.000</td></tr>
+<tr><td>Herhaalnauwkeurigheid (TIR)</td><td>5–10 µm</td><td>2–5 µm</td><td class="pos">&lt;2 µm</td></tr>
+<tr><td>Wisseltijd ATC</td><td>Normaal</td><td class="pos">Snel</td><td>Normaal</td></tr>
+<tr><td>Compatibiliteit</td><td>Universeel</td><td>HSK-spil vereist</td><td>BiG-Plus spil vereist*</td></tr>
+<tr><td>Ideale toepassing</td><td>Standaard bewerking</td><td>Hoge snelheid, aluminium</td><td>Zware bewerking, kotteren</td></tr>
+</tbody>
+<caption>*BiG-Plus opname past op normale ISO-spil maar zonder vlakcontact — volledig voordeel alleen met BiG-Plus-spil.</caption>
+</table>
+
+<h2>BiG-Plus in de praktijk: scheepsdiesel en zware industrie</h2>
+<p>Bij InterMill is BiG-Plus standaard voor scheepsdieselmotor-bewerkingen (Ø100–2000mm). De reden is de hoge snijkracht bij grote diameters en lange uitsteeklengten. Zonder vlakcontact drijft de axiale run-out op — zichtbaar als conisch profiel in het gat en snel slijtende snijplaten.</p>
+<p>Typisch resultaat van BiG-Plus overstap bij maritieme OEM: run-out teruggebracht van 18 µm naar 4 µm, standtijdverdubbeling snijplaten, en de cyclustijdreductie van 52% bij cilinderkopbewerking. <a href="/cases/maritime-cilinderkop/">Zie de volledige case.</a></p>
+
+{cta('Opname-probleem of run-out te hoog?', 'Machine, spilneus en bewerkingstype — we geven een concrete opname-aanbeveling.')}
+
+<h2>Aanbeveling per toepassing</h2>
+<div class="checklist">
+<h3>Kies op basis van bewerkingstype</h3>
+<ol>
+<li><strong>Standaard frezen/boren tot 15.000 rpm</strong> — ISO 40 of 50. Geen extra kosten, volledig compatibel.</li>
+<li><strong>Hoge snelheid (&gt;15.000 rpm) of aluminium-finishing</strong> — HSK-A63. Lagere onbalans bij hoge rpm.</li>
+<li><strong>Zware ruwbewerking, kotteren, scheepsdiesel</strong> — BiG-Plus. Stijfheid en run-out zijn hier doorslaggevend.</li>
+<li><strong>Precisiefrezen met lange uitsteeklengte</strong> — BiG-Plus of HSK. ISO geeft hier te veel doorbuiging bij zware snedes.</li>
+<li><strong>Automatisch gereedschapswisselen in serie-productie</strong> — HSK voor snelste wisseltijd en herhaalnauwkeurigheid.</li>
+</ol>
+</div>
+  </article>
+</div>
+<div class="related">
+  <div class="container">
+    <div class="related-title">★ Gerelateerde artikelen &amp; pagina’s</div>
+    <div class="related-cards">
+      <a class="related-card" href="/kennisbank/kotteren-grote-boringen/"><div class="kicker">Kennisbank</div><h4>Kotteren van grote gaten</h4><p>MEHI, BiG-Plus en trillingsgedempte stangen voor grote interne bewerkingen.</p></a>
+<a class="related-card" href="/kennisbank/trillingen-precisiefrezen/"><div class="kicker">Kennisbank</div><h4>Trillingen bij precisiefrezen</h4><p>De drie bronnen: uitsteeklengte, run-out en snijgeometrie.</p></a>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="container">
+    <div>InterMill · VerspaningsAdvies &amp; -Gereedschap · Maarheeze, NL</div>
+    <div><a href="tel:+31610906759">+31 (0)6 10 90 67 59</a> · <a href="mailto:info@inter-mill.com">info@inter-mill.com</a></div>
+  </div>
+</footer>
+<script src="/nav.js" defer></script>
+<script src="/consent.js" defer></script>
+</body>
+</html>

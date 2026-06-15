@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InterMill — LinkedIn Groeistrategie 2026</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0A0A0A;--white:#fff;--yellow:#FFDD00;
+  --lb:#0A66C2;--ll:#70B5F9;
+  --s1:#111;--s2:#181818;--s3:#202020;
+  --line:rgba(255,255,255,.07);--line2:rgba(255,255,255,.12);
+  --text:rgba(255,255,255,.85);--muted:rgba(255,255,255,.42);
+  --green:#4ADE80;--orange:#fb923c;
+  --fh:'Bricolage Grotesque',system-ui,sans-serif;
+  --fb:'Manrope',system-ui,sans-serif;
+  --fm:'JetBrains Mono',monospace;
+}
+html{font-size:16px}
+body{background:var(--ink);color:var(--white);font-family:var(--fb);font-size:14.5px;line-height:1.7;-webkit-font-smoothing:antialiased}
+
+@media print{
+  body{background:#fff!important;color:#111!important;font-size:10pt}
+  .no-print{display:none!important}
+  .cover,.ch-bar{background:#0A0A0A!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .card,.post,.tbl th{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .chapter{page-break-before:always}
+  .chapter:first-of-type{page-break-before:avoid}
+  .keep{break-inside:avoid}
+  @page{margin:14mm;size:A4}
+}
+
+/* COVER */
+.cover{background:var(--ink);padding:88px 72px 72px;border-bottom:1px solid var(--line2);position:relative;overflow:hidden}
+.cover::after{content:'';position:absolute;top:-100px;right:-60px;width:480px;height:480px;background:radial-gradient(circle,rgba(10,102,194,.16) 0%,transparent 65%);pointer-events:none}
+.eye{font-family:var(--fm);font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ll);margin-bottom:22px}
+.cover h1{font-family:var(--fh);font-size:clamp(34px,5vw,58px);font-weight:800;line-height:1.05;letter-spacing:-.02em;margin-bottom:20px}
+.cover h1 .y{color:var(--yellow)}
+.cover-sub{font-size:16px;color:var(--muted);max-width:460px;line-height:1.6;margin-bottom:36px}
+.chips{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:40px}
+.chip{font-family:var(--fm);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:100px;border:1px solid rgba(255,255,255,.14);color:var(--muted)}
+.chip.hi{border-color:rgba(10,102,194,.5);color:var(--ll)}
+.cover-meta{font-family:var(--fm);font-size:10px;color:rgba(255,255,255,.22);letter-spacing:.1em;display:flex;gap:28px;flex-wrap:wrap}
+
+/* LAYOUT */
+.ch-bar{background:var(--s1);border-top:1px solid var(--line2);border-bottom:1px solid var(--line);padding:26px 40px;display:flex;align-items:baseline;gap:18px;position:sticky;top:0;z-index:10}
+.ch-n{font-family:var(--fm);font-size:11px;color:var(--ll);letter-spacing:.18em}
+.ch-t{font-family:var(--fh);font-size:19px;font-weight:700}
+.ch-s{font-family:var(--fm);font-size:10px;color:var(--muted);margin-left:auto;letter-spacing:.08em}
+.wrap{max-width:860px;margin:0 auto;padding:56px 40px 88px}
+
+/* CARDS */
+.card{background:var(--s2);border:1px solid var(--line2);border-radius:12px;padding:22px 24px}
+.card+.card{margin-top:12px}
+.card h4{font-family:var(--fh);font-size:15px;font-weight:700;margin-bottom:9px}
+.card p,.card li{font-size:13.5px;color:rgba(255,255,255,.62);line-height:1.65}
+.card ul{padding-left:17px}
+.card li{margin-bottom:5px}
+.card .mono{font-family:var(--fm);font-size:12.5px;background:var(--s3);padding:10px 14px;border-radius:6px;color:var(--ll);line-height:1.55;margin-top:10px}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:13px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
+.span2{grid-column:span 2}
+
+/* STATS */
+.stat{background:var(--s2);border:1px solid var(--line2);border-radius:12px;padding:22px 18px;text-align:center}
+.stat .n{font-family:var(--fh);font-size:36px;font-weight:800;line-height:1;margin-bottom:5px}
+.stat .l{font-size:11.5px;color:var(--muted);line-height:1.4}
+.cb{color:var(--lb)}.cy{color:var(--yellow)}.cg{color:var(--green)}.co{color:var(--orange)}
+
+/* TAGS */
+.tag{font-family:var(--fm);font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:3px 9px;border-radius:4px;display:inline-block}
+.tb{background:rgba(10,102,194,.2);color:var(--ll)}
+.ty{background:rgba(255,221,0,.14);color:var(--yellow)}
+.tg{background:rgba(74,222,128,.14);color:var(--green)}
+.to{background:rgba(251,146,60,.18);color:var(--orange)}
+.tp{background:rgba(196,181,253,.15);color:#c4b5fd}
+.tm{background:rgba(255,255,255,.07);color:var(--muted)}
+
+/* DIVIDERS */
+.div{height:1px;background:var(--line);margin:24px 0}
+.divl{display:flex;align-items:center;gap:12px;margin:24px 0;font-family:var(--fm);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.divl::before,.divl::after{content:'';flex:1;height:1px;background:var(--line)}
+
+/* QUOTE */
+.quote{border-left:3px solid var(--lb);padding:14px 18px;margin:20px 0;font-size:14px;color:rgba(255,255,255,.62);font-style:italic;line-height:1.7}
+.quote strong{color:var(--white);font-style:normal}
+
+/* ACTION BOX */
+.abox{background:rgba(10,102,194,.08);border:1px solid rgba(10,102,194,.24);border-radius:10px;padding:16px 20px;margin-top:16px}
+.abox .al{font-family:var(--fm);font-size:10px;color:var(--ll);letter-spacing:.14em;text-transform:uppercase;margin-bottom:7px}
+.abox p{font-size:13.5px;color:rgba(255,255,255,.7);line-height:1.6}
+
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{background:rgba(10,102,194,.1);color:rgba(255,255,255,.5);font-family:var(--fm);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;padding:10px 14px;text-align:left;border-bottom:1px solid var(--line2)}
+.tbl td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5;color:rgba(255,255,255,.7)}
+.tbl tr:last-child td{border-bottom:none}
+.tbl td:first-child{font-weight:700;color:var(--white)}
+.tbl .num{font-family:var(--fm);font-size:12px;color:var(--green);font-weight:600}
+.tbl .bad{color:var(--orange)}
+
+/* POST MOCK */
+.post{background:var(--s3);border:1px solid var(--line2);border-radius:14px;overflow:hidden;margin-bottom:18px}
+.post-head{padding:14px 18px 10px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:11px}
+.avatar{width:40px;height:40px;border-radius:50%;background:var(--lb);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:#fff;flex-shrink:0}
+.pname{font-weight:700;font-size:13px}
+.psub{font-size:11px;color:var(--muted)}
+.post-body{padding:16px 18px;font-size:13.5px;color:rgba(255,255,255,.82);line-height:1.75;white-space:pre-line}
+.post-foot{padding:9px 18px 12px;border-top:1px solid var(--line);display:flex;align-items:center;gap:12px}
+.post-foot span{font-family:var(--fm);font-size:10px;color:var(--muted);letter-spacing:.05em}
+.post-type{margin-left:auto;font-family:var(--fm);font-size:9.5px;color:var(--ll);letter-spacing:.12em;text-transform:uppercase}
+
+/* FORMULA */
+.formula{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:14px 0}
+.fs{background:var(--s2);border:1px solid var(--line2);border-radius:8px;padding:9px 13px;flex:1;min-width:80px;text-align:center}
+.fs .fn{font-family:var(--fm);font-size:9px;color:var(--ll);letter-spacing:.12em;display:block;margin-bottom:3px}
+.fs .fl{font-weight:700;font-size:12px}
+.fa{color:var(--muted);font-size:16px;flex-shrink:0}
+
+/* TIMELINE */
+.tl-row{display:grid;grid-template-columns:100px 1fr;gap:24px;padding:20px 0;border-bottom:1px solid var(--line)}
+.tl-row:last-child{border-bottom:none}
+.tl-p{font-family:var(--fh);font-size:13px;font-weight:700}
+.tl-p small{display:block;font-family:var(--fm);font-size:9.5px;color:var(--muted);font-weight:400;margin-top:2px;letter-spacing:.1em}
+.tl-b h5{font-weight:700;font-size:13.5px;margin-bottom:6px}
+.tl-b li{font-size:13px;color:rgba(255,255,255,.6);margin-bottom:4px;line-height:1.5}
+
+/* CALENDAR */
+.wk-label{font-family:var(--fm);font-size:10px;color:var(--yellow);letter-spacing:.16em;text-transform:uppercase;margin-bottom:9px}
+.wk-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-bottom:18px}
+.day{background:var(--s2);border:1px solid var(--line);border-radius:7px;padding:10px 11px;min-height:72px}
+.day.on{border-color:rgba(10,102,194,.4);background:rgba(10,102,194,.07)}
+.day-n{font-family:var(--fm);font-size:9px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px}
+.day-c{font-size:11.5px;color:rgba(255,255,255,.72);line-height:1.45}
+
+/* KPI ROWS */
+.krow{display:grid;grid-template-columns:1fr auto auto auto;gap:20px;align-items:center;padding:13px 0;border-bottom:1px solid var(--line)}
+.krow:last-child{border-bottom:none}
+.km{font-weight:600;font-size:13.5px}
+.kn,.km3,.km12{font-family:var(--fm);font-size:11.5px;text-align:right;color:var(--muted)}
+.km12{color:var(--green);font-weight:600}
+
+/* ROI STRIP */
+.roi{background:rgba(10,102,194,.07);border:1px solid rgba(10,102,194,.2);border-radius:12px;padding:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;overflow:hidden}
+.ri{padding:0 20px;border-right:1px solid rgba(255,255,255,.07)}
+.ri:first-child{padding-left:0}
+.ri:last-child{border-right:none}
+.rv{font-family:var(--fh);font-size:26px;font-weight:800;color:var(--ll);margin-bottom:4px}
+.rd{font-size:12px;color:var(--muted);line-height:1.4}
+
+/* FOOTER */
+.doc-foot{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-family:var(--fm);font-size:10px;color:rgba(255,255,255,.2);letter-spacing:.1em}
+
+@media(max-width:640px){
+  .cover{padding:52px 24px 44px}
+  .ch-bar{padding:18px 22px}
+  .wrap{padding:36px 20px 64px}
+  .g2,.g3,.g4{grid-template-columns:1fr}
+  .span2{grid-column:span 1}
+  .roi{grid-template-columns:1fr}
+  .krow{grid-template-columns:1fr auto}
+  .kn,.km3{display:none}
+}
+</style>
+</head>
+<body>
+
+<!---------- COVER ---------->
+<div class="cover">
+  <div class="eye">InterMill &middot; LinkedIn Groeistrategie &middot; 2026</div>
+  <h1>Van expert in de hal<br>naar <span class="y">het gezicht van<br>verspaning</span> in NL&amp;BE.</h1>
+  <div class="cover-sub">Een systeem. Niet een lijst tips. Van profiel tot lead-pipeline &mdash; in 90 dagen operationeel.</div>
+  <div class="chips">
+    <span class="chip hi">Johny Govers persoonlijk merk</span>
+    <span class="chip hi">5 content pillars</span>
+    <span class="chip hi">15 kant-en-klare posts</span>
+    <span class="chip">4-weken kalender</span>
+    <span class="chip">DM-sequentie</span>
+    <span class="chip">KPI-systeem</span>
+  </div>
+  <div class="cover-meta">
+    <span>29&middot;05&middot;2026</span>
+    <span>LINKEDIN NL/BE</span>
+    <span>INTER-MILL.COM</span>
+    <span>VERTROUWELIJK</span>
+  </div>
+</div>
+
+
+<!---------- 00: DE KANS ---------->
+<div class="chapter">
+  <div class="ch-bar">
+    <span class="ch-n">00</span>
+    <span class="ch-t">De kans</span>
+    <span class="ch-s">Waarom nu &middot; waarom jij</span>
+  </div>
+  <div class="wrap">
+
+    <div class="g4" style="margin-bottom:28px">
+      <div class="stat keep"><div class="n cb">500K+</div><div class="l">LinkedIn-gebruikers NL in manufacturing &amp; industrie</div></div>
+      <div class="stat keep"><div class="n cy">&#8776;0</div><div class="l">Actieve NL verspaningsexperts op LinkedIn met consistente aanwezigheid</div></div>
+      <div class="stat keep"><div class="n cg">10&times;</div><div class="l">Meer organisch bereik via persoonlijk profiel vs. bedrijfspagina</div></div>
+      <div class="stat keep"><div class="n co">90 dgn</div><div class="l">Tot merkautoriteit zichtbaar bij doelgroep en in zoekopdrachten</div></div>
+    </div>
+
+    <div class="card keep" style="border-color:rgba(10,102,194,.3)">
+      <h4>De first-mover positie is open</h4>
+      <p>De verspaningsniche op LinkedIn NL is leeg. Geen enkele Nederlandse verspaningsadviseur of gereedschapsspecialist heeft een actief, consistent LinkedIn-profiel met substantieel bereik. De eerste die drie maanden consequent publiceert, pakt een positie die jarenlang standhoudt. <strong style="color:var(--white)">Dat moet Johny Govers zijn.</strong></p>
+    </div>
+
+    <div class="divl">Waarom LinkedIn boven andere kanalen</div>
+
+    <div class="g3">
+      <div class="card keep">
+        <h4>Exacte doelgroep</h4>
+        <p>Productiemanagers, werkvoorbereiders, inkoop en technisch directeuren zitten op LinkedIn &mdash; nergens anders. Geen verspilling aan mensen die nooit klant worden.</p>
+      </div>
+      <div class="card keep">
+        <h4>Algoritme beloont niche</h4>
+        <p>LinkedIn verspreidt content naar mensen met vergelijkbare interesse. &Eacute;&eacute;n goede post over trillingsproblemen bereikt automatisch andere productiemensen in NL/BE.</p>
+      </div>
+      <div class="card keep">
+        <h4>Gratis bereik, betaald effect</h4>
+        <p>Een sterke post van Johny bereikt 2.000&ndash;8.000 mensen organisch. Zonder advertentiebudget. LinkedIn B2B organisch bereik is in 2026 nog altijd uniek groot.</p>
+      </div>
+    </div>
+
+    <div class="quote keep">&ldquo;90% van B2B-aankopen begint met content die de koper las lang v&oacute;&oacute;r er contact was. Je wilt de content zijn die ze herinneren als het probleem zich aandient.&rdquo;</div>
+
+  </div>
+</div>
+
+
+<!---------- 01: PROFIEL ---------->
+<div class="chapter">
+  <div class="ch-bar">
+    <span class="ch-n">01</span>
+    <span class="ch-t">Profiel &mdash; de digitale handdruk</span>
+    <span class="ch-s">Eenmalig &middot; maximale impact</span>
+  </div>
+  <div class="wrap">
+
+    <p style="color:var(--muted);margin-bottom:22px">Het profiel is de landingspagina. Elke post die scoort stuurt mensen hiernaartoe. Als het profiel niet converteert, verlies je elke lead die je met content hebt gewonnen.</p>
+
+    <div class="g2" style="margin-bottom:14px">
+      <div class="card keep">
+        <h4>Profielfoto</h4>
+        <p>Op locatie &mdash; bij machine of werkstuk. Geen studio, geen witte achtergrond. Context geeft vertrouwen in industriele niche. Glimlach, directe blik. 400&times;400px minimum.</p>
+      </div>
+      <div class="card keep">
+        <h4>Bannerfoto</h4>
+        <p>InterMill-huisstijl: donker, geel accent. Tekst: <em>&ldquo;Onafhankelijk verspaningsadvies &middot; NL&amp;BE &middot; 06 10 90 67 59&rdquo;</em>. Maak in Canva op 1584&times;396px. Mobiel: tekst centreren.</p>
+      </div>
+    </div>
+
+    <div class="card keep">
+      <h4>Headline &mdash; 220 tekens, alles telt</h4>
+      <div class="mono">Verspaningsexpert &amp; onafhankelijk gereedschapsadviseur bij InterMill &middot; Snijgereedschap &middot; Kotteren &middot; Specials &middot; TCO &middot; NL &amp; BE &middot; 06 10 90 67 59</div>
+      <p style="margin-top:10px;font-size:12.5px">De headline verschijnt overal: zoekresultaten, comments, DM-inbox. Zet vakgebied + onafhankelijkheid + telefoonnummer. Zo converteert elke weergave.</p>
+    </div>
+
+    <div class="card keep" style="margin-top:14px">
+      <h4>About-sectie &mdash; kant-en-klare tekst (pas aan met eigen details)</h4>
+      <div class="mono" style="white-space:pre-line">Als een freesspecial na 80 stuks kapotgaat, bel je niet je leverancier.
+Die verkoopt je een nieuwe.
+
+Je belt iemand die begrijpt w&aacute;&aacute;rom hij kapotging.
+
+Dat is wat ik doe bij InterMill.
+
+240+ verspaningsprocessen geanalyseerd in Nederland en Belgi&euml;. Snijgereedschap, kotteren, meetgereedschap, trillingsdemping. Merk-onafhankelijk &mdash; ik werk met Br&uuml;tsch-R&uuml;egger, MEHI, DTS Diamond, BiG-Plus en tientallen specialisten. Geen kwotum, geen merkbonus.
+
+Ik verdien mijn geld als jouw proces beter wordt. Niet als jij een catalogus leegkoopt.
+
+Gratis sparringsessie: 15 min telefoon &rarr; concrete conclusie.
+
+&#128222; 06 10 90 67 59
+&#9993; info@inter-mill.com
+&#127758; inter-mill.com</div>
+    </div>
+
+    <div class="divl">Technische instellingen</div>
+
+    <div class="g2">
+      <div class="card keep">
+        <h4>Creator mode: aan</h4>
+        <p>Geeft &ldquo;Volgen&rdquo;-knop prominent bovenaan. Content krijgt extra algoritmische distributie. LinkedIn Newsletter wordt beschikbaar. SSI-score stijgt automatisch.</p>
+      </div>
+      <div class="card keep">
+        <h4>Featured sectie &mdash; pin 3 items</h4>
+        <p><strong style="color:var(--white)">1.</strong> Beste post ooit (hoogste engagement)<br><strong style="color:var(--white)">2.</strong> Link naar sparringsessie op inter-mill.com<br><strong style="color:var(--white)">3.</strong> Download checklist gereedschapskeuze (lead magnet)</p>
+      </div>
+    </div>
+
+    <div class="abox keep">
+      <div class="al">Actie &mdash; week 1</div>
+      <p>Profiel 100% invullen v&oacute;&oacute;r eerste post. Creator mode aan. Banner uploaden. About-tekst plaatsen. Featured sectie: 3 items. Daarna: 500 connectieverzoeken sturen naar klanten, oud-collega&rsquo;s en ICP-contacten.</p>
+    </div>
+
+  </div>
+</div>
+
+
+<!---------- 02: CONTENT PILLARS ---------->
+<div class="chapter">
+  <div class="ch-bar">
+    <span class="ch-n">02</span>
+    <span class="ch-t">Content pillars &mdash; 5 thema&rsquo;s</span>
+    <span class="ch-s">Vaste rotatie &middot; nooit een leeg canvas</span>
+  </div>
+  <div class="wrap">
+
+    <p style="color:var(--muted);margin-bottom:22px">Elk pillar heeft een eigen doel en toon. Roteer ze door de week &mdash; nooit twee keer hetzelfde pillar achter elkaar. Zo bereik je altijd de volle breedte van de doelgroep.</p>
+
+    <div class="g2">
+
+      <div class="card keep" style="border-top:3px solid var(--lb)">
+        <h4>&#128161; Pillar 1 &mdash; Technische tip</h4>
+        <div class="pct" style="font-family:var(--fm);font-size:10px;color:var(--muted);margin-bottom:9px">30% van posts</div>
+        <p>Concrete, uitvoerbare kennis. l/d-verhoudingen, run-out toleranties, koelvloeistof bij titanium. Iets wat de machinist <em>morgen</em> toepast. Geen theorie &mdash; wat doe je precies.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:12px">
+          <span class="tag tb">Tip van de week</span>
+          <span class="tag tb">3 regels voor X</span>
+          <span class="tag tb">Fout die ik elke week zie</span>
+        </div>
+      </div>
+
+      <div class="card keep" style="border-top:3px solid var(--yellow)">
+        <h4>&#128203; Pillar 2 &mdash; Case study</h4>
+        <div class="pct" style="font-family:var(--fm);font-size:10px;color:var(--muted);margin-bottom:9px">25% van posts</div>
+        <p>Echte klant, echt probleem, echte cijfers. Voor/na. Cyclustijd gehalveerd. Standtijd verviervoudigd. ROI in werkdagen terugverdiend. Anonimiseer klant indien nodig &mdash; de cijfers zijn het verhaal.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:12px">
+          <span class="tag ty">Klant belde</span>
+          <span class="tag ty">Probleem &rarr; diagnose &rarr; resultaat</span>
+        </div>
+      </div>
+
+      <div class="card keep" style="border-top:3px solid var(--green)">
+        <h4>&#128293; Pillar 3 &mdash; Controversieel standpunt</h4>
+        <div class="pct" style="font-family:var(--fm);font-size:10px;color:var(--muted);margin-bottom:9px">20% van posts</div>
+        <p>Mening die wrijving geeft. &ldquo;Stukprijs is de duurste manier van inkopen.&rdquo; &ldquo;Leveranciers adviseren niet &mdash; ze verkopen.&rdquo; Polariseert. Trekt comments. Bewijst onafhankelijkheid.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:12px">
+          <span class="tag tg">Onpopulaire mening</span>
+          <span class="tag tg">Wat niemand je vertelt</span>
+        </div>
+      </div>
+
+      <div class="card keep" style="border-top:3px solid var(--orange)">
+        <h4>&#127917; Pillar 4 &mdash; Achter de schermen</h4>
+        <div class="pct" style="font-family:var(--fm);font-size:10px;color:var(--muted);margin-bottom:9px">15% van posts</div>
+        <p>Op locatie bij klant. Special die binnenkomt. Gereedschapstest in de hal. Laat zien hoe het werk er echt uitziet. Bouwt persoonlijk vertrouwen &mdash; mensen kopen van mensen die ze kennen.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:12px">
+          <span class="tag to">BTS foto + context</span>
+          <span class="tag to">Vandaag op locatie</span>
+        </div>
+      </div>
+
+      <div class="card keep span2" style="border-top:3px solid #c4b5fd">
+        <h4>&#129309; Pillar 5 &mdash; Social proof &amp; conversie</h4>
+        <div class="pct" style="font-family:var(--fm);font-size:10px;color:var(--muted);margin-bottom:9px">10% van posts &mdash; maximaal 1&times; per 2 weken</div>
+        <p>Testimonial van klant met naam en bedrijf. Resultaat gedeeld door klant zelf. Zachte CTA naar sparringsessie. Niet elke post &mdash; maar regelmatig genoeg dat volgers weten wat je aanbiedt en hoe ze je bereiken.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:12px">
+          <span class="tag tp">Klant aan het woord</span>
+          <span class="tag tp">Resultaat gedeeld</span>
+          <span class="tag tp">Gratis sessie CTA</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!---------- 03: FORMATS + ALGORITME ---------->
+<div class="chapter">
+  <div class="ch-bar">
+    <span class="ch-n">03</span>
+    <span class="ch-t">Formats &amp; algoritme 2026</span>
+    <span class="ch-s">Wat werkt &middot; wat niet</span>
+  </div>
+  <div class="wrap">
+
+    <div class="card keep" style="margin-bottom:18px">
+      <h4>&#128161; LinkedIn-algoritme 2026 &mdash; wat je moet weten</h4>
+      <p><strong style="color:var(--white)">Dwell time (#1 signaal):</strong> hoe lang mensen op je post blijven, is zwaarder dan likes.<br>
+      <strong style="color:var(--white)">Eerste 60 minuten zijn goud:</strong> comments direct na publicatie geven exponentieel bereik.<br>
+      <strong style="color:var(--white)">Externe links worden gestraft:</strong> zet links altijd in de eerste comment, nooit in de post zelf.<br>
+      <strong style="color:var(--white)">Native content wint:</strong> PDF-carrousel, native video, text-only &mdash; nooit gedeelde links als post.</p>
+    </div>
+
+    <table class="tbl keep">
+      <thead><tr><th>Format</th><th>Frequentie</th><th>Bereik vs. tekst</th><th>Wanneer</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Tekst-only</td>
+          <td>3&times;/week</td>
+          <td class="num">Baseline</td>
+          <td>Tips, meningen, cases. Hook in regel 1. Witregel na elke 2 zinnen. Max 1.300 tekens zichtbaar.</td>
+        </tr>
+        <tr>
+          <td>PDF-carrousel</td>
+          <td>1&times;/week</td>
+          <td class="num">+200&ndash;300%</td>
+          <td>Stappenplan, vergelijking, TCO-rekensom. 6&ndash;10 slides. Upload native als PDF, nooit als link.</td>
+        </tr>
+        <tr>
+          <td>Foto + caption</td>
+          <td>1&times;/week</td>
+          <td class="num">+120%</td>
+          <td>BTS op locatie, gereedschap, voor/na. Caption = volwaardige post &mdash; foto is haak, tekst is inhoud.</td>
+        </tr>
+        <tr>
+          <td>Native video (60&ndash;90s)</td>
+          <td>1&times;/2 weken</td>
+          <td class="num">+400%</td>
+          <td>Snelle tip, demo, uitleg. Geen productie nodig &mdash; telefoon op statief. <strong style="color:var(--white)">Ondertitels verplicht</strong> (85% kijkt zonder geluid).</td>
+        </tr>
+        <tr>
+          <td>LinkedIn Newsletter</td>
+          <td>1&times;/2 weken</td>
+          <td class="num">Push notificatie</td>
+          <td>Naam: <em>Verspaner&rsquo;s Edge</em>. Elke editie: 1 inzicht + 1 mini-case + 1 tip. Bouwt eigen publiek onafhankelijk van algoritme.</td>
+        </tr>
+        <tr>
+          <td>Poll</td>
+          <td>1&times;/maand</td>
+          <td class="bad">Laag vertrouwen</td>
+          <td>Alleen voor marktonderzoek (&ldquo;Wat is je grootste gereedschapsprobleem?&rdquo;). Gebruik resultaten als basis voor volgende posts.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="divl">De hook-formule</div>
+
+    <p style="color:var(--muted);margin-bottom:14px;font-size:13.5px">Elke post begint met een hook die mensen stopt tijdens het scrollen. De formule die het meest werkt in industriele B2B:</p>
+
+    <div class="formula keep">
+      <div class="fs"><span class="fn">STAP 1</span><span class="fl">Pijn / getal</span></div>
+      <div class="fa">&rarr;</div>
+      <div class="fs"><span class="fn">STAP 2</span><span class="fl">Belofte</span></div>
+      <div class="fa">&rarr;</div>
+      <div class="fs"><span class="fn">STAP 3</span><span class="fl">Bewijs</span></div>
+      <div class="fa">&rarr;</div>
+      <div class="fs"><span class="fn">STAP 4</span><span class="fl">CTA (zacht)</span></div>
+    </div>
+
+    <div class="card keep">
+      <h4>Beste posttijden &mdash; LinkedIn NL industrie</h4>
+      <p>
+        <strong style="color:var(--white)">Optimaal:</strong> dinsdag t/m donderdag &middot; 07:30&ndash;08:30 (voor werktijd, LinkedIn check onderweg)<br>
+        <strong style="color:var(--white)">Alternatief:</strong> 12:00&ndash;13:00 (lunch)<br>
+        <strong style="color:var(--white)">Vermijd:</strong> maandag ochtend (overvolle feed) &middot; vrijdagmiddag &middot; weekend
+      </p>
+    </div>
+
+  </div>
+</div>
+
+
+<!---------- 04: POSTS ---------->
+<div class="chapter">
+  <div class="ch-bar">
+    <span class="ch-n">04</span>
+    <span class="ch-t">15 kant-en-klare posts</span>
+    <span class="ch-s">Kopieer &middot; personaliseer &middot; publiceer</span>
+  </div>
+  <div class="wrap">
+
+    <p style="color:var(--muted);margin-bottom:24px">Elke post heeft een sterke hook, witregelstructuur en optionele CTA. Vul [blokhaken] in met eigen klantdetails. Publiceer nooit zonder persoonlijke aanpassing.</p>
+
+    <!-- POST 1 -->
+    <div class="post keep">
+      <div class="post-head">
+        <div class="avatar">JG</div>
+        <div><div class="pname">Johny Govers</div><div class="psub">VerspaningsAdvies &amp; Gereedschap &middot; InterMill</div></div>
+      </div>
+      <div class="post-body">Ik heb 240 verspaningsprocessen geanalyseerd.
+
+Dit zijn de 3 fouten die ik elke keer terugzie:
+
+&mdash; Gereedschap wisselen op tijdschema, niet op standtijd.
+&rarr; 20&ndash;40% extra kosten. Onzichtbaar.
+
+&mdash; l/d-verhouding boven 4:1 zonder trillingsdemping.
+&rarr; Oppervlak wordt afgekeurd. Klant belt. Jij snapt niet waarom.
+
+&mdash; Stukprijs vergelijken in plaats van TCO.
+&rarr; &ldquo;Goedkope&rdquo; inzet kost per werkstuk soms 2&times; meer.
+
+Welke herken jij? &darr;
+
+(DM me als je wilt weten hoe het bij jouw proces zit &mdash; gratis, 15 min.)</div>
+      <div class="post-foot">
+        <span class="tag tb">Pillar 1</span>
+        <span>800&ndash;2.500 impressies verwacht</span>
+        <span class="post-type">TEKST-ONLY</span>
+      </div>
+    </div>
+
+    <!-- POST 2 -->
+    <div class="post keep">
+      <div class="post-head">
+        <div class="avatar">JG</div>
+        <div><div class="pname">Johny Govers</div><div class="psub">VerspaningsAdvies &amp; Gereedschap &middot; InterMill</div></div>
+      </div>
+      <div class="post-body">Klant belde. Cyclustijd cilinderkop scheepsdieselmotor: 6 uur.
+
+Ik stelde 3 vragen.
+&rarr; Welke opname gebruik je?
+&rarr; Wat is de l/d van je kotterstang?
+&rarr; Hoe ziet je spaanpatroon eruit?
+
+Antwoorden: ISO-opname &middot; l/d van 5 &middot; spaanbreker werkt niet.
+
+Diagnose: trillingen door opnamespeling en te lang uitsteken.
+
+Oplossing:
+&#10003; BiG-Plus opname (&euro;340,&mdash;)
+&#10003; Kortere kotterstang
+&#10003; Andere spaanbrekergeometrie
+
+Resultaat: cyclustijd van 6 uur naar 2:54.
+Dat is &minus;52%.
+
+Bij twee ploegendiensten: &euro;80.000+ besparing per jaar.
+De opname: terugverdiend in 2 werkdagen.
+
+Dit is waarom ik geen gereedschap verkoop.
+Ik verkoop resultaat.</div>
+      <div class="post-foot">
+        <span class="tag ty">Pillar 2</span>
+        <span>1.500&ndash;5.000 impressies &middot; hoge save-rate</span>
+        <span class="post-type">CASE</span>
+      </div>
+    </div>
+
+    <!-- POST 3 -->
+    <div class="post keep">
+      <div class="post-head">
+        <div class="avatar">JG</div>
+        <div><div class="pname">Johny Govers</div><div class="psub">VerspaningsAdvies &amp; Gereedschap &middot; InterMill</div></div>
+      </div>
+      <div class="post-body">Onpopulaire mening:
+
+Stukprijs vergelijken bij gereedschap is de duurste manier van inkopen.
+
+Bewijs:
+
+Inzet A: &euro;12 per stuk &middot; 150 werkstukken standtijd &rarr; &euro;0,080/werkstuk
+Inzet B: &euro;18 per stuk &middot; 380 werkstukken standtijd &rarr; &euro;0,047/werkstuk
+
+B is 33% duurder in aankoopprijs.
+B is 41% goedkoper per werkstuk.
+
+Plus: minder wisselingen, minder stilstand, minder instelfouten.
+
+Bij 200 werkstukken per week bespaart B &euro;680 per week.
+Op &eacute;&eacute;n gereedschap.
+
+Heb je 30 gereedschappen in gebruik?
+
+Eens of oneens? &darr;</div>
+      <div class="post-foot">
+        <span class="tag tg">Pillar 3</span>
+        <span>Hoge engagement &middot; comments van inkoop &eacute;n productie</span>
+        <span class="post-type">STANDPUNT</span>
+      </div>
+    </div>
+
+    <!-- POST 4 -->
+    <div class="post keep">
+      <div class="post-head">
+        <div class="avatar">JG</div>
+        <div><div class="pname">Johny Govers</div><div class="psub">VerspaningsAdvies &amp; Gereedschap &middot; InterMill</div></div>
+      </div>
+      <div class="post-body">Titanium frezen zonder trillingen. 3 regels.
+
+1. l/d &lt; 3:1 waar mogelijk.
+Boven 4:1 zonder demping: je vecht niet het werkstuk, maar de trilling.
+
+2. Run-out &lt; 3 &micro;m.
+ER-klem: vaak 8&ndash;12 &micro;m. Krimphouder: 2&ndash;3 &micro;m.
+Voor Ti-6Al-4V: altijd krimphouder.
+
+3. Hoge vc, lage fz &mdash; niet andersom.
+Ti bouwt warmte op bij lage snijsnelheid. Snijsnelheid hoog houden, voeding laag.
+
+Koeling: emulsie direct op snijzone, niet eromheen.
+
+Heb je een specifiek Ti-werkstuk?
+DM me &rarr; ik denk mee. Gratis.</div>
+      <div class="post-foot">
+        <span class="tag tb">Pillar 1</span>
+        <span>Technische niche &middot; hoge save-rate</span>
+        <span class="post-type">TEKST-ONLY</span>
+      </div>
+    </div>
+
+    <!-- POST 5 -->
+    <div class="post keep">
+      <div class="post-head">
+        <div class="avatar">JG</div>
+        <div><div class="pname">Johny Govers</div><div class="psub">VerspaningsAdvies &amp; Gereedschap &middot; InterMill</div></div>
+      </div>
+      <div class="post-body">Leveranciers adviseren niet. Ze verkopen.
+
+Dat is geen aanval &mdash; het is een businessmodel.
+
+Een rep die maandag binnenkomt heeft een kwotum. Hij heeft een bonus als je product X kiest. Hij heeft geen bonus als product Y beter voor jou werkt maar van concurrent Z is.
+
+Ik heb geen kwotum.
+Ik heb geen merkbonus.
+
+Als een kotterspecial van MEHI beter is dan BRW: ik zeg MEHI.
+Als standaard hardmetaal beter is dan diamant: ik zeg hardmetaal.
+Als de oplossing &ldquo;goedkoper gereedschap en andere parameters&rdquo; is: dat zeg ik ook.
+
+Onafhankelijkheid is niet een marketingterm.
+Het is het enige wat mij onderscheidt.
+
+Herken jij het verschil? &darr;</div>
+      <div class="post-foot">
+        <span class="tag tg">Pillar 3</span>
+        <span>Polariserend &middot; bouwt positie als onafhankelijk adviseur</span>
+        <span class="post-type">STANDPUNT</span>
+      </div>
+    </div>
+
+    <!-- POST 6 -->
+    <div class="post keep">
+      <div class="post-head">
+        <div class="avatar">JG</div>
+        <div><div class="pname">Johny Govers</div><div class="psub">VerspaningsAdvies &amp; Gereedschap &middot; InterMill</div></div>
+      </div>
+      <div class="post-body">Standtijd freesspecial: 80 werkstukken.
+Klant dacht: gereedschap deugt niet.
+
+Ik dacht: parameters.
+
+Materiaal: Ti-6Al-4V
+Frees: DTS-diamant (PKD)
+Run-out gemeten bij binnenkomst: 14 &micro;m (versleten ER-klem)
+
+PKD heeft geen marge voor trillingen bij hoge run-out.
+Elke tand snijdt anders &rarr; microscopische chipping &rarr; versnelde slijtage.
+
+Aanpassing:
+&#10003; Krimphouder (run-out: 2 &micro;m)
+&#10003; Vc omhoog, fz iets omlaag
+
+Nieuwe standtijd: 420 werkstukken.
+
+5&times; meer. Zelfde gereedschap.
+
+De fout zat niet in het gereedschap.
+De fout zat in de opname.</div>
+      <div class="post-foot">
+        <span class="tag ty">Pillar 2</span>
+        <span>Onverwacht einde &middot; hoge engagement</span>
+        <span class="post-type">CASE</span>
+      </div>
+    </div>
+
+    <!-- POST 7 -->
+    <div class="post keep">
+      <div class="post-head">
+        <div class="avatar">JG</div>
+        <div><div class="pname">Johny Govers</div><div class="psub">VerspaningsAdvies &amp; Gereedschap &middot; InterMill</div></div>
+      </div>
+      <div class="post-body">80% van trillingsproblemen bij frezen komt uit 3 bronnen.
+
+In volgorde van hoe vaak ik ze zie:
+
+1. Te lange uitsteeklengte (l/d &gt; 4)
+Oplossing: kortere houder of trillingsgedempte stang.
+Target: l/d &lt; 4 normaal &middot; &lt; 2,5 voor precisie.
+
+2. Opname met te veel run-out (&gt; 5 &micro;m)
+Oplossing: krimphouder of hydroplastische klem.
+Test: meet run-out &aacute;ltijd bij de snijkant, niet bij de schacht.
+
+3. Geometrie die niet bij materiaal past
+Oplossing: positieve vs. negatieve geometrie wisselen.
+Symptoom: chipping zonder duidelijke oorzaak.
+
+Check deze 3 voordat je een nieuw gereedschap bestelt.
+Scheelt je 9 van de 10 keer een onnodig gesprek met je leverancier.</div>
+      <div class="post-foot">
+        <span class="tag tb">Pillar 1</span>
+        <span>Hoge dwell time door genummerde structuur</span>
+        <span class="post-type">TEKST-ONLY</span>
+      </div>
+    </div>
+
+    <!-- POST 8 -->
+    <div class="post keep">
+      <div class="post-head">
+        <div class="avatar">JG</div>
+        <div><div class="pname">Johny Govers</div><div class="psub">VerspaningsAdvies &amp; Gereedschap &middot; InterMill</div></div>
+      </div>
+      <div class="post-body">Vandaag op locatie bij [type bedrijf, anoniem].
+
+[Voeg hier foto toe van werkstuk of machine]
+
+Werkstuk: [materiaal] &middot; Machine: [type]
+Probleem: [omschrijving in 1 zin]
+
+Wat ik aantrof:
+&rarr; [bevinding 1]
+&rarr; [bevinding 2]
+
+Wat we hebben aangepast:
+&rarr; [aanpassing]
+
+Resultaat na [X] cyclussen:
+&rarr; [concreet getal]
+
+Dit is mijn werk.
+Geen offerte gestuurd. Gewoon gedaan.
+
+Wil jij ook zo&rsquo;n sessie?
+&rarr; 06 10 90 67 59 of DM me.</div>
+      <div class="post-foot">
+        <span class="tag to">Pillar 4</span>
+        <span>Foto verplicht &middot; bouwt persoonlijk vertrouwen</span>
+        <span class="post-type">FOTO + CAPTION</span>
+      </div>
+    </div>
+
+    <!-- POST 9 -->
+    <div class="post keep">
+      <div class="post-head">
+        <div class="avatar">JG</div>
+        <div><div class="pname">Johny Govers</div><div class="psub">VerspaningsAdvies &amp; Gereedschap &middot; InterMill</div></div>
+      </div>
+      <div class="post-body">Wanneer is een freesspecial goedkoper dan standaard gereedschap?
+
+Vuistregel:
+
+&#10003; Werkstuk &gt; 200&times; per jaar bewerkt
+&#10003; Cyclustijd &gt; 10 minuten
+&#10003; Standaard doet 2+ operaties die 1 special doet
+
+Dan verdient een special zich terug binnen 1&ndash;3 maanden.
+
+Soms is het antwoord nee &mdash; ook dat zeg ik.
+
+Maar als jij 200+ werkstukken per jaar draait en nooit een special-offerte hebt gevraagd: je laat geld liggen.
+
+Offerte bij InterMill: standaard binnen 1 werkdag.</div>
+      <div class="post-foot">
+        <span class="tag tb">Pillar 1</span>
+        <span>Zachte conversie &middot; sluit af met aanbod</span>
+        <span class="post-type">TEKST-ONLY</span>
+      </div>
+    </div>
+
+    <!-- POST 10 -->
+    <div class="post keep">
+      <div class="post-head">
+        <div class="avatar">JG</div>
+        <div><div class="pname">Johny Govers</div><div class="psub">VerspaningsAdvies &amp; Gereedschap &middot; InterMill</div></div>
+      </div>
+      <div class="post-body">Ik geef elke week gratis verspaningsadvies.
+
+Niet als marketingstunt.
+
+Omdat ik weet dat de meeste machinists nooit een onafhankelijk advies hebben gekregen. Elke adviseur die langs is geweest had iets te verkopen.
+
+Stuur me:
+&rarr; Werkstuk + materiaal
+&rarr; Machine + opname
+&rarr; Wat er misgaat (kwaliteit, slijtage, cyclustijd)
+
+Ik reageer binnen 1 werkdag met een concrete diagnose.
+
+Geen offerte als je dat niet wilt.
+Gewoon advies.
+
+DM me. &darr;</div>
+      <div class="post-foot">
+        <span class="tag tp">Pillar 5</span>
+        <span>Max 1&times;/2 weken &middot; directe lead-generator</span>
+        <span class="post-type">CONVERSIE</span>
+      </div>
+    </div>
+
+    <div class="abox keep">
+      <div class="al">Posts 11&ndash;15 &mdash; aanbevolen formats</div>
+      <p><strong style="color:var(--white)">11.</strong> PDF-carrousel: TCO-rekensom stap voor stap (6 slides) &middot; <strong style="color:var(--white)">12.</strong> Video 60s: snelle tip aan machine &middot; <strong style="color:var(--white)">13.</strong> Poll: &ldquo;Wat is je grootste gereedschapsprobleem?&rdquo; &middot; <strong style="color:var(--white)">14.</strong> Testimonial klant met naam + bedrijf &middot; <strong style="color:var(--white)">15.</strong> Newsletter-aankondiging &ldquo;Verspaner&rsquo;s Edge&rdquo;</p>
+    </div>
+
+  </div>
+</div>
+
+
+<!---------- 05: KALENDER ---------->
+<div class="chapter">
+  <div class="ch-bar">
+    <span class="ch-n">05</span>
+    <span class="ch-t">4-weken kalender</span>
+    <span class="ch-s">Dag-voor-dag &middot; geen gokken</span>
+  </div>
+  <div class="wrap">
+
+    <div class="wk-label">Week 1 &mdash; Profiel live + introductie</div>
+    <div class="wk-grid">
+      <div class="day on"><div class="day-n">Ma</div><div class="day-c"><span class="tag tg" style="font-size:9px">Standpunt</span><br>Post 5: &ldquo;Leveranciers adviseren niet. Ze verkopen.&rdquo;</div></div>
+      <div class="day"><div class="day-n">Di</div><div class="day-c" style="color:var(--muted)">Engagement: reageer op 5 posts ICP</div></div>
+      <div class="day on"><div class="day-n">Wo</div><div class="day-c"><span class="tag tb" style="font-size:9px">Tip</span><br>Post 4: &ldquo;Titanium frezen. 3 regels.&rdquo;</div></div>
+      <div class="day on"><div class="day-n">Do</div><div class="day-c"><span class="tag ty" style="font-size:9px">Case</span><br>Post 2: &ldquo;Klant belde. Cyclustijd 6 uur.&rdquo;</div></div>
+      <div class="day"><div class="day-n">Vr</div><div class="day-c" style="color:var(--muted)">Rust &middot; 500 connecties sturen</div></div>
+    </div>
+
+    <div class="wk-label">Week 2 &mdash; Expertise opbouwen</div>
+    <div class="wk-grid">
+      <div class="day on"><div class="day-n">Ma</div><div class="day-c"><span class="tag tb" style="font-size:9px">Tip</span><br>Post 7: &ldquo;80% trillingsproblemen &middot; 3 bronnen&rdquo;</div></div>
+      <div class="day on"><div class="day-n">Di</div><div class="day-c"><span class="tag to" style="font-size:9px">BTS</span><br>Post 8: Foto op locatie bij klant</div></div>
+      <div class="day"><div class="day-n">Wo</div><div class="day-c" style="color:var(--muted)">Engagement: DM naar 3 commenters week 1</div></div>
+      <div class="day on"><div class="day-n">Do</div><div class="day-c"><span class="tag tg" style="font-size:9px">Standpunt</span><br>Post 3: &ldquo;Stukprijs is duurste manier&rdquo;</div></div>
+      <div class="day"><div class="day-n">Vr</div><div class="day-c" style="color:var(--muted)">Rust</div></div>
+    </div>
+
+    <div class="wk-label">Week 3 &mdash; Social proof + lead gen activeren</div>
+    <div class="wk-grid">
+      <div class="day on"><div class="day-n">Ma</div><div class="day-c"><span class="tag ty" style="font-size:9px">Case</span><br>Post 6: &ldquo;Standtijd 80 &rarr; 420 werkstukken&rdquo;</div></div>
+      <div class="day"><div class="day-n">Di</div><div class="day-c" style="color:var(--muted)">Engagement + 50 nieuwe connecties ICP</div></div>
+      <div class="day on"><div class="day-n">Wo</div><div class="day-c"><span class="tag tb" style="font-size:9px">Tip</span><br>Post 9: &ldquo;Wanneer is een special goedkoper?&rdquo;</div></div>
+      <div class="day on"><div class="day-n">Do</div><div class="day-c"><span class="tag tp" style="font-size:9px">Conversie</span><br>Post 10: &ldquo;Gratis advies. DM me.&rdquo;</div></div>
+      <div class="day"><div class="day-n">Vr</div><div class="day-c" style="color:var(--muted)">Rust</div></div>
+    </div>
+
+    <div class="wk-label">Week 4 &mdash; Verdieping + newsletter lanceren</div>
+    <div class="wk-grid">
+      <div class="day on"><div class="day-n">Ma</div><div class="day-c"><span class="tag tb" style="font-size:9px">Tip</span><br>Post 1: &ldquo;240 processen. 3 fouten.&rdquo;</div></div>
+      <div class="day on"><div class="day-n">Di</div><div class="day-c"><span class="tag to" style="font-size:9px">BTS</span><br>Special uit de doos &middot; foto + verhaal</div></div>
+      <div class="day"><div class="day-n">Wo</div><div class="day-c" style="color:var(--muted)">PDF-carrousel voorbereiden</div></div>
+      <div class="day on"><div class="day-n">Do</div><div class="day-c"><span class="tag tg" style="font-size:9px">Newsletter</span><br>&ldquo;Verspaner&rsquo;s Edge #1&rdquo; publiceren</div></div>
+      <div class="day"><div class="day-n">Vr</div><div class="day-c" style="color:var(--muted)">Rust &middot; week-review</div></div>
+    </div>
+
+  </div>
+</div>
+
+
+<!---------- 06: ENGAGEMENT + LEADS ---------->
+<div class="chapter">
+  <div class="ch-bar">
+    <span class="ch-n">06</span>
+    <span class="ch-t">Engagement &amp; lead gen</span>
+    <span class="ch-s">Dagelijks systeem &middot; van volger naar klant</span>
+  </div>
+  <div class="wrap">
+
+    <div class="card keep" style="border-color:rgba(10,102,194,.3)">
+      <h4>Dagelijks systeem &mdash; 20 minuten totaal</h4>
+      <p>
+        <strong style="color:var(--white)">Ochtend (10 min, v&oacute;&oacute;r 09:00):</strong> Publiceer post indien gepland &middot; beantwoord alle comments van gisteren &middot; like + reageer op 5 posts van ICP in feed<br><br>
+        <strong style="color:var(--white)">Middag (10 min, 12:00&ndash;13:00):</strong> Nieuwe comments checken &middot; 3&ndash;5 connectieverzoeken naar nieuwe ICP &middot; reageer op 3 relevante posts van anderen in de niche<br><br>
+        <strong style="color:var(--white)">Sleutelregel:</strong> beantwoord elk comment &mdash; ook korte reacties. Elke comment vergroot bereik van de post significant.
+      </p>
+    </div>
+
+    <div class="divl">DM-sequentie &mdash; 3 stappen</div>
+
+    <div class="g3">
+      <div class="card keep">
+        <h4>Stap 1 &mdash; Na interactie</h4>
+        <p><em style="color:rgba(255,255,255,.75)">&ldquo;Hoi [naam], bedankt voor je reactie op mijn post over [onderwerp]. Ik zie dat je bij [bedrijf] werkt &mdash; jullie doen waarschijnlijk wel iets met [materiaal/toepassing]? Johny&rdquo;</em></p>
+      </div>
+      <div class="card keep">
+        <h4>Stap 2 &mdash; Na reply (3 dagen)</h4>
+        <p><em style="color:rgba(255,255,255,.75)">&ldquo;Ik deel binnenkort een post over [relevant thema]. Als je de link wil ontvangen: dan stuur ik hem direct. En als er ooit een gereedschapsvraag is: gewoon bellen, 06 10 90 67 59.&rdquo;</em></p>
+      </div>
+      <div class="card keep">
+        <h4>Stap 3 &mdash; Warmte gesprek</h4>
+        <p><em style="color:rgba(255,255,255,.75)">&ldquo;Nog een vraag &mdash; wat is nu jullie grootste uitdaging qua gereedschap of cyclustijd? Puur nieuwsgierig, geen verkoopintentie.&rdquo;</em></p>
+      </div>
+    </div>
+
+    <div class="card keep" style="margin-top:14px">
+      <h4>Connectieverzoek-bericht</h4>
+      <div class="mono">&ldquo;Hoi [naam], ik zie dat je in de verspaning/productie werkt in [regio]. Ik deel regelmatig praktische tips over gereedschapskeuze en procesoptimalisatie &mdash; misschien interessant. Johny&rdquo;</div>
+    </div>
+
+    <div class="card keep" style="margin-top:14px">
+      <h4>LinkedIn Newsletter &mdash; Verspaner&rsquo;s Edge</h4>
+      <p>
+        <strong style="color:var(--white)">Frequentie:</strong> elke 2 weken, donderdag 08:00<br>
+        <strong style="color:var(--white)">Structuur:</strong> 1 inzicht (300 woorden) + 1 mini-case (200 woorden) + 1 tip (100 woorden) + CTA<br>
+        <strong style="color:var(--white)">Doel maand 6:</strong> 500+ subscribers &rarr; eigen direct-reach kanaal, onafhankelijk van algoritme<br>
+        <strong style="color:var(--white)">Lancering:</strong> &ldquo;Ik start een newsletter voor verspaners. Geen marketing. Elke 2 weken &eacute;&eacute;n concreet inzicht. Abonneer via de link.&rdquo; [link in eerste comment]
+      </p>
+    </div>
+
+  </div>
+</div>
+
+
+<!---------- 07: KPIs + GROEI ---------->
+<div class="chapter">
+  <div class="ch-bar">
+    <span class="ch-n">07</span>
+    <span class="ch-t">KPIs, groei &amp; ROI</span>
+    <span class="ch-s">Wat meten &middot; wanneer &middot; wat verwachten</span>
+  </div>
+  <div class="wrap">
+
+    <div class="card keep" style="margin-bottom:18px">
+      <div class="krow" style="font-family:var(--fm);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:0 0 12px">
+        <div>Metric</div><div class="kn">Nu</div><div class="km3">Mnd 3</div><div class="km12">Mnd 12</div>
+      </div>
+      <div class="krow keep"><div class="km">Impressies per post (gemiddeld)</div><div class="kn">&mdash;</div><div class="km3">&gt;800</div><div class="km12">&gt;3.000</div></div>
+      <div class="krow keep"><div class="km">Engagementrate (likes+comments/impressies)</div><div class="kn">&mdash;</div><div class="km3">&gt;2%</div><div class="km12">&gt;4%</div></div>
+      <div class="krow keep"><div class="km">Profielbezoekers per week</div><div class="kn">&mdash;</div><div class="km3">&gt;80</div><div class="km12">&gt;300</div></div>
+      <div class="krow keep"><div class="km">Nieuwe connecties per maand</div><div class="kn">&mdash;</div><div class="km3">&gt;80</div><div class="km12">&gt;150</div></div>
+      <div class="krow keep"><div class="km">Inbound DMs per maand</div><div class="kn">0</div><div class="km3">2&ndash;3</div><div class="km12">8&ndash;12</div></div>
+      <div class="krow keep"><div class="km">Newsletter subscribers</div><div class="kn">0</div><div class="km3">&gt;100</div><div class="km12">&gt;600</div></div>
+      <div class="krow keep"><div class="km">Omgezette leads per maand</div><div class="kn">0</div><div class="km3">0&ndash;1</div><div class="km12">2&ndash;4</div></div>
+    </div>
+
+    <div class="divl">Groei per fase</div>
+
+    <div class="tl-row keep">
+      <div class="tl-p">Mnd 0&ndash;1<small>FUNDAMENT</small></div>
+      <div class="tl-b"><h5>Profiel + eerste 12 posts</h5><ul>
+        <li>Profiel 100% compleet, creator mode aan</li>
+        <li>500 connectieverzoeken (klanten + ICP)</li>
+        <li>Weken 1&ndash;4 kalender uitvoeren</li>
+        <li>KPI: eerste 5 comments vanuit productiemensen</li>
+      </ul></div>
+    </div>
+    <div class="tl-row keep">
+      <div class="tl-p">Mnd 2&ndash;3<small>BEREIK</small></div>
+      <div class="tl-b"><h5>Consistentie + eerste carrousel + video</h5><ul>
+        <li>3&times;/week posten zonder uitzondering</li>
+        <li>Eerste PDF-carrousel (TCO-rekensom)</li>
+        <li>Eerste video 60 sec (telefoon op statief)</li>
+        <li>KPI: 1 post &gt;5.000 impressies &middot; eerste inbound DM</li>
+      </ul></div>
+    </div>
+    <div class="tl-row keep">
+      <div class="tl-p">Mnd 4&ndash;6<small>LEADS</small></div>
+      <div class="tl-b"><h5>Conversie + newsletter 200+ subscribers</h5><ul>
+        <li>DM-sequentie actief na elke nieuwe volger</li>
+        <li>3&ndash;5 inbound leads per maand</li>
+        <li>Eerste klantcase met naam + bedrijf (met toestemming)</li>
+        <li>KPI: 1 klant direct traceerbaar naar LinkedIn</li>
+      </ul></div>
+    </div>
+    <div class="tl-row keep">
+      <div class="tl-p">Mnd 7&ndash;12<small>AUTORITEIT</small></div>
+      <div class="tl-b"><h5>D&eacute; verspaningsexpert van LinkedIn NL/BE</h5><ul>
+        <li>5.000+ connecties &middot; 1.200+ volgers</li>
+        <li>Newsletter 600+ subscribers &mdash; eigen direct-reach</li>
+        <li>5&ndash;10 inbound leads per maand</li>
+        <li>Optioneel: LinkedIn Live Q&amp;A gereedschapsvragen</li>
+      </ul></div>
+    </div>
+
+    <div class="divl">Return on investment</div>
+
+    <div class="roi keep">
+      <div class="ri">
+        <div class="rv">5 u/week</div>
+        <div class="rd">Tijdsinvestering: 3 posts + 20 min/dag engagement. Geen advertentiebudget nodig in fase 1.</div>
+      </div>
+      <div class="ri">
+        <div class="rv">3&ndash;5</div>
+        <div class="rd">Verwachte inbound leads per maand na maand 6. Warme leads die al weten wie Johny is.</div>
+      </div>
+      <div class="ri">
+        <div class="rv">1 klant</div>
+        <div class="rd">Break-even. &Eacute;&eacute;n klant vanuit LinkedIn betaalt de strategie voor de rest van het jaar terug.</div>
+      </div>
+    </div>
+
+    <div class="doc-foot">
+      <span>INTERMILL &middot; LINKEDIN GROEISTRATEGIE &middot; 29-05-2026 &middot; VERTROUWELIJK</span>
+      <span>inter-mill.com &middot; linkedin.com/in/johny-govers</span>
+    </div>
+
+  </div>
+</div>
+
+
+<button class="print-btn no-print" onclick="window.print()">&#11015; Opslaan als PDF</button>
+
+</body>
+</html>

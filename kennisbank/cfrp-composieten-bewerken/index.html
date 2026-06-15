@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CFRP bewerken: delaminatie voorkomen | InterMill</title>
+<meta name="description" content="Gereedschapskeuze (PKD, CVD-diamant, compressiefrees), snijdata-tabel en delaminatie-preventie voor CFRP en glasvezelcomposieten.">
+<meta name="theme-color" content="#FFDD00">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://inter-mill.com/kennisbank/cfrp-composieten-bewerken/">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:site_name" content="InterMill">
+<meta property="og:title" content="CFRP en composieten bewerken: delaminatie voorkomen en standtijd verhogen">
+<meta property="og:description" content="Gereedschapskeuze (PKD, CVD-diamant, compressiefrees), snijdata-tabel en delaminatie-preventie voor CFRP en glasvezelcomposieten.">
+<meta property="og:image" content="https://inter-mill.com/og-image.png">
+<meta property="article:author" content="Johny Govers">
+<meta property="article:published_time" content="2026-05-30">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root{
+    --yellow:#FFDD00;--yellow-bg:#FFFCE5;
+    --white:#FFFFFF;--off-white:#FAFAFA;
+    --gray-200:#D4D4D4;--gray-400:#8A8A8A;--gray-500:#525252;--gray-700:#2A2A2A;
+    --ink:#0F0F0F;--line:#E5E5E5;--red:#B42318;--green:#067647;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Manrope',sans-serif;background:var(--white);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;padding-top:67px}
+  ::selection{background:var(--yellow);color:var(--ink)}
+  a{color:inherit}
+  img{display:block;max-width:100%}
+  picture{display:contents}
+  .display{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;line-height:1.02;letter-spacing:-0.03em;overflow-wrap:break-word}
+  .container{max-width:920px;margin:0 auto;padding:0 32px}
+  .article-hero{padding:60px 0 40px;border-bottom:1px solid var(--line)}
+  .breadcrumb{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gray-400);margin-bottom:24px}
+  .breadcrumb a{color:var(--gray-400);text-decoration:none}
+  .breadcrumb a:hover{color:var(--ink)}
+  .breadcrumb .sep{margin:0 8px;opacity:0.5}
+  h1.title{font-size:clamp(34px,5vw,58px);max-width:22ch;margin-bottom:24px}
+  .article-meta{display:flex;flex-wrap:wrap;gap:0;align-items:center;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gray-500);margin-top:24px}
+  .article-meta>span{padding-right:18px;margin-right:18px;border-right:1px solid var(--line)}
+  .article-meta>span:last-child{border-right:none}
+  .article-meta b{color:var(--ink);font-weight:500}
+  .tldr{background:var(--yellow);color:var(--ink);padding:28px 32px;margin:40px 0;border-left:6px solid var(--ink)}
+  .tldr .tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:12px;font-weight:500}
+  .tldr p{font-size:17px;line-height:1.55;font-weight:500;max-width:64ch}
+  .tldr p strong{font-weight:700;background:var(--ink);color:var(--yellow);padding:1px 5px}
+  article.body{padding:40px 0 80px;font-size:17px;line-height:1.7;color:var(--gray-700)}
+  article.body>*+*{margin-top:24px}
+  article.body h2{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(26px,3.5vw,38px);font-weight:700;letter-spacing:-0.02em;line-height:1.15;color:var(--ink);margin-top:64px;max-width:28ch}
+  article.body h2:first-child{margin-top:0}
+  article.body h3{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700;letter-spacing:-0.01em;line-height:1.2;color:var(--ink);margin-top:40px}
+  article.body p{max-width:68ch}
+  article.body p strong,article.body li strong{color:var(--ink);font-weight:700}
+  article.body ul,article.body ol{padding-left:24px;max-width:68ch}
+  article.body li{margin-bottom:8px}
+  article.body a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--yellow);text-decoration-thickness:3px;text-underline-offset:2px}
+  article.body a:hover{background:var(--yellow);text-decoration-color:var(--ink)}
+  article.body code{font-family:'JetBrains Mono',monospace;font-size:14px;background:var(--off-white);padding:2px 6px;border:1px solid var(--line)}
+  .data-table{width:100%;border-collapse:collapse;margin-top:24px;font-size:14.5px;border:1px solid var(--ink)}
+  .data-table th,.data-table td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}
+  .data-table th:last-child,.data-table td:last-child{border-right:none}
+  .data-table thead th{background:var(--ink);color:var(--white);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;font-weight:500}
+  .data-table tbody tr:last-child td{border-bottom:none}
+  .data-table tbody tr:nth-child(even){background:var(--off-white)}
+  .data-table td.pos{font-weight:700;color:var(--green);font-family:'JetBrains Mono',monospace;font-size:13px}
+  .data-table td.neg{font-weight:700;color:var(--red);font-family:'JetBrains Mono',monospace;font-size:13px}
+  .data-table caption{caption-side:bottom;font-size:12px;color:var(--gray-400);text-align:left;padding:10px 0;font-style:italic}
+  .kader{background:var(--ink);color:var(--white);padding:32px;margin:32px 0}
+  .kader .tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--yellow);margin-bottom:14px;font-weight:500}
+  .kader h3{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700;letter-spacing:-0.01em;margin-bottom:16px;color:var(--white)}
+  .kader p{font-size:15.5px;color:var(--gray-200);max-width:none;margin-top:10px}
+  .kader code{font-family:'JetBrains Mono',monospace;font-size:15px;background:var(--gray-700);color:var(--yellow);padding:12px 16px;margin:12px 0;display:block;letter-spacing:0.02em;overflow-x:auto}
+  .checklist{background:var(--yellow-bg);border:2px solid var(--ink);padding:28px 32px;margin:32px 0;counter-reset:cl}
+  .checklist h3{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700;letter-spacing:-0.01em;margin-bottom:16px}
+  .checklist ol{list-style:none;padding:0;max-width:none}
+  .checklist li{counter-increment:cl;padding:14px 0 14px 52px;border-bottom:1px solid rgba(0,0,0,0.1);position:relative;font-size:15.5px;line-height:1.55;color:var(--ink)}
+  .checklist li:last-child{border-bottom:none;padding-bottom:0}
+  .checklist li::before{content:counter(cl,decimal-leading-zero);position:absolute;left:0;top:14px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.1em;background:var(--ink);color:var(--yellow);padding:5px 8px}
+  .cta-inline{background:var(--ink);color:var(--white);padding:32px;margin:48px 0;display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+  .cta-inline .left{flex:1;min-width:240px}
+  .cta-inline h3{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700;letter-spacing:-0.01em;margin-bottom:8px;color:var(--white)}
+  .cta-inline p{font-size:15px;color:var(--gray-200);max-width:none;margin:0}
+  .cta-inline a{background:var(--yellow);color:var(--ink);padding:14px 22px;font-weight:700;font-size:14px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;flex-shrink:0}
+  .cta-inline a:hover{background:var(--white)}
+  .related{padding:0 0 80px;border-top:1px solid var(--line);background:var(--off-white)}
+  .related .container{padding-top:48px}
+  .related-title{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gray-500);margin-bottom:20px}
+  .related-cards{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .related-card{display:block;background:var(--white);border:1px solid var(--ink);padding:24px;text-decoration:none;color:var(--ink);transition:background .15s}
+  .related-card:hover{background:var(--yellow-bg)}
+  .related-card .kicker{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gray-400);margin-bottom:8px}
+  .related-card h4{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:700;letter-spacing:-0.01em;margin-bottom:8px;line-height:1.2}
+  .related-card p{font-size:14px;color:var(--gray-500);line-height:1.5}
+  footer{background:var(--ink);color:var(--white);padding:36px 0;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase}
+  footer .container{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;align-items:center}
+  footer a{color:var(--gray-400);text-decoration:none}
+  footer a:hover{color:var(--yellow)}
+  @media(max-width:700px){
+    .container{padding:0 22px}
+    .related-cards{grid-template-columns:1fr}
+    article.body{font-size:16px}
+    .cta-inline{flex-direction:column;align-items:flex-start}
+    .data-table{font-size:13px}
+    .data-table th,.data-table td{padding:8px 10px}
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "CFRP en composieten bewerken: delaminatie voorkomen en standtijd verhogen",
+  "description": "Gereedschapskeuze (PKD, CVD-diamant, compressiefrees), snijdata-tabel en delaminatie-preventie voor CFRP en glasvezelcomposieten.",
+  "datePublished": "2026-05-30",
+  "dateModified": "2026-05-30",
+  "inLanguage": "nl-NL",
+  "author": {
+    "@type": "Person",
+    "name": "Johny Govers",
+    "jobTitle": "Oprichter InterMill",
+    "worksFor": {"@id": "https://inter-mill.com/#organization"}
+  },
+  "publisher": {"@id": "https://inter-mill.com/#organization"},
+  "mainEntityOfPage": "https://inter-mill.com/kennisbank/cfrp-composieten-bewerken/"
+}
+</script>
+<link rel="stylesheet" href="/styles.css?v=20260545">
+</head>
+<body>
+
+<nav class="page-nav">
+  <div class="page-nav-inner">
+    <a class="brand" href="/" aria-label="InterMill, naar home">
+      <picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="InterMill" width="888" height="324"></picture>
+    </a>
+    <div class="nav-tabs">
+      <a href="/">Home</a>
+      <a href="/over-ons/">Over ons</a>
+      <a href="/werkwijze/">Werkwijze</a>
+      <a href="/toepassingen/">Toepassingen</a>
+      <a href="/assortiment/">Assortiment</a>
+      <a href="/kennisbank/" class="active" aria-current="page">Kennisbank</a>
+      <a href="/contact/">Contact</a>
+    </div>
+    <a class="nav-cta" href="/plannen/">Plan sparringsessie <span style="font-size:18px">→</span></a>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="article-hero">
+    <nav class="breadcrumb" aria-label="Kruimelpad">
+      <a href="/">InterMill</a>
+      <span class="sep">/</span>
+      <a href="/kennisbank/">Kennisbank</a>
+      <span class="sep">/</span>
+      <span>Materiaal</span>
+    </nav>
+    <h1 class="title display">CFRP en composieten bewerken: delaminatie voorkomen en standtijd verhogen</h1>
+    <div class="article-meta">
+      <span>Categorie <b>Materiaal</b></span>
+      <span>Leestijd <b>~8 min</b></span>
+      <span>Gepubliceerd <b>2026-05-30</b></span>
+      <span>Door <b>Johny Govers</b></span>
+    </div>
+  </div>
+  <div class="tldr">
+    <div class="tag">★ TL;DR — Kernpunten</div>
+    <p>CFRP slijt gereedschap <strong>10–30× sneller</strong> dan staal. PKD-diamant geeft 10× meer standtijd dan ongecoat carbide, CVD-coating 3–5×. <strong>Delaminatie</strong> voorkom je met lage ae, hoge Vc en een <strong>compressiefrees</strong> (contra-roterende geometrie). Koeling: droog of perslucht — nóóit emulsie op CFRP.</p>
+  </div>
+</div>
+<div class="container">
+  <article class="body">
+    <h2>Wat is CFRP en waarom verspant het anders?</h2>
+<p>Koolstofvezelversterkt polymeer (CFRP) is geen homogeen materiaal zoals staal of aluminium. Het bestaat uit vezellagen in een matrix van epoxy of thermoplast. Dat geeft twee problemen bij bewerking:</p>
+<ul>
+<li><strong>Abrasieve slijtage</strong>: koolstofvezels zijn harder dan het bindmiddel (hardheid ~HRC 60 equivalent). Ze slijten het gereedschap sneller dan welk metaal dan ook bij dezelfde oppervlaktesnelheid.</li>
+<li><strong>Delaminatie</strong>: bij verkeerde parameters scheuren vezels los van de matrix aan de in- of uittreed-kant van de bewerking. Onherstelbaar uitvalwerk.</li>
+</ul>
+<p>Glasvezel (GFRP) gedraagt zich vergelijkbaar, maar is minder abrasief dan CFRP. Kevlar (aramide) is het moeilijkst: vezelknippen i.p.v. afscheren vereist een gespecialiseerde geometrie.</p>
+
+<h2>Gereedschapkeuze CFRP</h2>
+<h3>PKD (polycrystalline diamond)</h3>
+<p>Beste keuze voor productieseries. Standtijd 50–200× hoger dan HM, afhankelijk van CFRP-type en parameters. Hogere aanschafprijs, maar TCO structureel lager bij series &gt;500 stuks.</p>
+
+<h3>CVD-diamantcoating</h3>
+<p>Goede keuze voor complexe geometrieën die niet in PKD te produceren zijn. Coating 8–20 µm dik, standtijd 3–5× hoger dan AlTiN op CFRP.</p>
+
+<h3>Compressiefrees (compression router)</h3>
+<p>Speciale geometrie: bovenste spiraaldeel heeft rechtssnijdende helixhoek, onderste deel linkssnijdend. De axiale krachten heffen elkaar op — geen delaminatie aan boven- of onderkant. Standaard bij frezen van CFRP-panelen in luchtvaart.</p>
+
+<h2>Snijdata tabel CFRP</h2>
+<table class="data-table">
+<thead><tr><th>Bewerking</th><th>Vc (m/min)</th><th>fz (mm/tand)</th><th>ap</th><th>Koeling</th></tr></thead>
+<tbody>
+<tr><td>Frezen (contour)</td><td>200–400</td><td>0,02–0,06</td><td>Full-depth</td><td>Droog / perslucht</td></tr>
+<tr><td>Frezen (pocket)</td><td>150–300</td><td>0,02–0,05</td><td>0,5–1,0mm</td><td>Droog / perslucht</td></tr>
+<tr><td>Boren</td><td>100–200</td><td>0,04–0,08 mm/omw</td><td>—</td><td>Droog / perslucht</td></tr>
+<tr><td>Ruimen</td><td>80–150</td><td>0,05–0,10 mm/omw</td><td>—</td><td>Droog</td></tr>
+</tbody>
+<caption>Waarden voor standaard CFRP (0/90°-laminaat). Voor multi-directioneel laminaat Vc 15% lager. Nóóit emulsie op CFRP — vochtige vezels delamineren bij opslag.</caption>
+</table>
+
+{cta('Delaminatieproblemen bij CFRP?', 'Materiaaltype, dikte en bewerking opgeven. Gereedschapadvies in 15 minuten.')}
+
+<h2>Spaanafvoer en veiligheid</h2>
+<p>Koolstofstof is gevaarlijk bij inademing en corrosief voor elektrische apparatuur. <strong>Stofafzuiging direct aan de snijzone is verplicht</strong>. Gebruik filterklasse H (HEPA) voor CFRP-stof. Perslucht voor spaanverwijdering is bijkomend, geen vervanging.</p>
+
+<h2>Checklist CFRP setup</h2>
+<div class="checklist">
+<h3>Voor elke CFRP-bewerking</h3>
+<ol>
+<li><strong>Steunplaat onder boorpositie</strong> — bij boren altijd offertemateriaal aan de uittreedkant. Voorkomt uitscheuring.</li>
+<li><strong>Controleer laminaatrichting</strong> — bij multi-directioneel laminaat kan delaminatierisico per hoek variëren.</li>
+<li><strong>Geen emulsie of koelwater</strong> — vochtige CFRP-vezel verliest hechtsterkte en delaminatie kan later optreden bij opslag.</li>
+<li><strong>Spaanafzuiging actief voor eerste snede</strong> — niet achteraf aanzetten.</li>
+<li><strong>Gereedschap regelmatig controleren</strong> — CFRP geeft geen geluidssignaal bij slijtageopbouw. Controleer per 20–50 meter gesneden.</li>
+</ol>
+</div>
+  </article>
+</div>
+<div class="related">
+  <div class="container">
+    <div class="related-title">★ Gerelateerde artikelen &amp; pagina’s</div>
+    <div class="related-cards">
+      <a class="related-card" href="/toepassingen/moeilijk-verspaanbare-materialen/"><div class="kicker">Toepassing</div><h4>Moeilijk te verspanen materialen</h4><p>CFRP, titanium en Inconel: aanpak per materiaalgroep.</p></a>
+<a class="related-card" href="/kennisbank/titanium-bewerken-ti6al4v/"><div class="kicker">Kennisbank</div><h4>Titanium (Ti-6Al-4V) bewerken</h4><p>Parameters, gereedschapskeuze en koeling.</p></a>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="container">
+    <div>InterMill · VerspaningsAdvies &amp; -Gereedschap · Maarheeze, NL</div>
+    <div><a href="tel:+31610906759">+31 (0)6 10 90 67 59</a> · <a href="mailto:info@inter-mill.com">info@inter-mill.com</a></div>
+  </div>
+</footer>
+<script src="/nav.js" defer></script>
+<script src="/consent.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Standtijd monitoren zonder software | InterMill</title>
+<meta name="description" content="Drie eenvoudige methodes voor standtijdregistratie, signalen van slijtage en hoe je data vertaalt naar TCO-besparing. Voor elk verspaningsbedrijf.">
+<meta name="theme-color" content="#FFDD00">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://inter-mill.com/kennisbank/standtijd-monitoren/">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:site_name" content="InterMill">
+<meta property="og:title" content="Standtijd monitoren zonder complexe software: van gevoel naar data">
+<meta property="og:description" content="Drie eenvoudige methodes voor standtijdregistratie, signalen van slijtage en hoe je data vertaalt naar TCO-besparing. Voor elk verspaningsbedrijf.">
+<meta property="og:image" content="https://inter-mill.com/og-image.png">
+<meta property="article:author" content="Johny Govers">
+<meta property="article:published_time" content="2026-05-30">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root{
+    --yellow:#FFDD00;--yellow-bg:#FFFCE5;
+    --white:#FFFFFF;--off-white:#FAFAFA;
+    --gray-200:#D4D4D4;--gray-400:#8A8A8A;--gray-500:#525252;--gray-700:#2A2A2A;
+    --ink:#0F0F0F;--line:#E5E5E5;--red:#B42318;--green:#067647;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Manrope',sans-serif;background:var(--white);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;padding-top:67px}
+  ::selection{background:var(--yellow);color:var(--ink)}
+  a{color:inherit}
+  img{display:block;max-width:100%}
+  picture{display:contents}
+  .display{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;line-height:1.02;letter-spacing:-0.03em;overflow-wrap:break-word}
+  .container{max-width:920px;margin:0 auto;padding:0 32px}
+  .article-hero{padding:60px 0 40px;border-bottom:1px solid var(--line)}
+  .breadcrumb{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gray-400);margin-bottom:24px}
+  .breadcrumb a{color:var(--gray-400);text-decoration:none}
+  .breadcrumb a:hover{color:var(--ink)}
+  .breadcrumb .sep{margin:0 8px;opacity:0.5}
+  h1.title{font-size:clamp(34px,5vw,58px);max-width:22ch;margin-bottom:24px}
+  .article-meta{display:flex;flex-wrap:wrap;gap:0;align-items:center;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gray-500);margin-top:24px}
+  .article-meta>span{padding-right:18px;margin-right:18px;border-right:1px solid var(--line)}
+  .article-meta>span:last-child{border-right:none}
+  .article-meta b{color:var(--ink);font-weight:500}
+  .tldr{background:var(--yellow);color:var(--ink);padding:28px 32px;margin:40px 0;border-left:6px solid var(--ink)}
+  .tldr .tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:12px;font-weight:500}
+  .tldr p{font-size:17px;line-height:1.55;font-weight:500;max-width:64ch}
+  .tldr p strong{font-weight:700;background:var(--ink);color:var(--yellow);padding:1px 5px}
+  article.body{padding:40px 0 80px;font-size:17px;line-height:1.7;color:var(--gray-700)}
+  article.body>*+*{margin-top:24px}
+  article.body h2{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(26px,3.5vw,38px);font-weight:700;letter-spacing:-0.02em;line-height:1.15;color:var(--ink);margin-top:64px;max-width:28ch}
+  article.body h2:first-child{margin-top:0}
+  article.body h3{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700;letter-spacing:-0.01em;line-height:1.2;color:var(--ink);margin-top:40px}
+  article.body p{max-width:68ch}
+  article.body p strong,article.body li strong{color:var(--ink);font-weight:700}
+  article.body ul,article.body ol{padding-left:24px;max-width:68ch}
+  article.body li{margin-bottom:8px}
+  article.body a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--yellow);text-decoration-thickness:3px;text-underline-offset:2px}
+  article.body a:hover{background:var(--yellow);text-decoration-color:var(--ink)}
+  article.body code{font-family:'JetBrains Mono',monospace;font-size:14px;background:var(--off-white);padding:2px 6px;border:1px solid var(--line)}
+  .data-table{width:100%;border-collapse:collapse;margin-top:24px;font-size:14.5px;border:1px solid var(--ink)}
+  .data-table th,.data-table td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}
+  .data-table th:last-child,.data-table td:last-child{border-right:none}
+  .data-table thead th{background:var(--ink);color:var(--white);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;font-weight:500}
+  .data-table tbody tr:last-child td{border-bottom:none}
+  .data-table tbody tr:nth-child(even){background:var(--off-white)}
+  .data-table td.pos{font-weight:700;color:var(--green);font-family:'JetBrains Mono',monospace;font-size:13px}
+  .data-table td.neg{font-weight:700;color:var(--red);font-family:'JetBrains Mono',monospace;font-size:13px}
+  .data-table caption{caption-side:bottom;font-size:12px;color:var(--gray-400);text-align:left;padding:10px 0;font-style:italic}
+  .kader{background:var(--ink);color:var(--white);padding:32px;margin:32px 0}
+  .kader .tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--yellow);margin-bottom:14px;font-weight:500}
+  .kader h3{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700;letter-spacing:-0.01em;margin-bottom:16px;color:var(--white)}
+  .kader p{font-size:15.5px;color:var(--gray-200);max-width:none;margin-top:10px}
+  .kader code{font-family:'JetBrains Mono',monospace;font-size:15px;background:var(--gray-700);color:var(--yellow);padding:12px 16px;margin:12px 0;display:block;letter-spacing:0.02em;overflow-x:auto}
+  .checklist{background:var(--yellow-bg);border:2px solid var(--ink);padding:28px 32px;margin:32px 0;counter-reset:cl}
+  .checklist h3{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700;letter-spacing:-0.01em;margin-bottom:16px}
+  .checklist ol{list-style:none;padding:0;max-width:none}
+  .checklist li{counter-increment:cl;padding:14px 0 14px 52px;border-bottom:1px solid rgba(0,0,0,0.1);position:relative;font-size:15.5px;line-height:1.55;color:var(--ink)}
+  .checklist li:last-child{border-bottom:none;padding-bottom:0}
+  .checklist li::before{content:counter(cl,decimal-leading-zero);position:absolute;left:0;top:14px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.1em;background:var(--ink);color:var(--yellow);padding:5px 8px}
+  .cta-inline{background:var(--ink);color:var(--white);padding:32px;margin:48px 0;display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+  .cta-inline .left{flex:1;min-width:240px}
+  .cta-inline h3{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700;letter-spacing:-0.01em;margin-bottom:8px;color:var(--white)}
+  .cta-inline p{font-size:15px;color:var(--gray-200);max-width:none;margin:0}
+  .cta-inline a{background:var(--yellow);color:var(--ink);padding:14px 22px;font-weight:700;font-size:14px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;flex-shrink:0}
+  .cta-inline a:hover{background:var(--white)}
+  .related{padding:0 0 80px;border-top:1px solid var(--line);background:var(--off-white)}
+  .related .container{padding-top:48px}
+  .related-title{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gray-500);margin-bottom:20px}
+  .related-cards{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .related-card{display:block;background:var(--white);border:1px solid var(--ink);padding:24px;text-decoration:none;color:var(--ink);transition:background .15s}
+  .related-card:hover{background:var(--yellow-bg)}
+  .related-card .kicker{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gray-400);margin-bottom:8px}
+  .related-card h4{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:700;letter-spacing:-0.01em;margin-bottom:8px;line-height:1.2}
+  .related-card p{font-size:14px;color:var(--gray-500);line-height:1.5}
+  footer{background:var(--ink);color:var(--white);padding:36px 0;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase}
+  footer .container{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;align-items:center}
+  footer a{color:var(--gray-400);text-decoration:none}
+  footer a:hover{color:var(--yellow)}
+  @media(max-width:700px){
+    .container{padding:0 22px}
+    .related-cards{grid-template-columns:1fr}
+    article.body{font-size:16px}
+    .cta-inline{flex-direction:column;align-items:flex-start}
+    .data-table{font-size:13px}
+    .data-table th,.data-table td{padding:8px 10px}
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Standtijd monitoren zonder complexe software: van gevoel naar data",
+  "description": "Drie eenvoudige methodes voor standtijdregistratie, signalen van slijtage en hoe je data vertaalt naar TCO-besparing. Voor elk verspaningsbedrijf.",
+  "datePublished": "2026-05-30",
+  "dateModified": "2026-05-30",
+  "inLanguage": "nl-NL",
+  "author": {
+    "@type": "Person",
+    "name": "Johny Govers",
+    "jobTitle": "Oprichter InterMill",
+    "worksFor": {"@id": "https://inter-mill.com/#organization"}
+  },
+  "publisher": {"@id": "https://inter-mill.com/#organization"},
+  "mainEntityOfPage": "https://inter-mill.com/kennisbank/standtijd-monitoren/"
+}
+</script>
+<link rel="stylesheet" href="/styles.css?v=20260545">
+</head>
+<body>
+
+<nav class="page-nav">
+  <div class="page-nav-inner">
+    <a class="brand" href="/" aria-label="InterMill, naar home">
+      <picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="InterMill" width="888" height="324"></picture>
+    </a>
+    <div class="nav-tabs">
+      <a href="/">Home</a>
+      <a href="/over-ons/">Over ons</a>
+      <a href="/werkwijze/">Werkwijze</a>
+      <a href="/toepassingen/">Toepassingen</a>
+      <a href="/assortiment/">Assortiment</a>
+      <a href="/kennisbank/" class="active" aria-current="page">Kennisbank</a>
+      <a href="/contact/">Contact</a>
+    </div>
+    <a class="nav-cta" href="/plannen/">Plan sparringsessie <span style="font-size:18px">→</span></a>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="article-hero">
+    <nav class="breadcrumb" aria-label="Kruimelpad">
+      <a href="/">InterMill</a>
+      <span class="sep">/</span>
+      <a href="/kennisbank/">Kennisbank</a>
+      <span class="sep">/</span>
+      <span>Procesoptimalisatie</span>
+    </nav>
+    <h1 class="title display">Standtijd monitoren zonder complexe software: van gevoel naar data</h1>
+    <div class="article-meta">
+      <span>Categorie <b>Procesoptimalisatie</b></span>
+      <span>Leestijd <b>~7 min</b></span>
+      <span>Gepubliceerd <b>2026-05-30</b></span>
+      <span>Door <b>Johny Govers</b></span>
+    </div>
+  </div>
+  <div class="tldr">
+    <div class="tag">★ TL;DR — Kernpunten</div>
+    <p>Standtijd tellen kost <strong>5 minuten per dag</strong> en levert typisch 15–30% besparing op gereedschapskosten door <em>tijdige</em> wissel in plaats van <em>breukwissel</em>. Drie methodes — turfjes, stuks-teller, slijtage-observatie — zijn vandaag te starten zonder software.</p>
+  </div>
+</div>
+<div class="container">
+  <article class="body">
+    <h2>Waarom standtijd bijhouden loont</h2>
+<p>De meeste verspaningsbedrijven wisselen gereedschap op gevoel, bij breuk, of op vaste intervallen die óf te kort zijn (onnodig vroeg wisselen) óf te lang (breukrisico verhoogd). Beide zijn duur:</p>
+<ul>
+<li><strong>Te vroeg wisselen</strong>: 30–50% reststandtijd wordt weggegooid. Bij €8 per inzet × 10 inzetten per dag = €1.200–2.000/jaar verspilde gereedschapskosten.</li>
+<li><strong>Te laat wisselen (breuk)</strong>: gereedschapbreuk kost het gereedschap én potentieel het werkstuk. Uitvalkosten zijn 10–50× hoger dan gereedschapkosten.</li>
+</ul>
+<p>Standtijdregistratie lost beide problemen op door het “gevoel” te vervangen door data.</p>
+
+<h2>Methode 1: De teltabel (turfjes)</h2>
+<p>Eenvoudigste methode: een papieren tabel bij elke machine. Per gereedschap wordt een streepje gezet na elk bewerkt werkstuk (of elke X minuten snijden).</p>
+<ul>
+<li>Kost: A4-papier en een pen</li>
+<li>Tijdsduur: 3 seconden per stuk</li>
+<li>Resultaat na 2 weken: gemiddelde standtijd per gereedschap, per materiaal, per operator</li>
+</ul>
+<p>Start met je meest verbruikte gereedschap (de gereedschappen die het meest besteld worden). Maak na 4 weken een gemiddelde. Gebruik dat als richtwaarde voor preventieve wissel.</p>
+
+<h2>Methode 2: Stuks-teller op de CNC</h2>
+<p>Moderne CNC-besturingen (Fanuc, Heidenhain, Siemens) hebben een stuks-teller per gereedschaps-T-nummer. Activeer dit in het gereedschapsbeheer (tool management):</p>
+<ul>
+<li>Maximale stukken instellen op basis van teltabel-gemiddelde × 0,9 (veiligheidsmarge)</li>
+<li>Alarm bij bereiken van limiet — machine stopt automatisch vóór breuk</li>
+<li>Reset na gereedschapwissel</li>
+</ul>
+<p>Dit elimineert de menselijke factor volledig. Kosten: nul (al aanwezig op machine).</p>
+
+<h2>Methode 3: Slijtage-observatie</h2>
+<p>De meest directe methode: bekijk het gereedschap met loep (10×) of digitale microscoop na elke X stuks. Let op:</p>
+<ul>
+<li><strong>Flankenslijtage (VB)</strong>: maat de slijtage op de vrijloopvlakken. Vuistregel: wissel bij VB &gt;0,3mm (ruwbewerking) of VB &gt;0,1mm (finishing).</li>
+<li><strong>Kratervorming</strong>: slijtage op het spaanoppervlak. Leidt tot plotse breuk zonder vooraankondiging.</li>
+<li><strong>Afbreken van de snijkant</strong>: micro-chips zichtbaar met loep. Direct wisselen.</li>
+</ul>
+<p>Observatiefrequentie: begin met elke 10 stuks. Na 4 weken weet je wanneer het interessant begint te worden.</p>
+
+{cta('Gereedschapkosten te hoog?', 'Beschrijf huidig verbruik en materiaal. We kijken samen naar standtijd en gereedschapskeuze.')}
+
+<h2>Van data naar actie: TCO-verbeterplan</h2>
+<p>Na 4 weken registreren heb je data om de volgende stap te zetten:</p>
+
+<div class="checklist">
+<h3>Van data naar besparing</h3>
+<ol>
+<li><strong>Bereken huidige gereedschapkosten per stuk</strong> — totale gereedschapinkoop / aantal bewerkte stuks per jaar = gereedschapkosten per stuk.</li>
+<li><strong>Identificeer uitschieters</strong> — welk gereedschap verbruikt u 3× meer dan verwacht? Dat is je eerste verbeterpunt.</li>
+<li><strong>Vergelijk met alternatief</strong> — standtijdverdubbeling door betere coating of geometrie = halvering van gereedschapkosten per stuk. Laat ons dit doorrekenen.</li>
+<li><strong>Stel preventieve wisselpunten in</strong> — op 90% van gemiddelde standtijd. Elimineert breukwissels volledig.</li>
+<li><strong>Herhaal kwartaal</strong> — standtijd verandert bij materiaalwisselingen, operatorwisselingen, of machine-aanpassingen. Blijf meten.</li>
+</ol>
+</div>
+  </article>
+</div>
+<div class="related">
+  <div class="container">
+    <div class="related-title">★ Gerelateerde artikelen &amp; pagina’s</div>
+    <div class="related-cards">
+      <a class="related-card" href="/kennisbank/pkd-vs-hardmetaal/"><div class="kicker">Kennisbank</div><h4>PKD vs hardmetaal: TCO-rekenvoorbeeld</h4><p>Standtijddata per materiaalgroep en TCO-formule voor gereedschapskeuze.</p></a>
+<a class="related-card" href="/kennisbank/specials-wanneer-roi/"><div class="kicker">Kennisbank</div><h4>Wanneer is een special goedkoper?</h4><p>ROI-berekening en break-even model voor maatwerkgereedschap.</p></a>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="container">
+    <div>InterMill · VerspaningsAdvies &amp; -Gereedschap · Maarheeze, NL</div>
+    <div><a href="tel:+31610906759">+31 (0)6 10 90 67 59</a> · <a href="mailto:info@inter-mill.com">info@inter-mill.com</a></div>
+  </div>
+</footer>
+<script src="/nav.js" defer></script>
+<script src="/consent.js" defer></script>
+</body>
+</html>
