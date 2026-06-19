@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /_internal/
 Disallow: /_unused/
+Disallow: /dashboard/
 
-Sitemap: https://www.inter-mill.com/sitemap.xml
+Sitemap: https://inter-mill.com/sitemap.xml

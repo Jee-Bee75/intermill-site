@@ -1,0 +1,15 @@
+# Cloudflare Pages / Netlify — redirects
+# Vertaald uit web.config. HTTPS-forcering is automatisch op het platform.
+
+# www -> apex (zonder www)
+https://www.inter-mill.com/*  https://inter-mill.com/:splat  301!
+
+# Legacy kennisbank-URLs (oude .html -> nieuwe subdir)
+/kennisbank/pkd-vs-hardmetaal.html        /kennisbank/pkd-vs-hardmetaal/        301
+/kennisbank/trillingen-precisiefrezen.html /kennisbank/trillingen-precisiefrezen/ 301
+
+# Interne mappen blokkeren (404)
+/_unused/*    /404.html  404
+/_internal/*  /404.html  404
+
+# 404.html wordt door Cloudflare Pages/Netlify automatisch gebruikt voor niet-gevonden pagina's.
