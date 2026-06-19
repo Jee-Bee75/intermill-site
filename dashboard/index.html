@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JB Dashboard · Concurrentie-radar (intern)</title>
+<meta name="description" content="Intern dashboard van InterMill voor concurrentie-monitoring en wekelijkse AI-digest.">
+<meta name="theme-color" content="#FFDD00">
+<!-- Intern hulpmiddel: nooit indexeren -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/intermill-site/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="/intermill-site/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="/intermill-site/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/intermill-site/styles.css">
+<style>
+  :root{
+    --d-bg:#0F0F0F; --d-panel:#181818; --d-panel-2:#1f1f1f;
+    --d-line:#2a2a2a; --d-text:#F2F2F2; --d-mut:#9a9a9a;
+    --d-yellow:#FFDD00; --d-red:#FF5A4D; --d-amber:#FFB020; --d-green:#3DDC84;
+  }
+  body{background:var(--d-bg);color:var(--d-text);font-family:'Manrope',sans-serif}
+  a{color:inherit}
+  .db-wrap{max-width:1180px;margin:0 auto;padding:24px 20px 120px}
+
+  /* Header */
+  .db-top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    padding-bottom:20px;margin-bottom:24px;border-bottom:1px solid var(--d-line)}
+  .db-brand{display:flex;align-items:center;gap:14px}
+  .db-brand .badge{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;
+    background:var(--d-yellow);color:#0F0F0F;padding:4px 8px;font-weight:600}
+  .db-brand h1{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:800;letter-spacing:-.02em}
+  .db-brand p{font-size:12px;color:var(--d-mut);margin-top:2px}
+  .db-week{display:flex;align-items:center;gap:8px}
+  .db-week button{background:var(--d-panel-2);border:1px solid var(--d-line);color:var(--d-text);
+    width:36px;height:36px;cursor:pointer;font-size:18px;line-height:1;border-radius:8px}
+  .db-week button:hover{border-color:var(--d-yellow)}
+  .db-week .lbl{font-family:'JetBrains Mono',monospace;font-size:13px;min-width:150px;text-align:center}
+
+  /* Stat tiles */
+  .db-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+  .stat{background:var(--d-panel);border:1px solid var(--d-line);border-radius:12px;padding:16px 18px}
+  .stat .n{font-family:'Bricolage Grotesque',sans-serif;font-size:30px;font-weight:800;line-height:1}
+  .stat .k{font-size:11px;color:var(--d-mut);text-transform:uppercase;letter-spacing:.08em;margin-top:8px}
+  .stat.hi .n{color:var(--d-red)}
+
+  .db-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:20px;align-items:start}
+  .panel{background:var(--d-panel);border:1px solid var(--d-line);border-radius:14px;padding:20px}
+  .panel h2{font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:700;margin-bottom:4px;
+    display:flex;align-items:center;gap:8px}
+  .panel .sub{font-size:12px;color:var(--d-mut);margin-bottom:16px}
+
+  /* Form */
+  .frm{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .frm .full{grid-column:1/-1}
+  label{display:block;font-size:11px;color:var(--d-mut);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+  input,select,textarea{width:100%;background:var(--d-panel-2);border:1px solid var(--d-line);color:var(--d-text);
+    border-radius:8px;padding:9px 11px;font-family:inherit;font-size:14px}
+  textarea{resize:vertical;min-height:62px}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--d-yellow)}
+  .btn-d{background:var(--d-yellow);color:#0F0F0F;border:none;border-radius:8px;padding:11px 18px;
+    font-weight:700;font-size:14px;cursor:pointer;font-family:inherit}
+  .btn-d:hover{filter:brightness(1.05)}
+  .btn-g{background:var(--d-panel-2);color:var(--d-text);border:1px solid var(--d-line);border-radius:8px;
+    padding:10px 14px;font-weight:600;font-size:13px;cursor:pointer;font-family:inherit}
+  .btn-g:hover{border-color:var(--d-yellow)}
+  .btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+
+  /* Signals */
+  .sig{border:1px solid var(--d-line);border-radius:10px;padding:12px 14px;margin-bottom:10px;background:var(--d-panel-2)}
+  .sig-head{display:flex;align-items:center;gap:8px;justify-content:space-between}
+  .sig-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;padding:3px 7px;border-radius:5px;
+    background:#262626;color:var(--d-mut);text-transform:uppercase}
+  .tag.cat{background:#2b2b16;color:var(--d-yellow)}
+  .dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+  .dot.Hoog{background:var(--d-red)} .dot.Midden{background:var(--d-amber)} .dot.Laag{background:var(--d-green)}
+  .sig h3{font-size:14px;font-weight:600;margin:8px 0 4px}
+  .sig p{font-size:13px;color:#cfcfcf;line-height:1.45}
+  .sig .lnk{font-size:12px;color:var(--d-yellow);text-decoration:none;display:inline-block;margin-top:6px;word-break:break-all}
+  .sig .del{background:none;border:none;color:var(--d-mut);cursor:pointer;font-size:16px;padding:0 4px}
+  .sig .del:hover{color:var(--d-red)}
+  .empty{color:var(--d-mut);font-size:13px;text-align:center;padding:30px 0;border:1px dashed var(--d-line);border-radius:10px}
+
+  /* Digest */
+  .digest-box{background:var(--d-panel-2);border:1px solid var(--d-line);border-radius:10px;padding:16px;
+    font-size:13.5px;line-height:1.55;white-space:pre-wrap;min-height:80px}
+  .digest-box.placeholder{color:var(--d-mut);font-style:italic}
+  .digest-box h4{font-family:'Bricolage Grotesque',sans-serif;font-size:14px;margin:12px 0 4px;color:var(--d-yellow)}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--d-yellow);color:#0F0F0F;
+    padding:12px 20px;border-radius:8px;font-weight:600;font-size:14px;opacity:0;pointer-events:none;
+    transition:opacity .25s;z-index:50}
+  .toast.show{opacity:1}
+  .hint{font-size:11px;color:var(--d-mut);margin-top:8px;line-height:1.5}
+  .ftr{margin-top:40px;padding-top:18px;border-top:1px solid var(--d-line);display:flex;gap:14px;flex-wrap:wrap;
+    font-size:12px;color:var(--d-mut)}
+  .ftr a{color:var(--d-yellow);text-decoration:none}
+
+  @media(max-width:880px){.db-grid{grid-template-columns:1fr}.db-stats{grid-template-columns:repeat(2,1fr)}.frm{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="db-wrap">
+
+  <div class="db-top">
+    <div class="db-brand">
+      <span class="badge">JB · INTERN</span>
+      <div>
+        <h1>Concurrentie-radar</h1>
+        <p>Wekelijkse AI-digest · wat heeft de concurrentie verzonnen?</p>
+      </div>
+    </div>
+    <div class="db-week">
+      <button id="prevWeek" aria-label="Vorige week">‹</button>
+      <span class="lbl" id="weekLbl">—</span>
+      <button id="nextWeek" aria-label="Volgende week">›</button>
+    </div>
+  </div>
+
+  <div class="db-stats" id="stats"></div>
+
+  <div class="db-grid">
+
+    <!-- LEFT: signal capture + list -->
+    <div class="panel">
+      <h2>📡 Signaal vastleggen</h2>
+      <p class="sub">Zie je iets bij een concurrent? Leg het direct vast — dit voedt de digest.</p>
+      <div class="frm">
+        <div>
+          <label for="f-comp">Concurrent</label>
+          <input id="f-comp" list="comp-list" placeholder="bijv. Sandvik, Walter, BRW…">
+          <datalist id="comp-list">
+            <option value="Sandvik Coromant"><option value="Walter"><option value="Iscar">
+            <option value="Mitsubishi"><option value="Kennametal"><option value="Seco">
+            <option value="Ceratizit"><option value="BRW"><option value="Mapal"><option value="Horn">
+          </datalist>
+        </div>
+        <div>
+          <label for="f-cat">Categorie</label>
+          <select id="f-cat">
+            <option>Catalogus / nieuw product</option>
+            <option>Prijs</option>
+            <option>Levertijd</option>
+            <option>Technologie / claim</option>
+            <option>Content / SEO</option>
+            <option>Social / LinkedIn</option>
+            <option>Beurs / event</option>
+            <option>Win/Loss</option>
+            <option>Overig</option>
+          </select>
+        </div>
+        <div class="full">
+          <label for="f-title">Kop</label>
+          <input id="f-title" placeholder="Korte titel van wat je zag">
+        </div>
+        <div class="full">
+          <label for="f-note">Notitie / detail</label>
+          <textarea id="f-note" placeholder="Wat is het? Waarom relevant voor ons advies?"></textarea>
+        </div>
+        <div>
+          <label for="f-url">Bron (URL)</label>
+          <input id="f-url" placeholder="https://…">
+        </div>
+        <div>
+          <label for="f-imp">Impact</label>
+          <select id="f-imp"><option>Midden</option><option>Hoog</option><option>Laag</option></select>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-d" id="addSig">+ Signaal toevoegen</button>
+      </div>
+
+      <h2 style="margin-top:26px">🗂️ Signalen deze week <span class="tag" id="sigCount" style="margin-left:4px"></span></h2>
+      <p class="sub">Gesorteerd op impact. Klik 🗑 om te verwijderen.</p>
+      <div id="sigList"></div>
+    </div>
+
+    <!-- RIGHT: digest -->
+    <div class="panel">
+      <h2>🧠 AI-digest</h2>
+      <p class="sub">Automatische lokale samenvatting + kant-en-klare prompt voor Claude.</p>
+
+      <div class="digest-box" id="autoDigest"></div>
+
+      <div class="btn-row">
+        <button class="btn-d" id="copyPrompt">📋 Kopieer AI-prompt</button>
+        <button class="btn-g" id="toggleResp">✍️ Plak AI-digest</button>
+      </div>
+      <div class="hint">Plak alle signalen via de prompt in Claude → ontvang een gepolijste digest → plak die hier terug en bewaar 'm bij de week.</div>
+
+      <div id="respWrap" style="display:none;margin-top:16px">
+        <label for="f-resp">AI-digest van deze week</label>
+        <textarea id="f-resp" style="min-height:140px" placeholder="Plak hier de uitkomst van Claude…"></textarea>
+        <div class="btn-row">
+          <button class="btn-d" id="saveResp">Bewaar digest</button>
+          <button class="btn-g" id="clearResp">Wissen</button>
+        </div>
+      </div>
+
+      <div id="savedDigestWrap" style="margin-top:18px;display:none">
+        <h2 style="font-size:15px">⭐ Bewaarde digest</h2>
+        <div class="digest-box" id="savedDigest"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="ftr">
+    <span>Data leeft lokaal in deze browser (localStorage).</span>
+    <a href="#" id="exportBtn">⬇︎ Exporteer backup (JSON)</a>
+    <a href="#" id="importBtn">⬆︎ Importeer backup</a>
+    <a href="#" id="wipeBtn" style="color:var(--d-red)">Alles wissen</a>
+    <a href="/intermill-site/">← Terug naar site</a>
+    <input type="file" id="importFile" accept="application/json" style="display:none">
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  'use strict';
+  var KEY='jb-dashboard-v1';
+  var state=load();
+  var current=isoWeekId(new Date());
+
+  function load(){try{return JSON.parse(localStorage.getItem(KEY))||{weeks:{}}}catch(e){return{weeks:{}}}}
+  function save(){localStorage.setItem(KEY,JSON.stringify(state));}
+  function wk(){return state.weeks[current]||(state.weeks[current]={signals:[],digest:''});}
+
+  // ---- ISO week helpers ----
+  function isoWeekId(d){
+    d=new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate()));
+    var day=(d.getUTCDay()+6)%7; d.setUTCDate(d.getUTCDate()-day+3);
+    var firstThu=new Date(Date.UTC(d.getUTCFullYear(),0,4));
+    var w=1+Math.round(((d-firstThu)/86400000-3+((firstThu.getUTCDay()+6)%7))/7);
+    return d.getUTCFullYear()+'-W'+String(w).padStart(2,'0');
+  }
+  function weekRange(id){
+    var p=id.split('-W'),y=+p[0],w=+p[1];
+    var simple=new Date(Date.UTC(y,0,1+(w-1)*7));
+    var dow=simple.getUTCDay(); var mon=new Date(simple);
+    mon.setUTCDate(simple.getUTCDate()-((dow+6)%7));
+    var sun=new Date(mon); sun.setUTCDate(mon.getUTCDate()+6);
+    var f=function(d){return d.getUTCDate()+'/'+(d.getUTCMonth()+1)};
+    return f(mon)+'–'+f(sun);
+  }
+  function shiftWeek(id,delta){
+    var p=id.split('-W'),y=+p[0],w=+p[1];
+    var d=new Date(Date.UTC(y,0,1+(w-1)*7)); d.setUTCDate(d.getUTCDate()+delta*7);
+    return isoWeekId(d);
+  }
+
+  var impRank={Hoog:0,Midden:1,Laag:2};
+  var $=function(id){return document.getElementById(id);};
+
+  // ---- Render ----
+  function render(){
+    $('weekLbl').textContent=current.replace('-',' ')+' · '+weekRange(current);
+    var sigs=wk().signals.slice().sort(function(a,b){return impRank[a.imp]-impRank[b.imp]||b.ts-a.ts;});
+
+    // stats
+    var hi=sigs.filter(function(s){return s.imp==='Hoog';}).length;
+    var comps=new Set(sigs.map(function(s){return (s.comp||'?').toLowerCase();})).size;
+    var cats=new Set(sigs.map(function(s){return s.cat;})).size;
+    $('stats').innerHTML=[
+      ['n',sigs.length,'Signalen'],['hi',hi,'Hoge impact'],
+      ['n',comps,'Concurrenten'],['n',cats,'Categorieën']
+    ].map(function(t){return '<div class="stat '+(t[0]==='hi'?'hi':'')+'"><div class="n">'+t[1]+'</div><div class="k">'+t[2]+'</div></div>';}).join('');
+
+    $('sigCount').textContent=sigs.length;
+
+    // signal list
+    if(!sigs.length){$('sigList').innerHTML='<div class="empty">Nog niets vastgelegd deze week.</div>';}
+    else{
+      $('sigList').innerHTML=sigs.map(function(s){
+        return '<div class="sig">'+
+          '<div class="sig-head"><div class="sig-meta">'+
+            '<span class="dot '+s.imp+'" title="Impact: '+s.imp+'"></span>'+
+            '<span class="tag cat">'+esc(s.cat)+'</span>'+
+            (s.comp?'<span class="tag">'+esc(s.comp)+'</span>':'')+
+          '</div><button class="del" data-id="'+s.id+'" title="Verwijderen">🗑</button></div>'+
+          '<h3>'+esc(s.title||'(geen kop)')+'</h3>'+
+          (s.note?'<p>'+esc(s.note)+'</p>':'')+
+          (s.url?'<a class="lnk" href="'+esc(s.url)+'" target="_blank" rel="noopener">'+esc(s.url)+' ↗</a>':'')+
+        '</div>';
+      }).join('');
+      Array.prototype.forEach.call(document.querySelectorAll('.del'),function(b){
+        b.onclick=function(){var id=b.getAttribute('data-id');
+          wk().signals=wk().signals.filter(function(s){return s.id!=id;});save();render();toast('Verwijderd');};
+      });
+    }
+
+    // auto digest
+    $('autoDigest').innerHTML=buildAuto(sigs);
+    $('autoDigest').classList.toggle('placeholder',!sigs.length);
+
+    // saved digest
+    var dg=wk().digest;
+    $('savedDigestWrap').style.display=dg?'block':'none';
+    $('savedDigest').textContent=dg||'';
+    $('f-resp').value=dg||'';
+  }
+
+  function buildAuto(sigs){
+    if(!sigs.length) return 'Voeg signalen toe — hier verschijnt automatisch een samenvatting van de week.';
+    var byCat={};
+    sigs.forEach(function(s){(byCat[s.cat]=byCat[s.cat]||[]).push(s);});
+    var hi=sigs.filter(function(s){return s.imp==='Hoog';});
+    var out='<h4>Kort overzicht</h4>'+
+      sigs.length+' signaal(en) van '+new Set(sigs.map(function(s){return s.comp;})).size+
+      ' concurrent(en). '+(hi.length?hi.length+' met <b>hoge impact</b>.':'Geen hoge-impact items.');
+    if(hi.length){
+      out+='<h4>⚠️ Let op (hoge impact)</h4>'+hi.map(function(s){
+        return '• '+esc(s.comp||'?')+' — '+esc(s.title);
+      }).join('<br>');
+    }
+    out+='<h4>Per categorie</h4>'+Object.keys(byCat).map(function(c){
+      return '• <b>'+esc(c)+'</b> ('+byCat[c].length+'): '+byCat[c].map(function(s){return esc(s.title);}).join('; ');
+    }).join('<br>');
+    return out;
+  }
+
+  function buildPrompt(){
+    var sigs=wk().signals;
+    if(!sigs.length) return '';
+    var lines=sigs.map(function(s,i){
+      return (i+1)+'. ['+s.cat+' | impact: '+s.imp+'] '+(s.comp||'?')+' — '+(s.title||'')+
+        (s.note?'\n   Detail: '+s.note:'')+(s.url?'\n   Bron: '+s.url:'');
+    }).join('\n');
+    return 'Je bent concurrentie-analist voor InterMill, een onafhankelijk verspaningsadviseur en '+
+      'gereedschapsleverancier (frezen, draaien, kotteren, standtijd/TCO-advies).\n\n'+
+      'Hieronder de ruwe concurrentiesignalen van week '+current+' ('+weekRange(current)+'). '+
+      'Maak hiervan een scherpe, zakelijke weekdigest in het Nederlands met:\n'+
+      '1. TL;DR in 3 bullets — wat is er deze week veranderd bij de concurrentie?\n'+
+      '2. De belangrijkste dreigingen/kansen, met korte duiding waarom het ertoe doet voor verspaningsadvies.\n'+
+      '3. Concrete acties voor InterMill deze week (max 5).\n'+
+      '4. Eventuele claims om te weerleggen met ons TCO/standtijd-argument.\n\n'+
+      'Houd het bondig en concreet. Ruwe signalen:\n\n'+lines;
+  }
+
+  // ---- Actions ----
+  $('addSig').onclick=function(){
+    var t=$('f-title').value.trim();
+    if(!t){toast('Geef minstens een kop op');$('f-title').focus();return;}
+    wk().signals.push({id:Date.now()+''+Math.floor(Math.random()*999),ts:Date.now(),
+      comp:$('f-comp').value.trim(),cat:$('f-cat').value,title:t,
+      note:$('f-note').value.trim(),url:$('f-url').value.trim(),imp:$('f-imp').value});
+    save();
+    ['f-comp','f-title','f-note','f-url'].forEach(function(id){$(id).value='';});
+    render();toast('Signaal toegevoegd');$('f-comp').focus();
+  };
+
+  $('copyPrompt').onclick=function(){
+    var p=buildPrompt();
+    if(!p){toast('Geen signalen om te verwerken');return;}
+    copy(p);toast('AI-prompt gekopieerd — plak in Claude');
+  };
+
+  $('toggleResp').onclick=function(){
+    var w=$('respWrap'); w.style.display=w.style.display==='none'?'block':'none';
+    if(w.style.display==='block')$('f-resp').focus();
+  };
+  $('saveResp').onclick=function(){wk().digest=$('f-resp').value.trim();save();render();toast('Digest bewaard');};
+  $('clearResp').onclick=function(){$('f-resp').value='';wk().digest='';save();render();toast('Digest gewist');};
+
+  $('prevWeek').onclick=function(){current=shiftWeek(current,-1);render();};
+  $('nextWeek').onclick=function(){current=shiftWeek(current,1);render();};
+
+  // export / import / wipe
+  $('exportBtn').onclick=function(e){e.preventDefault();
+    var blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'});
+    var a=document.createElement('a');a.href=URL.createObjectURL(blob);
+    a.download='jb-dashboard-'+new Date().toISOString().slice(0,10)+'.json';a.click();toast('Backup gedownload');};
+  $('importBtn').onclick=function(e){e.preventDefault();$('importFile').click();};
+  $('importFile').onchange=function(){
+    var f=this.files[0];if(!f)return;var r=new FileReader();
+    r.onload=function(){try{var d=JSON.parse(r.result);if(d&&d.weeks){state=d;save();render();toast('Backup geïmporteerd');}else toast('Ongeldig bestand');}catch(e){toast('Kon bestand niet lezen');}};
+    r.readAsText(f);this.value='';};
+  $('wipeBtn').onclick=function(e){e.preventDefault();
+    if(confirm('Alle dashboard-data wissen? Dit kan niet ongedaan worden gemaakt.')){state={weeks:{}};save();render();toast('Alles gewist');}};
+
+  // ---- utils ----
+  function esc(s){return String(s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function copy(t){if(navigator.clipboard){navigator.clipboard.writeText(t);}else{var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();}}
+  var toTimer;
+  function toast(m){var el=$('toast');el.textContent=m;el.classList.add('show');clearTimeout(toTimer);toTimer=setTimeout(function(){el.classList.remove('show');},2200);}
+
+  render();
+})();
+</script>
+</body>
+</html>
