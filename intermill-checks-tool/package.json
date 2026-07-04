@@ -1,0 +1,27 @@
+{
+  "name": "intermill-deploy-checks",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Automated deploy-readiness checks voor inter-mill.com",
+  "scripts": {
+    "start": "node server.js",
+    "install-browsers": "playwright install chromium firefox webkit"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@axe-core/playwright": "^4.10.0",
+    "better-sqlite3": "^11.7.0",
+    "cors": "^2.8.5",
+    "diff": "^7.0.0",
+    "express": "^4.21.2",
+    "lighthouse": "^12.3.0",
+    "p-limit": "^6.1.0",
+    "playwright": "^1.49.1",
+    "probe-image-size": "^7.2.3",
+    "sharp": "^0.33.5",
+    "xml2js": "^0.6.2"
+  }
+}
